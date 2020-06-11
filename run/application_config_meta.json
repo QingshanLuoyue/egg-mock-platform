@@ -1,0 +1,357 @@
+{
+  "siteFile": {
+    "/favicon.ico": "D:\\myproject\\egg-blog\\config\\config.default.js"
+  },
+  "vuessr": {
+    "layout": "D:\\myproject\\egg-blog\\config\\config.default.js",
+    "renderOptions": {
+      "basedir": "D:\\myproject\\egg-blog\\config\\config.default.js",
+      "runInNewContext": "D:\\myproject\\egg-blog\\node_modules\\egg-view-vue-ssr\\config\\config.default.js"
+    },
+    "injectRes": "D:\\myproject\\egg-blog\\config\\config.default.js",
+    "doctype": "D:\\myproject\\egg-blog\\node_modules\\egg-view-vue-ssr\\config\\config.default.js",
+    "manifest": "D:\\myproject\\egg-blog\\node_modules\\egg-view-vue-ssr\\config\\config.default.js",
+    "injectHeadRegex": "D:\\myproject\\egg-blog\\node_modules\\egg-view-vue-ssr\\config\\config.default.js",
+    "injectBodyRegex": "D:\\myproject\\egg-blog\\node_modules\\egg-view-vue-ssr\\config\\config.default.js",
+    "injectCss": "D:\\myproject\\egg-blog\\node_modules\\egg-view-vue-ssr\\config\\config.local.js",
+    "injectJs": "D:\\myproject\\egg-blog\\node_modules\\egg-view-vue-ssr\\config\\config.default.js",
+    "crossorigin": "D:\\myproject\\egg-blog\\node_modules\\egg-view-vue-ssr\\config\\config.default.js",
+    "mergeLocals": "D:\\myproject\\egg-blog\\node_modules\\egg-view-vue-ssr\\config\\config.default.js",
+    "fallbackToClient": "D:\\myproject\\egg-blog\\node_modules\\egg-view-vue-ssr\\config\\config.default.js",
+    "viewEngine": "D:\\myproject\\egg-blog\\node_modules\\egg-view-vue-ssr\\config\\config.default.js",
+    "cache": {
+      "max": "D:\\myproject\\egg-blog\\node_modules\\egg-view-vue-ssr\\config\\config.default.js",
+      "maxAge": "D:\\myproject\\egg-blog\\node_modules\\egg-view-vue-ssr\\config\\config.default.js"
+    },
+    "afterRender": "D:\\myproject\\egg-blog\\node_modules\\egg-view-vue-ssr\\config\\config.default.js"
+  },
+  "logger": {
+    "consoleLevel": "D:\\myproject\\egg-blog\\config\\config.default.js",
+    "dir": "D:\\myproject\\egg-blog\\config\\config.default.js",
+    "encoding": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+    "env": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+    "level": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+    "disableConsoleAfterReady": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+    "outputJSON": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+    "buffer": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+    "appLogName": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+    "coreLogName": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+    "agentLogName": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+    "errorLogName": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+    "coreLogger": {
+      "consoleLevel": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.local.js"
+    },
+    "allowDebugAtProd": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js"
+  },
+  "static": {
+    "prefix": "D:\\myproject\\egg-blog\\config\\config.default.js",
+    "dir": "D:\\myproject\\egg-blog\\config\\config.default.js",
+    "maxAge": "D:\\myproject\\egg-blog\\config\\config.local.js",
+    "dynamic": "D:\\myproject\\egg-blog\\node_modules\\egg-static\\config\\config.default.js",
+    "preload": "D:\\myproject\\egg-blog\\node_modules\\egg-static\\config\\config.default.js",
+    "buffer": "D:\\myproject\\egg-blog\\node_modules\\egg-static\\config\\config.default.js",
+    "maxFiles": "D:\\myproject\\egg-blog\\node_modules\\egg-static\\config\\config.default.js"
+  },
+  "keys": "D:\\myproject\\egg-blog\\config\\config.default.js",
+  "middleware": "D:\\myproject\\egg-blog\\config\\config.default.js",
+  "security": {
+    "csrf": {
+      "ignoreJSON": "D:\\myproject\\egg-blog\\config\\config.default.js",
+      "cookieName": "D:\\myproject\\egg-blog\\config\\config.default.js",
+      "sessionName": "D:\\myproject\\egg-blog\\config\\config.default.js",
+      "headerName": "D:\\myproject\\egg-blog\\config\\config.default.js",
+      "enable": "D:\\myproject\\egg-blog\\node_modules\\egg-security\\config\\config.default.js",
+      "type": "D:\\myproject\\egg-blog\\node_modules\\egg-security\\config\\config.default.js",
+      "useSession": "D:\\myproject\\egg-blog\\node_modules\\egg-security\\config\\config.default.js",
+      "bodyName": "D:\\myproject\\egg-blog\\node_modules\\egg-security\\config\\config.default.js",
+      "queryName": "D:\\myproject\\egg-blog\\node_modules\\egg-security\\config\\config.default.js",
+      "refererWhiteList": "D:\\myproject\\egg-blog\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "xframe": {
+      "enable": "D:\\myproject\\egg-blog\\config\\config.default.js",
+      "value": "D:\\myproject\\egg-blog\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "domainWhiteList": "D:\\myproject\\egg-blog\\config\\config.local.js",
+    "protocolWhiteList": "D:\\myproject\\egg-blog\\node_modules\\egg-security\\config\\config.default.js",
+    "defaultMiddleware": "D:\\myproject\\egg-blog\\node_modules\\egg-security\\config\\config.default.js",
+    "hsts": {
+      "enable": "D:\\myproject\\egg-blog\\node_modules\\egg-security\\config\\config.local.js",
+      "maxAge": "D:\\myproject\\egg-blog\\node_modules\\egg-security\\config\\config.default.js",
+      "includeSubdomains": "D:\\myproject\\egg-blog\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "dta": {
+      "enable": "D:\\myproject\\egg-blog\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "methodnoallow": {
+      "enable": "D:\\myproject\\egg-blog\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "noopen": {
+      "enable": "D:\\myproject\\egg-blog\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "nosniff": {
+      "enable": "D:\\myproject\\egg-blog\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "referrerPolicy": {
+      "enable": "D:\\myproject\\egg-blog\\node_modules\\egg-security\\config\\config.default.js",
+      "value": "D:\\myproject\\egg-blog\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "xssProtection": {
+      "enable": "D:\\myproject\\egg-blog\\node_modules\\egg-security\\config\\config.default.js",
+      "value": "D:\\myproject\\egg-blog\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "csp": {
+      "enable": "D:\\myproject\\egg-blog\\node_modules\\egg-security\\config\\config.default.js",
+      "policy": "D:\\myproject\\egg-blog\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "ssrf": {
+      "ipBlackList": "D:\\myproject\\egg-blog\\node_modules\\egg-security\\config\\config.default.js",
+      "checkAddress": "D:\\myproject\\egg-blog\\node_modules\\egg-security\\config\\config.default.js"
+    }
+  },
+  "view": {
+    "cache": "D:\\myproject\\egg-blog\\config\\config.local.js",
+    "root": "D:\\myproject\\egg-blog\\node_modules\\egg-view\\config\\config.default.js",
+    "defaultExtension": "D:\\myproject\\egg-blog\\node_modules\\egg-view\\config\\config.default.js",
+    "defaultViewEngine": "D:\\myproject\\egg-blog\\node_modules\\egg-view\\config\\config.default.js",
+    "mapping": {
+      ".js": "D:\\myproject\\egg-blog\\node_modules\\egg-view-vue-ssr\\config\\config.default.js"
+    }
+  },
+  "development": {
+    "watchDirs": "D:\\myproject\\egg-blog\\config\\config.local.js",
+    "ignoreDirs": "D:\\myproject\\egg-blog\\config\\config.local.js",
+    "fastReady": "D:\\myproject\\egg-blog\\node_modules\\egg-development\\config\\config.default.js",
+    "reloadOnDebug": "D:\\myproject\\egg-blog\\node_modules\\egg-development\\config\\config.default.js",
+    "overrideDefault": "D:\\myproject\\egg-blog\\node_modules\\egg-development\\config\\config.default.js"
+  },
+  "logview": {
+    "dir": "D:\\myproject\\egg-blog\\config\\config.local.js",
+    "prefix": "D:\\myproject\\egg-blog\\node_modules\\egg-logview\\config\\config.default.js",
+    "staticHost": "D:\\myproject\\egg-blog\\node_modules\\egg-logview\\config\\config.default.js"
+  },
+  "webpack": "D:\\myproject\\egg-blog\\config\\config.local.js",
+  "session": {
+    "maxAge": "D:\\myproject\\egg-blog\\node_modules\\egg-session\\config\\config.default.js",
+    "key": "D:\\myproject\\egg-blog\\node_modules\\egg-session\\config\\config.default.js",
+    "httpOnly": "D:\\myproject\\egg-blog\\node_modules\\egg-session\\config\\config.default.js",
+    "encrypt": "D:\\myproject\\egg-blog\\node_modules\\egg-session\\config\\config.default.js"
+  },
+  "helper": {
+    "shtml": "D:\\myproject\\egg-blog\\node_modules\\egg-security\\config\\config.default.js"
+  },
+  "jsonp": {
+    "limit": "D:\\myproject\\egg-blog\\node_modules\\egg-jsonp\\config\\config.default.js",
+    "callback": "D:\\myproject\\egg-blog\\node_modules\\egg-jsonp\\config\\config.default.js",
+    "csrf": "D:\\myproject\\egg-blog\\node_modules\\egg-jsonp\\config\\config.default.js"
+  },
+  "onerror": {
+    "errorPageUrl": "D:\\myproject\\egg-blog\\node_modules\\egg-onerror\\config\\config.default.js",
+    "appErrorFilter": "D:\\myproject\\egg-blog\\node_modules\\egg-onerror\\config\\config.default.js",
+    "templatePath": "D:\\myproject\\egg-blog\\node_modules\\egg-onerror\\config\\config.default.js"
+  },
+  "i18n": {
+    "defaultLocale": "D:\\myproject\\egg-blog\\node_modules\\egg-i18n\\config\\config.default.js",
+    "dirs": "D:\\myproject\\egg-blog\\node_modules\\egg-i18n\\config\\config.default.js",
+    "queryField": "D:\\myproject\\egg-blog\\node_modules\\egg-i18n\\config\\config.default.js",
+    "cookieField": "D:\\myproject\\egg-blog\\node_modules\\egg-i18n\\config\\config.default.js",
+    "cookieDomain": "D:\\myproject\\egg-blog\\node_modules\\egg-i18n\\config\\config.default.js",
+    "cookieMaxAge": "D:\\myproject\\egg-blog\\node_modules\\egg-i18n\\config\\config.default.js"
+  },
+  "watcher": {
+    "type": "D:\\myproject\\egg-blog\\node_modules\\egg-watcher\\config\\config.local.js",
+    "eventSources": {
+      "default": "D:\\myproject\\egg-blog\\node_modules\\egg-watcher\\config\\config.default.js",
+      "development": "D:\\myproject\\egg-blog\\node_modules\\egg-watcher\\config\\config.default.js"
+    }
+  },
+  "customLogger": {
+    "scheduleLogger": {
+      "consoleLevel": "D:\\myproject\\egg-blog\\node_modules\\egg-schedule\\config\\config.default.js",
+      "file": "D:\\myproject\\egg-blog\\node_modules\\egg-schedule\\config\\config.default.js"
+    }
+  },
+  "schedule": {
+    "directory": "D:\\myproject\\egg-blog\\node_modules\\egg-schedule\\config\\config.default.js"
+  },
+  "multipart": {
+    "mode": "D:\\myproject\\egg-blog\\node_modules\\egg-multipart\\config\\config.default.js",
+    "autoFields": "D:\\myproject\\egg-blog\\node_modules\\egg-multipart\\config\\config.default.js",
+    "defaultCharset": "D:\\myproject\\egg-blog\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fieldNameSize": "D:\\myproject\\egg-blog\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fieldSize": "D:\\myproject\\egg-blog\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fields": "D:\\myproject\\egg-blog\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fileSize": "D:\\myproject\\egg-blog\\node_modules\\egg-multipart\\config\\config.default.js",
+    "files": "D:\\myproject\\egg-blog\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fileExtensions": "D:\\myproject\\egg-blog\\node_modules\\egg-multipart\\config\\config.default.js",
+    "whitelist": "D:\\myproject\\egg-blog\\node_modules\\egg-multipart\\config\\config.default.js",
+    "tmpdir": "D:\\myproject\\egg-blog\\node_modules\\egg-multipart\\config\\config.default.js",
+    "cleanSchedule": {
+      "cron": "D:\\myproject\\egg-blog\\node_modules\\egg-multipart\\config\\config.default.js"
+    }
+  },
+  "logrotator": {
+    "filesRotateByHour": "D:\\myproject\\egg-blog\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "hourDelimiter": "D:\\myproject\\egg-blog\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "filesRotateBySize": "D:\\myproject\\egg-blog\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "maxFileSize": "D:\\myproject\\egg-blog\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "maxFiles": "D:\\myproject\\egg-blog\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "rotateDuration": "D:\\myproject\\egg-blog\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "maxDays": "D:\\myproject\\egg-blog\\node_modules\\egg-logrotator\\config\\config.default.js"
+  },
+  "cors": "D:\\myproject\\egg-blog\\node_modules\\egg-cors\\config\\config.default.js",
+  "env": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+  "name": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+  "cookies": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+  "proxy": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+  "maxIpsCount": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+  "maxProxyCount": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+  "protocolHeaders": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+  "ipHeaders": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+  "hostHeaders": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+  "pkg": {
+    "name": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+    "version": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+    "description": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+    "scripts": {
+      "dev": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "start": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "debug": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "clean": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "build": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "lint": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "fix": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "ii": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "changelog": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js"
+    },
+    "dependencies": {
+      "axios": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "cross-env": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "egg": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "egg-bin": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "egg-cors": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "egg-logger": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "egg-scripts": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "egg-validate": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "egg-view-vue-ssr": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "element-ui": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "extend": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "font-awesome": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "lodash": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "lodash-id": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "lowdb": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "mockjs": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "moment": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "shortid": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "showdown": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "simplemde": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "vue": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "vue-hot-reload-api": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "vue-i18n": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "vue-material-input": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "vue-router": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "vuex": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "vuex-router-sync": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js"
+    },
+    "devDependencies": {
+      "@easy-team/easywebpack-cli": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "@easy-team/easywebpack-vue": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "babel-plugin-component": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "egg-logview": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "egg-webpack": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "egg-webpack-vue": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "eslint": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "eslint-config-egg": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "eslint-plugin-vue": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "ip": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "node-sass": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "sass-loader": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js"
+    },
+    "engines": {
+      "node": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js"
+    },
+    "ci": {
+      "version": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js"
+    },
+    "repository": {
+      "type": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "url": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js"
+    },
+    "author": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+    "license": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+    "homepage": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+    "webpack": {
+      "loaders": {
+        "scss": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js"
+      }
+    }
+  },
+  "baseDir": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+  "HOME": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+  "rundir": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+  "dump": {
+    "ignore": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js"
+  },
+  "confusedConfigurations": {
+    "bodyparser": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+    "notFound": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+    "sitefile": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+    "middlewares": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+    "httpClient": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js"
+  },
+  "notfound": {
+    "pageUrl": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js"
+  },
+  "bodyParser": {
+    "enable": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+    "encoding": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+    "formLimit": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+    "jsonLimit": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+    "textLimit": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+    "strict": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+    "queryString": {
+      "arrayLimit": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "depth": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "parameterLimit": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js"
+    },
+    "onerror": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js"
+  },
+  "httpclient": {
+    "enableDNSCache": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+    "dnsCacheLookupInterval": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+    "dnsCacheMaxLength": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+    "request": {
+      "timeout": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js"
+    },
+    "httpAgent": {
+      "keepAlive": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "freeSocketTimeout": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "maxSockets": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "maxFreeSockets": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js"
+    },
+    "httpsAgent": {
+      "keepAlive": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "freeSocketTimeout": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "maxSockets": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "maxFreeSockets": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js"
+    }
+  },
+  "meta": {
+    "enable": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+    "logging": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js"
+  },
+  "coreMiddleware": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+  "workerStartTimeout": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+  "serverTimeout": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+  "cluster": {
+    "listen": {
+      "path": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "port": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+      "hostname": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js"
+    }
+  },
+  "clusterClient": {
+    "maxWaitTime": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js",
+    "responseTimeout": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js"
+  },
+  "onClientError": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\config.default.js"
+}

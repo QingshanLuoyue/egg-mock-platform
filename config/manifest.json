@@ -1,0 +1,75 @@
+{
+  "chunk/0.js": "/public/js/chunk/0.js",
+  "chunk/1.js": "/public/js/chunk/1.js",
+  "chunk/2.js": "/public/js/chunk/2.js",
+  "chunk/3.js": "/public/js/chunk/3.js",
+  "chunk/4.js": "/public/js/chunk/4.js",
+  "about/about.js": "/public/js/chunk/about/about.js",
+  "admin/home/home.js": "/public/js/chunk/admin/home/home.js",
+  "admin/login/login.js": "/public/js/chunk/admin/login/login.js",
+  "category/category.js": "/public/js/chunk/category/category.js",
+  "common.js": "/public/js/chunk/common.js",
+  "index/index.js": "/public/js/chunk/index/index.js",
+  "runtime.js": "/public/js/runtime.js",
+  "font/element-icons.ttf": "/public/font/element-icons.ttf",
+  "font/element-icons.woff": "/public/font/element-icons.woff",
+  "font/fontawesome-webfont.eot?v=4.7.0": "/public/font/fontawesome-webfont.eot",
+  "font/fontawesome-webfont.ttf?v=4.7.0": "/public/font/fontawesome-webfont.ttf",
+  "font/fontawesome-webfont.woff?v=4.7.0": "/public/font/fontawesome-webfont.woff",
+  "font/fontawesome-webfont.woff2?v=4.7.0": "/public/font/fontawesome-webfont.woff2",
+  "font/glyphicons-halflings-regular.eot": "/public/font/glyphicons-halflings-regular.eot",
+  "font/glyphicons-halflings-regular.ttf": "/public/font/glyphicons-halflings-regular.ttf",
+  "font/glyphicons-halflings-regular.woff": "/public/font/glyphicons-halflings-regular.woff",
+  "font/glyphicons-halflings-regular.woff2": "/public/font/glyphicons-halflings-regular.woff2",
+  "img/fontawesome-webfont.svg?v=4.7.0": "/public/img/fontawesome-webfont.svg",
+  "img/glyphicons-halflings-regular.svg": "/public/img/glyphicons-halflings-regular.svg",
+  "img/loading.gif": "/public/img/loading.gif",
+  "img/logo.png": "/public/img/logo.png",
+  "deps": {
+    "about/about.js": {
+      "js": [
+        "/public/js/runtime.js",
+        "/public/js/chunk/common.js",
+        "/public/js/chunk/about/about.js"
+      ],
+      "css": []
+    },
+    "admin/home/home.js": {
+      "js": [
+        "/public/js/runtime.js",
+        "/public/js/chunk/common.js",
+        "/public/js/chunk/admin/home/home.js"
+      ],
+      "css": []
+    },
+    "admin/login/login.js": {
+      "js": [
+        "/public/js/runtime.js",
+        "/public/js/chunk/common.js",
+        "/public/js/chunk/admin/login/login.js"
+      ],
+      "css": []
+    },
+    "category/category.js": {
+      "js": [
+        "/public/js/runtime.js",
+        "/public/js/chunk/common.js",
+        "/public/js/chunk/category/category.js"
+      ],
+      "css": []
+    },
+    "index/index.js": {
+      "js": [
+        "/public/js/runtime.js",
+        "/public/js/chunk/common.js",
+        "/public/js/chunk/index/index.js"
+      ],
+      "css": []
+    }
+  },
+  "info": {
+    "publicPath": "/public/",
+    "buildPath": "\\public",
+    "mapped": true
+  }
+}
