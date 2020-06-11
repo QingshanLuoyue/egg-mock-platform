@@ -10,13 +10,13 @@
       "domainWhiteList": [
         "http://localhost:7001",
         "http://127.0.0.1:7001",
-        "http://192.168.1.2:7001",
+        "http://192.168.137.1:7001",
         "http://localhost:9000",
         "http://127.0.0.1:9000",
-        "http://192.168.1.2:9000",
+        "http://192.168.137.1:9000",
         "http://localhost:9001",
         "http://127.0.0.1:9001",
-        "http://192.168.1.2:9001"
+        "http://192.168.137.1:9001"
       ],
       "protocolWhiteList": [],
       "defaultMiddleware": "csrf,hsts,methodnoallow,noopen,nosniff,csp,xssProtection,xframe,dta",
@@ -85,7 +85,7 @@
     "onerror": {
       "errorPageUrl": "",
       "appErrorFilter": null,
-      "templatePath": "D:\\myproject\\egg-blog\\node_modules\\egg-onerror\\lib\\onerror_page.mustache"
+      "templatePath": "D:\\myproject\\egg-mock-platform\\node_modules\\egg-onerror\\lib\\onerror_page.mustache"
     },
     "i18n": {
       "defaultLocale": "en_US",
@@ -98,8 +98,8 @@
     "watcher": {
       "type": "development",
       "eventSources": {
-        "default": "D:\\myproject\\egg-blog\\node_modules\\egg-watcher\\lib\\event-sources\\default",
-        "development": "D:\\myproject\\egg-blog\\node_modules\\egg-watcher\\lib\\event-sources\\development"
+        "default": "D:\\myproject\\egg-mock-platform\\node_modules\\egg-watcher\\lib\\event-sources\\default",
+        "development": "D:\\myproject\\egg-mock-platform\\node_modules\\egg-watcher\\lib\\event-sources\\development"
       }
     },
     "customLogger": {
@@ -149,7 +149,7 @@
     },
     "static": {
       "prefix": "/public/",
-      "dir": "D:\\myproject\\egg-blog\\public",
+      "dir": "D:\\myproject\\egg-mock-platform\\public",
       "dynamic": true,
       "preload": false,
       "buffer": false,
@@ -157,7 +157,7 @@
       "maxAge": 0
     },
     "view": {
-      "root": "D:\\myproject\\egg-blog\\app\\view",
+      "root": "D:\\myproject\\egg-mock-platform\\app\\view",
       "cache": false,
       "defaultExtension": ".html",
       "defaultViewEngine": "",
@@ -167,8 +167,8 @@
     },
     "vuessr": {
       "doctype": "<!doctype html>",
-      "layout": "D:\\myproject\\egg-blog\\app\\web\\view\\layout.html",
-      "manifest": "D:\\myproject\\egg-blog\\config\\manifest.json",
+      "layout": "D:\\myproject\\egg-mock-platform\\app\\web\\view\\layout.html",
+      "manifest": "D:\\myproject\\egg-mock-platform\\config\\manifest.json",
       "injectHeadRegex": "/(<\\/head>)/i",
       "injectBodyRegex": "/(<\\/body>)/i",
       "injectCss": false,
@@ -191,7 +191,7 @@
       },
       "renderOptions": {
         "runInNewContext": "once",
-        "basedir": "D:\\myproject\\egg-blog\\app\\view"
+        "basedir": "D:\\myproject\\egg-mock-platform\\app\\view"
       },
       "afterRender": "<Function afterRender>"
     },
@@ -207,7 +207,7 @@
     "logview": {
       "prefix": "__logs",
       "staticHost": "https://unpkg.cnpmjs.org",
-      "dir": "D:\\myproject\\egg-blog\\logs"
+      "dir": "D:\\myproject\\egg-mock-platform\\logs"
     },
     "env": "local",
     "name": "blogs-ljf",
@@ -296,9 +296,9 @@
         }
       }
     },
-    "baseDir": "D:\\myproject\\egg-blog",
+    "baseDir": "D:\\myproject\\egg-mock-platform",
     "HOME": "C:\\Users\\Administrator",
-    "rundir": "D:\\myproject\\egg-blog\\run",
+    "rundir": "D:\\myproject\\egg-mock-platform\\run",
     "dump": {
       "ignore": "<Set>"
     },
@@ -330,7 +330,7 @@
       "onerror": "<Function onerror>"
     },
     "logger": {
-      "dir": "D:\\myproject\\egg-blog\\logs",
+      "dir": "D:\\myproject\\egg-mock-platform\\logs",
       "encoding": "utf8",
       "env": "local",
       "level": "INFO",
@@ -409,8 +409,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\plugin.js",
-      "path": "D:\\myproject\\egg-blog\\node_modules\\egg-session",
+      "from": "D:\\myproject\\egg-mock-platform\\node_modules\\egg\\config\\plugin.js",
+      "path": "D:\\myproject\\egg-mock-platform\\node_modules\\egg-session",
       "version": "3.1.0"
     },
     "security": {
@@ -422,8 +422,8 @@
         "session"
       ],
       "env": [],
-      "from": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\plugin.js",
-      "path": "D:\\myproject\\egg-blog\\node_modules\\egg-security",
+      "from": "D:\\myproject\\egg-mock-platform\\node_modules\\egg\\config\\plugin.js",
+      "path": "D:\\myproject\\egg-mock-platform\\node_modules\\egg-security",
       "version": "2.8.0"
     },
     "jsonp": {
@@ -435,8 +435,8 @@
         "security"
       ],
       "env": [],
-      "from": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\plugin.js",
-      "path": "D:\\myproject\\egg-blog\\node_modules\\egg-jsonp",
+      "from": "D:\\myproject\\egg-mock-platform\\node_modules\\egg\\config\\plugin.js",
+      "path": "D:\\myproject\\egg-mock-platform\\node_modules\\egg-jsonp",
       "version": "2.0.0"
     },
     "onerror": {
@@ -448,8 +448,8 @@
         "jsonp"
       ],
       "env": [],
-      "from": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\plugin.js",
-      "path": "D:\\myproject\\egg-blog\\node_modules\\egg-onerror",
+      "from": "D:\\myproject\\egg-mock-platform\\node_modules\\egg\\config\\plugin.js",
+      "path": "D:\\myproject\\egg-mock-platform\\node_modules\\egg-onerror",
       "version": "2.1.0"
     },
     "i18n": {
@@ -459,8 +459,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\plugin.js",
-      "path": "D:\\myproject\\egg-blog\\node_modules\\egg-i18n",
+      "from": "D:\\myproject\\egg-mock-platform\\node_modules\\egg\\config\\plugin.js",
+      "path": "D:\\myproject\\egg-mock-platform\\node_modules\\egg-i18n",
       "version": "2.1.1"
     },
     "watcher": {
@@ -470,8 +470,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\plugin.js",
-      "path": "D:\\myproject\\egg-blog\\node_modules\\egg-watcher",
+      "from": "D:\\myproject\\egg-mock-platform\\node_modules\\egg\\config\\plugin.js",
+      "path": "D:\\myproject\\egg-mock-platform\\node_modules\\egg-watcher",
       "version": "3.1.1"
     },
     "schedule": {
@@ -481,8 +481,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\plugin.js",
-      "path": "D:\\myproject\\egg-blog\\node_modules\\egg-schedule",
+      "from": "D:\\myproject\\egg-mock-platform\\node_modules\\egg\\config\\plugin.js",
+      "path": "D:\\myproject\\egg-mock-platform\\node_modules\\egg-schedule",
       "version": "3.6.4"
     },
     "multipart": {
@@ -494,8 +494,8 @@
         "schedule"
       ],
       "env": [],
-      "from": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\plugin.js",
-      "path": "D:\\myproject\\egg-blog\\node_modules\\egg-multipart",
+      "from": "D:\\myproject\\egg-mock-platform\\node_modules\\egg\\config\\plugin.js",
+      "path": "D:\\myproject\\egg-mock-platform\\node_modules\\egg-multipart",
       "version": "2.10.2"
     },
     "development": {
@@ -509,8 +509,8 @@
       "env": [
         "local"
       ],
-      "from": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\plugin.js",
-      "path": "D:\\myproject\\egg-blog\\node_modules\\egg-development",
+      "from": "D:\\myproject\\egg-mock-platform\\node_modules\\egg\\config\\plugin.js",
+      "path": "D:\\myproject\\egg-mock-platform\\node_modules\\egg-development",
       "version": "2.4.3"
     },
     "logrotator": {
@@ -522,8 +522,8 @@
       ],
       "optionalDependencies": [],
       "env": [],
-      "from": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\plugin.js",
-      "path": "D:\\myproject\\egg-blog\\node_modules\\egg-logrotator",
+      "from": "D:\\myproject\\egg-mock-platform\\node_modules\\egg\\config\\plugin.js",
+      "path": "D:\\myproject\\egg-mock-platform\\node_modules\\egg-logrotator",
       "version": "3.1.0"
     },
     "static": {
@@ -533,8 +533,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\plugin.js",
-      "path": "D:\\myproject\\egg-blog\\node_modules\\egg-static",
+      "from": "D:\\myproject\\egg-mock-platform\\node_modules\\egg\\config\\plugin.js",
+      "path": "D:\\myproject\\egg-mock-platform\\node_modules\\egg-static",
       "version": "2.2.0"
     },
     "view": {
@@ -544,8 +544,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "D:\\myproject\\egg-blog\\node_modules\\egg\\config\\plugin.js",
-      "path": "D:\\myproject\\egg-blog\\node_modules\\egg-view",
+      "from": "D:\\myproject\\egg-mock-platform\\node_modules\\egg\\config\\plugin.js",
+      "path": "D:\\myproject\\egg-mock-platform\\node_modules\\egg-view",
       "version": "2.1.2"
     },
     "vuessr": {
@@ -555,8 +555,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "D:\\myproject\\egg-blog\\config\\plugin.js",
-      "path": "D:\\myproject\\egg-blog\\node_modules\\egg-view-vue-ssr",
+      "from": "D:\\myproject\\egg-mock-platform\\config\\plugin.js",
+      "path": "D:\\myproject\\egg-mock-platform\\node_modules\\egg-view-vue-ssr",
       "version": "3.3.2"
     },
     "cors": {
@@ -566,8 +566,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "D:\\myproject\\egg-blog\\config\\plugin.local.js",
-      "path": "D:\\myproject\\egg-blog\\node_modules\\egg-cors",
+      "from": "D:\\myproject\\egg-mock-platform\\config\\plugin.local.js",
+      "path": "D:\\myproject\\egg-mock-platform\\node_modules\\egg-cors",
       "version": "2.2.3"
     },
     "webpack": {
@@ -579,8 +579,8 @@
       "env": [
         "local"
       ],
-      "from": "D:\\myproject\\egg-blog\\config\\plugin.local.js",
-      "path": "D:\\myproject\\egg-blog\\node_modules\\egg-webpack",
+      "from": "D:\\myproject\\egg-mock-platform\\config\\plugin.local.js",
+      "path": "D:\\myproject\\egg-mock-platform\\node_modules\\egg-webpack",
       "version": "4.5.3"
     },
     "webpackvue": {
@@ -592,8 +592,8 @@
       "env": [
         "local"
       ],
-      "from": "D:\\myproject\\egg-blog\\config\\plugin.local.js",
-      "path": "D:\\myproject\\egg-blog\\node_modules\\egg-webpack-vue",
+      "from": "D:\\myproject\\egg-mock-platform\\config\\plugin.local.js",
+      "path": "D:\\myproject\\egg-mock-platform\\node_modules\\egg-webpack-vue",
       "version": "2.0.2"
     },
     "logview": {
@@ -605,8 +605,8 @@
       "name": "logview",
       "dependencies": [],
       "optionalDependencies": [],
-      "from": "D:\\myproject\\egg-blog\\config\\plugin.local.js",
-      "path": "D:\\myproject\\egg-blog\\node_modules\\egg-logview",
+      "from": "D:\\myproject\\egg-mock-platform\\config\\plugin.local.js",
+      "path": "D:\\myproject\\egg-mock-platform\\node_modules\\egg-logview",
       "version": "1.0.1"
     }
   }

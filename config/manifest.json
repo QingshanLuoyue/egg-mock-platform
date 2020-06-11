@@ -23,7 +23,6 @@
   "font/glyphicons-halflings-regular.woff2": "/public/font/glyphicons-halflings-regular.woff2",
   "img/fontawesome-webfont.svg?v=4.7.0": "/public/img/fontawesome-webfont.svg",
   "img/glyphicons-halflings-regular.svg": "/public/img/glyphicons-halflings-regular.svg",
-  "img/loading.gif": "/public/img/loading.gif",
   "img/logo.png": "/public/img/logo.png",
   "deps": {
     "about/about.js": {

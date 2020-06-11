@@ -1,75 +1,87 @@
 <template>
-  <layout description="vue server side render" keywords="egg, vue, webpack, server side render">
-    <div class="container">
-      <div class="row" v-for="item in lists" :key="item.id">
-        <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
-          <div class="post-preview">
-              <div :href="item.url">
-                  <h2 class="post-title">            
-                      <a :href="item.url" target="_blank" style="font-size: 26px;">{{item.title}}</a>
-                  </h2>
-                  <div class="post-content-preview">{{item.summary}}</div>
-              </div>
-              <div class="post-meta">Posted by hubcarl on 17-09-24</div>
-          </div>
-          <hr>
-        </div>
-      </div>
-    </div>
-    <div style="text-align:center" v-if="isLoading">
-       <img src="../../asset/images/loading.gif">
-    </div>
-  </layout>
+    <layout description="vue server side render" keywords="egg, vue, webpack, server side render">
+        <el-container>
+            <el-header>
+                <el-form :inline="true" :model="formInline" class="demo-form-inline">
+                    <el-form-item label="审批人">
+                        <el-input v-model="formInline.user" placeholder="审批人"></el-input>
+                    </el-form-item>
+                    <el-form-item label="活动区域">
+                        <el-select v-model="formInline.region" placeholder="活动区域">
+                            <el-option label="区域一" value="shanghai"></el-option>
+                            <el-option label="区域二" value="beijing"></el-option>
+                        </el-select>
+                    </el-form-item>
+                    <el-form-item>
+                        <el-button type="primary" @click="onSubmit">查询</el-button>
+                    </el-form-item>
+                </el-form>
+            </el-header>
+            <el-main>Main</el-main>
+            <el-footer>Footer</el-footer>
+        </el-container>
+    </layout>
 </template>
-<style>
-  @import "index.css";
-</style>
-<script type="babel">
-  export default {
-    components: {
+<script>
+export default {
+    components: {},
+    data() {
+        return {
+            isFinish: false,
+            isLoading: false,
+            pageIndex: 1,
+            pageSize: 10,
 
-    },
-    data(){
-      return {
-        isFinish: false,
-        isLoading : false,
-        pageIndex: 1,
-        pageSize: 10
-      }
+            formInline: {
+                user: '',
+                region: ''
+            }
+        }
     },
     computed: {
-      lists(){
-        return this.list;
-      }
+        lists() {
+            return this.list
+        }
     },
     methods: {
-      fetch(){
-        this.$request.get(`/list?pageIndex=${this.pageIndex}&pageSize=${this.pageSize}`).then(res=> {
-          console.log('res', res);
-          if(res.data.list && res.data.list.length){
-            this.total = res.data.total;
-            this.list = this.list.concat(res.data.list);
-          }else{
-            this.isFinish = true;
-          }
-          this.isLoading = false;
-        });
-      },
-      loadPage(){
-        if (!this.isFinish && !this.isLoading) {
-          this.isLoading = true;
-          this.pageIndex++;
-          setTimeout(()=>{
-            this.fetch();
-          }, 1500);
+        onSubmit() {
+            console.log('submit!')
+        },
+
+        fetch() {
+            this.$request.get(`/list?pageIndex=${this.pageIndex}&pageSize=${this.pageSize}`).then(res => {
+                console.log('res', res)
+                if (res.data.list && res.data.list.length) {
+                    this.total = res.data.total
+                    this.list = this.list.concat(res.data.list)
+                } else {
+                    this.isFinish = true
+                }
+                this.isLoading = false
+            })
+        },
+        loadPage() {
+            if (!this.isFinish && !this.isLoading) {
+                this.isLoading = true
+                this.pageIndex++
+                setTimeout(() => {
+                    this.fetch()
+                }, 1500)
+            }
         }
-      }
     },
     mounted() {
-      window.addEventListener('scroll', ()=>{
-        this.loadPage();
-      }, false);
+        window.addEventListener(
+            'scroll',
+            () => {
+                this.loadPage()
+            },
+            false
+        )
     }
-  }
+}
 </script>
 
+<style>
+@import 'index.css';
+</style>

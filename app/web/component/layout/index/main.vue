@@ -1,20 +1,13 @@
 <template>
-   <div class='main'>
-     <LayoutHeader></LayoutHeader>
-     <LayoutContent>
-       <div slot='content'><slot name='main'></slot></div>
-     </LayoutContent>
-   </div>
+    <el-container>
+        <el-header>Header</el-header>
+        <el-main>Main</el-main>
+        <el-footer>Footer</el-footer>
+    </el-container>
 </template>
-<style>
-</style>
-<script type='babel'>
-  import LayoutHeader from './header/header';
-  import LayoutContent from './content/content';
-  export default {
-    components: {
-      LayoutHeader,
-      LayoutContent
-    }
-  };
+<style></style>
+<script>
+export default {
+    components: {}
+};
 </script>
