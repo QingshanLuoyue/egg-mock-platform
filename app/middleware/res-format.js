@@ -13,13 +13,17 @@ let response_formatter = async ctx => {
         }
     }
 }
-module.exports = () => {
+module.exports = pattern => {
     return async (ctx, next) => {
+        let reg = new RegExp(pattern)
         try {
             //先去执行路由
             await next()
 
-            response_formatter(ctx)
+            //通过正则的url进行格式化处理
+            if (reg.test(ctx.originalUrl)) {
+                response_formatter(ctx)
+            }
         } catch (error) {
             console.log('response_formatter:error:>>>', error)
             ctx.status = 200

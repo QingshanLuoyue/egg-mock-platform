@@ -398,7 +398,7 @@
     "middleware": [
       "locals",
       "access",
-      "res-format"
+      "resFormat"
     ],
     "coreMiddlewares": "~config~coreMiddleware",
     "appMiddlewares": "~config~middleware",

@@ -35,7 +35,7 @@ module.exports = app => {
 
     exports.keys = '123456'
 
-    exports.middleware = ['locals', 'access', 'res-format']
+    exports.middleware = ['locals', 'access', 'resFormat']
 
     exports.security = {
         csrf: {

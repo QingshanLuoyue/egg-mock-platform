@@ -441,7 +441,8 @@
     "onClientError": null,
     "middleware": [
       "locals",
-      "access"
+      "access",
+      "resFormat"
     ],
     "coreMiddlewares": "~config~coreMiddleware",
     "appMiddlewares": "~config~middleware",
