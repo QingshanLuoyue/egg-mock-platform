@@ -9555,10 +9555,6 @@
                 "mustBindMobile": {
                     "type": "boolean",
                     "description": "mustBindMobile"
-                },
-                "openedAccount": {
-                    "type": "boolean",
-                    "description": "是否开户 0-否 1-是"
                 }
             },
             "title": "AlipaySignParam",
@@ -9585,10 +9581,6 @@
                 },
                 "nickName": {
                     "type": "string"
-                },
-                "openedAccount": {
-                    "type": "boolean",
-                    "description": "是否开户 0-否 1-是"
                 }
             },
             "title": "AppleIdLoginParam"
@@ -9892,10 +9884,6 @@
                 "modifyUserConfigParam": {
                     "description": "配置初始化",
                     "$ref": "#/definitions/ModifyUserConfigParam"
-                },
-                "openedAccount": {
-                    "type": "boolean",
-                    "description": "是否开户 0-否 1-是"
                 },
                 "password": {
                     "type": "string",
@@ -10377,10 +10365,6 @@
                     "description": "配置初始化",
                     "$ref": "#/definitions/ModifyUserConfigParam"
                 },
-                "openedAccount": {
-                    "type": "boolean",
-                    "description": "是否开户 0-否 1-是"
-                },
                 "phoneNumber": {
                     "type": "string",
                     "example": "rsa",
@@ -10438,10 +10422,6 @@
                 "modifyUserConfigParam": {
                     "description": "配置初始化",
                     "$ref": "#/definitions/ModifyUserConfigParam"
-                },
-                "openedAccount": {
-                    "type": "boolean",
-                    "description": "是否开户 0-否 1-是"
                 },
                 "password": {
                     "type": "string",
@@ -11279,10 +11259,6 @@
                     "type": "string",
                     "description": "openId"
                 },
-                "openedAccount": {
-                    "type": "boolean",
-                    "description": "是否开户 0-否 1-是"
-                },
                 "phoneNumber": {
                     "type": "string",
                     "description": "phoneNumber"
@@ -11427,10 +11403,6 @@
                     "type": "boolean",
                     "description": "mustBindMobile"
                 },
-                "openedAccount": {
-                    "type": "boolean",
-                    "description": "是否开户 0-否 1-是"
-                },
                 "phoneNumber": {
                     "type": "string",
                     "description": "phoneNumber"
@@ -11460,10 +11432,6 @@
                 "modifyUserConfigParam": {
                     "description": "配置初始化",
                     "$ref": "#/definitions/ModifyUserConfigParam"
-                },
-                "openedAccount": {
-                    "type": "boolean",
-                    "description": "是否开户 0-否 1-是"
                 },
                 "orgActivateFlag": {
                     "type": "boolean",
@@ -11518,10 +11486,6 @@
                 "modifyUserConfigParam": {
                     "description": "配置初始化",
                     "$ref": "#/definitions/ModifyUserConfigParam"
-                },
-                "openedAccount": {
-                    "type": "boolean",
-                    "description": "是否开户 0-否 1-是"
                 },
                 "password": {
                     "type": "string",
@@ -11605,10 +11569,6 @@
                 "modifyUserConfigParam": {
                     "description": "配置初始化",
                     "$ref": "#/definitions/ModifyUserConfigParam"
-                },
-                "openedAccount": {
-                    "type": "boolean",
-                    "description": "是否开户 0-否 1-是"
                 },
                 "password": {
                     "type": "string",
@@ -11695,7 +11655,8 @@
                 },
                 "openedAccount": {
                     "type": "boolean",
-                    "description": "是否开户 0-否 1-是"
+                    "example": false,
+                    "description": "设置是否已开户，暂时给机构开户用"
                 },
                 "password": {
                     "type": "string",

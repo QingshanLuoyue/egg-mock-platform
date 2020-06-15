@@ -2032,10 +2032,6 @@
                     "description": "配置初始化",
                     "$ref": "#/definitions/ModifyUserConfigParam"
                 },
-                "openedAccount": {
-                    "type": "boolean",
-                    "description": "是否开户 0-否 1-是"
-                },
                 "password": {
                     "type": "string",
                     "example": "rsa",
@@ -2479,10 +2475,6 @@
                     "description": "配置初始化",
                     "$ref": "#/definitions/ModifyUserConfigParam"
                 },
-                "openedAccount": {
-                    "type": "boolean",
-                    "description": "是否开户 0-否 1-是"
-                },
                 "phoneNumber": {
                     "type": "string",
                     "example": "rsa",
@@ -2846,10 +2838,6 @@
                 "modifyUserConfigParam": {
                     "description": "配置初始化",
                     "$ref": "#/definitions/ModifyUserConfigParam"
-                },
-                "openedAccount": {
-                    "type": "boolean",
-                    "description": "是否开户 0-否 1-是"
                 },
                 "rawData": {
                     "type": "string",

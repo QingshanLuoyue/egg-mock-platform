@@ -4,7 +4,7 @@
             <el-main>
                 <!-- 创建 -->
                 <el-form :inline="true" :model="formCreate" class="demo-form-inline">
-                    <el-form-item label="微服务名" label-width="80px">
+                    <el-form-item label="微服务名" label-width="110px">
                         <el-input v-model="formCreate.microServerName" placeholder="微服务名，例如：user-server"></el-input>
                     </el-form-item>
                     <el-form-item>
@@ -13,7 +13,7 @@
                 </el-form>
                 <!-- 创建 Mock Template -->
                 <el-form :inline="true" :model="formCreateMockTemplate" class="demo-form-inline">
-                    <el-form-item label="微服务 Mock Template" label-width="80px">
+                    <el-form-item label="微服务 Mock" label-width="110px">
                         <el-input v-model="formCreateMockTemplate.microServerName" placeholder="微服务名，例如：user-server"></el-input>
                     </el-form-item>
                     <el-form-item>
@@ -22,7 +22,7 @@
                 </el-form>
                 <!-- 查询 -->
                 <el-form :inline="true" :model="formInline" class="demo-form-inline">
-                    <el-form-item label="审批人" label-width="80px">
+                    <el-form-item label="审批人" label-width="110px">
                         <el-input v-model="formInline.user" placeholder="审批人"></el-input>
                     </el-form-item>
                     <el-form-item label="活动区域">
@@ -37,7 +37,7 @@
                 </el-form>
                 <!-- 更新 -->
                 <el-form :inline="true" :model="formInline" class="demo-form-inline">
-                    <el-form-item label="审批人" label-width="80px">
+                    <el-form-item label="审批人" label-width="110px">
                         <el-input v-model="formInline.user" placeholder="审批人"></el-input>
                     </el-form-item>
                     <el-form-item label="活动区域">
@@ -59,6 +59,7 @@
 import Vue from 'vue'
 import JsonViewer from 'vue-json-viewer'
 Vue.use(JsonViewer)
+// import '../../../mock'
 export default {
     components: {},
     data() {
@@ -73,10 +74,10 @@ export default {
                 region: ''
             },
             formCreate: {
-                microServerName: ''
+                microServerName: 'stock-order-server'
             },
             formCreateMockTemplate: {
-                microServerName: ''
+                microServerName: 'stock-order-server'
             },
             jsonData: {
                 total: 25,
@@ -99,11 +100,13 @@ export default {
         handleCreateMicroServer() {
             this.$request.post(`/create-micro-server`, this.formCreate).then(res => {
                 console.log('res', res)
+                this.jsonData.data = res.data
             })
         },
         handleCreateMicroServerMockTemplate() {
             this.$request.post(`/create-micro-server-mock-template`, this.formCreateMockTemplate).then(res => {
                 console.log('res', res)
+                this.jsonData.data = res.data
             })
         },
 

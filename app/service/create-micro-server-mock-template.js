@@ -40,13 +40,13 @@ let propTypeMap = {
     objectRef: function(key, format, description, options) {
         return {
             key: `"${key}"`,
-            value: productPropTemplate(options.ref, options.singleCategoryApiInfoJsonSchema, options.usedSchema)
+            value: productPropTemplate(options)
         }
     },
     array: function(key, format, description, options) {
         return {
             key: `"${key}|1-3"`,
-            value: '[' + productPropTemplate(options.ref, options.singleCategoryApiInfoJsonSchema, options.usedSchema) + ']'
+            value: '[' + productPropTemplate(options) + ']'
         }
     },
     number: function(key, format, description) {
@@ -57,6 +57,26 @@ let propTypeMap = {
     }
 }
 
+let otherTypeMap = {
+    integer: function() {
+        return '1'
+    },
+    string: function() {
+        return '1'
+    },
+    number: function() {
+        return '1'
+    },
+    object: function() {
+        return '{}'
+    },
+    array: function() {
+        return '[]'
+    },
+    boolean: function() {
+        return 'false'
+    }
+}
 module.exports = class CreateMicroServerServiceMockTemplate extends egg.Service {
     constructor(ctx) {
         super(ctx)
@@ -152,7 +172,7 @@ module.exports = class CreateMicroServerServiceMockTemplate extends egg.Service 
                 let usedSchema = []
 
                 // 生成请求成功数据模板
-                mockDataTemplate = productPropTemplate(reqSuccessSchema, singleCategoryApiInfoJsonSchema, usedSchema)
+                mockDataTemplate = productPropTemplate({ ref: reqSuccessSchema, singleCategoryApiInfoJsonSchema, usedSchema })
             }
             // 生成整个 mock 文件模板
             let mockTemplate = this.mockFileTemplate(mockDataTemplate, category, reqMethodsDefineInfo, apiPath, reqMethods)
@@ -255,13 +275,49 @@ function resolveSchema(ref) {
     return ref.split('/')[2]
 }
 // 生成请求成功数据模板
-function productPropTemplate(ref, singleCategoryApiInfoJsonSchema, usedSchema) {
-    if (!ref) return {}
+// "type": "array",
+// "description": "推荐股票标签",
+// "items": {
+//     "$ref": "#/definitions/YgRecommendLabelAppResponse"
+
+/**
+ * ref: '#/definitions/YgRecommendLabelAppResponse'
+ * singleCategoryApiInfoJsonSchema: {
+ *      swagger: ''
+ *      info: {}
+ *      host: ''
+ *      basePath: ''
+ *      tags: []
+ *      paths: {}
+ *      definitions: {}
+ * }
+ */
+function productPropTemplate({ ref, singleCategoryApiInfoJsonSchema, usedSchema, itemsType }) {
+    if (!ref) {
+        console.log('productPropTemplate:itemsType:>> ', itemsType)
+        console.log('productPropTemplate:usedSchema:>> ', usedSchema)
+        return otherTypeMap[itemsType]()
+        // return '{}'
+    }
 
     let reqSuccessSchema = resolveSchema(ref)
-    if (usedSchema.includes(reqSuccessSchema)) return []
+    if (usedSchema.includes(reqSuccessSchema)) return '[]'
     usedSchema.push(reqSuccessSchema)
 
+    // "properties": {
+    //     "planId": {
+    //         "type": "integer",
+    //         "format": "int64",
+    //         "example": 1,
+    //         "description": "月供计划Id"
+    //     },
+    //     "status": {
+    //         "type": "integer",
+    //         "format": "int32",
+    //         "example": 1,
+    //         "description": "状态（0-进行中(恢复)，1-暂停，2-终止）"
+    //     }
+    // }
     let defineProp = singleCategoryApiInfoJsonSchema.definitions[reqSuccessSchema].properties
 
     // console.log('defineProp :>> ', defineProp)
@@ -271,26 +327,57 @@ function productPropTemplate(ref, singleCategoryApiInfoJsonSchema, usedSchema) {
     let mockDataTemplate = {}
     // 生成键值对
     mockDataTemplate = productKeyAndValue(defineProp, singleCategoryApiInfoJsonSchema, usedSchema)
-    // console.log('productPropTemplate :>> ', mockDataTemplate)
     return mockDataTemplate
 }
 // 生成键值对
+/**
+ * defineProp: {
+    "planId": {
+        "type": "integer", // string/number
+        "format": "int64",
+        "example": 1,
+        "description": "月供计划Id"
+    },
+    "data": {
+        "type": "array",
+        "description": "返回体",
+        "items": {
+            "$ref": "#/definitions/YgAllotFailResponse"
+        }
+    },
+    "data": {
+        "type": "array",
+        "description": "返回体",
+        "items": {
+            "type": "integer",
+            "format": "int32"
+        }
+    },
+    "data": {
+        "description": "返回体",
+        "$ref": "#/definitions/IsYgStockResponse"
+    },
+ * }
+ */
 function productKeyAndValue(defineProp, singleCategoryApiInfoJsonSchema, usedSchema) {
     let mockTemplate = '{'
     Object.keys(defineProp).forEach(key => {
         let propItem = defineProp[key]
         if (propItem.type || (!propItem.type && propItem.$ref)) {
-            let action, ref
+            console.log('propItem :>> ', propItem)
+            let action, ref, itemsType
             if (!propItem.type && propItem.$ref) {
                 action = propTypeMap['objectRef']
                 ref = propItem.$ref
             } else {
                 action = propTypeMap[propItem.type]
                 ref = (propItem.items && propItem.items['$ref']) || ''
+                itemsType = (propItem.items && propItem.items['type']) || ''
             }
             // console.log('action :>> ', action, propItem, propItem.type)
             let actionValue = action(key, propItem.format, propItem.description, {
                 ref,
+                itemsType,
                 singleCategoryApiInfoJsonSchema,
                 usedSchema,
                 propItem

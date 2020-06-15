@@ -14,5 +14,5 @@ module.exports = app => {
 
     // mock 路由
     router.post('/create-micro-server', controller.create.index.create)
-    router.post('/create-micro-server-mock-template', controller.create.index.createMockTemplate)
+    router.post('/create-micro-server-mock-template', controller.createMockTemplate.index.createMockTemplate)
 }

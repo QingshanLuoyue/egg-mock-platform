@@ -3784,7 +3784,8 @@
                 },
                 "openedAccount": {
                     "type": "boolean",
-                    "description": "是否开户 0-否 1-是"
+                    "example": false,
+                    "description": "设置是否已开户，暂时给机构开户用"
                 },
                 "password": {
                     "type": "string",
@@ -3892,7 +3893,8 @@
                 },
                 "openedAccount": {
                     "type": "boolean",
-                    "description": "是否开户 0-否 1-是"
+                    "example": false,
+                    "description": "设置是否已开户，暂时给机构开户用"
                 },
                 "password": {
                     "type": "string",
