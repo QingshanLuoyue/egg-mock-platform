@@ -34,8 +34,8 @@ module.exports = class CreateController extends egg.Controller {
     requestCurrentMicroServerAllSelectOption(microServerName) {
         return new Promise(async (resolve, reject) => {
             try {
-                let data = (await httpRequest.get(`${microServerName}/doc/swagger-resources`)) || []
-                let allSelectOptionData = data
+                // let data = (await httpRequest.get(`${microServerName}/doc/swagger-resources`)) || []
+                let allSelectOptionData = await this.service.createMicroServer.getAllOptionData(microServerName)
                 // console.log('\nrequestCurrentMicroServerAllSelectOption :>> ', allSelectOptionData, '\n')
 
                 if (!allSelectOptionData || allSelectOptionData.length === 0) {
@@ -82,9 +82,10 @@ module.exports = class CreateController extends egg.Controller {
                 let name = option.name
                 let url = option.url
 
-                let data = (await httpRequest.get(encodeURI(`${microServerName}/doc${url}`))) || []
+                // let data = (await httpRequest.get(encodeURI(`${microServerName}/doc${url}`))) || []
 
-                let optionApiSchemaData = data
+                // let optionApiSchemaData = data
+                let optionApiSchemaData = await this.service.createMicroServer.getSingleOptionApiSchemaData(option, microServerName)
                 // console.log('\nrequestOpitonApiSchema :>> ', optionApiSchemaData, '\n')
 
                 let apiSchemaJsonDBUrl = path.resolve(this.apiSchemaMicroServerDir, `${name}-api-schema.json`)

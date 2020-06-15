@@ -13,6 +13,6 @@ module.exports = app => {
     router.get('/admin(/.+)?', controller.admin.admin.home)
 
     // mock 路由
-    router.post('/create-micro-server', controller.create.index.create)
-    router.post('/create-micro-server-mock-template', controller.createMockTemplate.index.createMockTemplate)
+    router.post('/create-micro-server', controller.createMicroServerApiSchema.index.create)
+    router.post('/create-micro-server-mock-template', controller.createMicroServerMockTpl.index.createMockTemplate)
 }

@@ -5377,11 +5377,26 @@
                     "300100": {
                         "description": "非法请求"
                     },
+                    "300309": {
+                        "description": "请输入正确的手机号码"
+                    },
+                    "300408": {
+                        "description": "邮箱格式不正确"
+                    },
                     "304001": {
                         "description": "您尚未注册机构客户,请联系客服完成注册"
                     },
                     "304002": {
                         "description": "贵公司资料尚未审核成功，审核通过后可通过APP登陆"
+                    },
+                    "304005": {
+                        "description": "您尚未激活账户，请激活后登陆"
+                    },
+                    "304016": {
+                        "description": "您未注册机构账户，若需登陆请点击登陆个人账户"
+                    },
+                    "304020": {
+                        "description": "您的账户被禁用了，请联系主交易员解除"
                     }
                 },
                 "deprecated": false,
@@ -9719,6 +9734,11 @@
                 "clientAccount": {
                     "type": "string",
                     "description": "恒生客户号"
+                },
+                "contactAddress": {
+                    "type": "string",
+                    "example": 1234,
+                    "description": "个人联系地址"
                 },
                 "defineName": {
                     "type": "string",

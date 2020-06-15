@@ -2442,6 +2442,11 @@
                     "type": "string",
                     "description": "恒生客户号"
                 },
+                "contactAddress": {
+                    "type": "string",
+                    "example": 1234,
+                    "description": "个人联系地址"
+                },
                 "defineName": {
                     "type": "string",
                     "description": "默认姓名 大陆身份证：中文名 其他证件：英文名"
