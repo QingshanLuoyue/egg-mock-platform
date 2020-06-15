@@ -24,11 +24,6 @@ module.exports = class CreateMicroServerService extends egg.Service {
     }
     // 遍历微服务列表，请求各自的 select 选项
     init(microServerName) {
-        this.apiSchemaMicroServerDir = path.resolve(apiSchemaDefineDir, microServerName)
-        if (!fs.existsSync(this.apiSchemaMicroServerDir)) {
-            console.log('create:apiSchemaMicroServerDir:>> ')
-            fs.mkdirSync(this.apiSchemaMicroServerDir, { recursive: true })
-        }
         return this.requestCurrentMicroServerAllSelectOption(microServerName)
     }
 
@@ -42,6 +37,13 @@ module.exports = class CreateMicroServerService extends egg.Service {
 
                 if (!allSelectOptionData || allSelectOptionData.length === 0) {
                     return reject('没有该微服务数据')
+                }
+
+                // 存在该微服务数据，才创建相应的目录
+                this.apiSchemaMicroServerDir = path.resolve(apiSchemaDefineDir, microServerName)
+                if (!fs.existsSync(this.apiSchemaMicroServerDir)) {
+                    console.log('create:apiSchemaMicroServerDir:>> ')
+                    fs.mkdirSync(this.apiSchemaMicroServerDir, { recursive: true })
                 }
 
                 let microServerTotalApiSchema = {}
