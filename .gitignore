@@ -23,3 +23,10 @@ yarn-error.log*
 
 # egg log
 /logs
+
+# mock
+/app/mock
+
+
+# run
+/run

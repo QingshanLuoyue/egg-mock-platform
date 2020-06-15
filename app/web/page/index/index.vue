@@ -11,6 +11,15 @@
                         <el-button type="primary" @click="handleCreateMicroServer">创建</el-button>
                     </el-form-item>
                 </el-form>
+                <!-- 创建 Mock Template -->
+                <el-form :inline="true" :model="formCreateMockTemplate" class="demo-form-inline">
+                    <el-form-item label="微服务 Mock Template" label-width="80px">
+                        <el-input v-model="formCreateMockTemplate.microServerName" placeholder="微服务名，例如：user-server"></el-input>
+                    </el-form-item>
+                    <el-form-item>
+                        <el-button type="primary" @click="handleCreateMicroServerMockTemplate">创建</el-button>
+                    </el-form-item>
+                </el-form>
                 <!-- 查询 -->
                 <el-form :inline="true" :model="formInline" class="demo-form-inline">
                     <el-form-item label="审批人" label-width="80px">
@@ -66,6 +75,9 @@ export default {
             formCreate: {
                 microServerName: ''
             },
+            formCreateMockTemplate: {
+                microServerName: ''
+            },
             jsonData: {
                 total: 25,
                 limit: 10,
@@ -87,13 +99,11 @@ export default {
         handleCreateMicroServer() {
             this.$request.post(`/create-micro-server`, this.formCreate).then(res => {
                 console.log('res', res)
-                if (res.data.list && res.data.list.length) {
-                    this.total = res.data.total
-                    this.list = this.list.concat(res.data.list)
-                } else {
-                    this.isFinish = true
-                }
-                this.isLoading = false
+            })
+        },
+        handleCreateMicroServerMockTemplate() {
+            this.$request.post(`/create-micro-server-mock-template`, this.formCreateMockTemplate).then(res => {
+                console.log('res', res)
             })
         },
 

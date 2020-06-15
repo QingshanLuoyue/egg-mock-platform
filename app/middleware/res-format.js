@@ -3,7 +3,7 @@ let response_formatter = async ctx => {
     if (ctx.body) {
         ctx.body = {
             code: 0,
-            msg: ctx.body.msg,
+            msg: 'success',
             data: ctx.body
         }
     } else {

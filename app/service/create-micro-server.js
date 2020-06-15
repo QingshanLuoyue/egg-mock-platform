@@ -36,7 +36,7 @@ module.exports = class CreateMicroServerService extends egg.Service {
                 // console.log('\nrequestCurrentMicroServerAllSelectOption :>> ', allSelectOptionData, '\n')
 
                 if (!allSelectOptionData || allSelectOptionData.length === 0) {
-                    return reject('没有该微服务数据')
+                    return resolve('没有该微服务数据')
                 }
 
                 // 存在该微服务数据，才创建相应的目录
