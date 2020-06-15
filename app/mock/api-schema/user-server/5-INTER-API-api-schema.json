@@ -1,0 +1,199 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "友信证券用户中心inter-api"
+    },
+    "host": "admin-dev.yxzq.com",
+    "basePath": "/user-server/doc",
+    "tags": [
+        {
+            "name": "inter-api-controller",
+            "description": "Inter Api Controller"
+        }
+    ],
+    "paths": {
+        "/user-server/inter-api/login/v1": {
+            "post": {
+                "tags": [
+                    "inter-api-controller"
+                ],
+                "summary": "inter手机号码登陆",
+                "description": "权限：不需要Token",
+                "operationId": "white_68",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "webLoginParams",
+                        "description": "webLoginParams",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/WebLoginParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/WebLoginInfoVO"
+                        }
+                    },
+                    "300100": {
+                        "description": "非法请求"
+                    },
+                    "300102": {
+                        "description": "账户被冻结，无法完成操作，如非本人操作，请联系客服"
+                    },
+                    "300103": {
+                        "description": "用户被删除"
+                    },
+                    "300309": {
+                        "description": "请输入正确的手机号码"
+                    },
+                    "300701": {
+                        "description": "该手机号没有注册"
+                    },
+                    "300702": {
+                        "description": "密码错误次数过多帐号已锁定，请%s分钟后重新登录或找回密码"
+                    },
+                    "300703": {
+                        "description": "密码错误，请重新输入，您还可以尝试%s次"
+                    },
+                    "300809": {
+                        "description": "需要校验手机短信验证码"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        }
+    },
+    "definitions": {
+        "UserResponseEntity": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "响应码"
+                },
+                "data": {
+                    "type": "object",
+                    "description": "响应体"
+                },
+                "msg": {
+                    "type": "string",
+                    "description": "响应内容"
+                }
+            },
+            "title": "UserResponseEntity",
+            "description": "接口统一出参"
+        },
+        "WebLoginInfoVO": {
+            "type": "object",
+            "properties": {
+                "alipayUserId": {
+                    "type": "string",
+                    "description": "支付宝位置账号"
+                },
+                "areaCode": {
+                    "type": "string",
+                    "example": 86,
+                    "description": "区号"
+                },
+                "avatar": {
+                    "type": "string",
+                    "description": "头像地址"
+                },
+                "expiration": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "expiration"
+                },
+                "firstLogin": {
+                    "type": "boolean",
+                    "example": true,
+                    "description": "是否为第一次登陆"
+                },
+                "invitationCode": {
+                    "type": "string",
+                    "example": 1234,
+                    "description": "邀请码"
+                },
+                "nickname": {
+                    "type": "string",
+                    "example": "xxx",
+                    "description": "昵称"
+                },
+                "openedAccount": {
+                    "type": "boolean",
+                    "description": "是否开户"
+                },
+                "phoneNumber": {
+                    "type": "string",
+                    "example": "188xxxx9188",
+                    "description": "手机号"
+                },
+                "thirdBindBit": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "绑定位 手机1<<0 微信 1<<1 微博1<<2"
+                },
+                "token": {
+                    "type": "string",
+                    "description": "token"
+                },
+                "tradePassword": {
+                    "type": "boolean",
+                    "description": "是否设置过交易密码"
+                },
+                "unionId": {
+                    "type": "string",
+                    "description": "unionId"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "uuid"
+                }
+            },
+            "title": "WebLoginInfoVO"
+        },
+        "WebLoginParams": {
+            "type": "object",
+            "required": [
+                "areaCode",
+                "password",
+                "phoneNumber"
+            ],
+            "properties": {
+                "areaCode": {
+                    "type": "string",
+                    "example": 86,
+                    "description": "区域号"
+                },
+                "password": {
+                    "type": "string",
+                    "example": "12345678a",
+                    "description": "密码"
+                },
+                "phoneNumber": {
+                    "type": "string",
+                    "example": 13888888888,
+                    "description": "手机号"
+                }
+            },
+            "title": "WebLoginParams"
+        }
+    }
+}

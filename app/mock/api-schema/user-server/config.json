@@ -1,0 +1,7 @@
+{
+    "1-APP": "D:\\myproject\\egg-mock-platform\\app\\mock\\api-schema\\user-server\\1-APP-api-schema.json",
+    "2-CLIENT": "D:\\myproject\\egg-mock-platform\\app\\mock\\api-schema\\user-server\\2-CLIENT-api-schema.json",
+    "3-WEB": "D:\\myproject\\egg-mock-platform\\app\\mock\\api-schema\\user-server\\3-WEB-api-schema.json",
+    "4-OPEN-API": "D:\\myproject\\egg-mock-platform\\app\\mock\\api-schema\\user-server\\4-OPEN-API-api-schema.json",
+    "5-INTER-API": "D:\\myproject\\egg-mock-platform\\app\\mock\\api-schema\\user-server\\5-INTER-API-api-schema.json"
+}

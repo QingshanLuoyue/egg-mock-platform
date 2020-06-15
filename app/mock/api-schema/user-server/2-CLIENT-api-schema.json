@@ -1,0 +1,3934 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "友信证券用户中心CLIENT-API"
+    },
+    "host": "admin-dev.yxzq.com",
+    "basePath": "/user-server/doc",
+    "tags": [
+        {
+            "name": "client安全验证相关接口",
+            "description": "Client Security Controller"
+        },
+        {
+            "name": "client用户接口",
+            "description": "Client User Controller"
+        },
+        {
+            "name": "client验证码相关接口",
+            "description": "Client Phone Captcha Controller"
+        }
+    ],
+    "paths": {
+        "/user-server/client-api/add-user-role-relation/v1/{userId}/{roleId}": {
+            "post": {
+                "tags": [
+                    "client安全验证相关接口"
+                ],
+                "summary": "添加用户角色关系",
+                "description": "权限：不需要Token",
+                "operationId": "addUserRoleRelationUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "roleId",
+                        "in": "path",
+                        "description": "roleId",
+                        "required": true,
+                        "type": "string",
+                        "x-example": "1"
+                    },
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": "userId",
+                        "required": true,
+                        "type": "string",
+                        "x-example": "1"
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«Void»"
+                        }
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/add-user-roles-relation/v1": {
+            "post": {
+                "tags": [
+                    "client安全验证相关接口"
+                ],
+                "summary": "添加用户角色集合关系",
+                "description": "权限：不需要Token",
+                "operationId": "addUserRolesRelationUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "userRoleRelationParams",
+                        "description": "userRoleRelationParams",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UserRoleRelationParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«Void»"
+                        }
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/check-module-action/v1": {
+            "get": {
+                "tags": [
+                    "client安全验证相关接口"
+                ],
+                "summary": "校验action权限",
+                "description": "权限：需要Token",
+                "operationId": "checkAppUserModuleActionUsingGET",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": " * 客户端对需要加密的串str使用URLSAFE_BASE64(RSA(str))协议编码 * 其中RSA算法为：RSA/ECB/PKCS1Padding\n * 测试公钥为：MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCajLOdwFMIBQ8k3W48/e4bIj2EFc3O/T54oiLOk+KQgAknvmUHJp/1arN8g9tjAaBKPSbznTe4ZYX3VXI7VTRF7Dhi1+vCkas1OwWkdwzZWg3LOqfUORF3tFmvNOiLLzJQ6H5oLsNNZjMOr2QZrm4srzc1aX3O0BRwQhPkP/XhYwIDAQAB * 测试私钥为：MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJqMs53AUwgFDyTdbjz97hsiPYQVzc79PniiIs6T4pCACSe+ZQcmn/Vqs3yD22MBoEo9JvOdN7hlhfdVcjtVNEXsOGLX68KRqzU7BaR3DNlaDcs6p9Q5EXe0Wa806IsvMlDofmguw01mMw6vZBmubiyvNzVpfc7QFHBCE+Q/9eFjAgMBAAECgYBu5tBtPvlWI+s+FPdqJP2b0vI5uju5cNhHUHGRs2U9M+Nd9a4hd4IJZcvuaeAgJ6aSH1e4MPUvCQsc9N/H29hpxD+7wWVwnTpIIVy4rgSzkDheGZodQjqtoJTQXzqewEhb+drqtCvJTVEr28k/2q8gMXkNk9Rctlwf/D2NjE5qoQJBAOVQPNtJT0fY1fROsVURFmcM/77viz8LiN7+wl3yvFXwXt92DqSAAk034KH0pai7KGVM+Fgqvt2TjUrzUotNur8CQQCsiRT5mfgeXckOundPM3kmt6R5kCO4EbxBfqE3qki5pW4+0jGyukgbxs5vvXjr/Ut8wEji5CQpJv1aj9kBm3ZdAkBSE2sEzfN7csf5nqToHqqXDdcH3zNGyHkf361v9O6mD9fVQasyA8NPIh3bufYFM5/cyjTlUb9pDWP4HKlBxPt/AkBiuASSVDCNX2f8z2AYpwD40DaBf6GQXkVyy/t+mCYIYslTlHzvIHrFudjAQo7/p+wbMwIBIDw4d6CawpeNvd/ZAkEA29WTAl94zp0X3U6JWyqtn8Ci9jibhhbB0/vpA5igKK1zXg6ir7vk6Tp/hsi48tgYrFd6rciWt4jwpeFv7HDhTA== * URLSAFE_BASE64算法在RFC4648中有定义\n * 最终串会使用RSA公钥进行加密，之后使用RFC4648算法编码放入请求体或表单项中。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "actionCode",
+                        "in": "query",
+                        "description": "行动code",
+                        "required": true,
+                        "type": "string",
+                        "x-example": "1"
+                    },
+                    {
+                        "name": "moduleCode",
+                        "in": "query",
+                        "description": "模块code",
+                        "required": true,
+                        "type": "string",
+                        "x-example": "101"
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«object»"
+                        }
+                    },
+                    "300101": {
+                        "description": "非法TOKEN"
+                    },
+                    "300104": {
+                        "description": "非法ACTION"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/check-trade-password-token/v1": {
+            "get": {
+                "tags": [
+                    "client安全验证相关接口"
+                ],
+                "summary": "校验用户交易密码认证token",
+                "description": "权限：需要Token",
+                "operationId": "black_47",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "String",
+                        "name": "token",
+                        "description": "token",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "in": "Long",
+                        "name": "uuid",
+                        "description": "uuid",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity"
+                        }
+                    },
+                    "300100": {
+                        "description": "非法请求"
+                    },
+                    "300101": {
+                        "description": "非法TOKEN"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/check-user-trade-password/v1": {
+            "post": {
+                "tags": [
+                    "client安全验证相关接口"
+                ],
+                "summary": "校验客户交易账号以及交易密码",
+                "operationId": "checkUserTradePasswordUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "params",
+                        "description": "params",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AccountFundAccountAndTradePwdParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«boolean»"
+                        }
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/check-web-module-action/v1": {
+            "get": {
+                "tags": [
+                    "client安全验证相关接口"
+                ],
+                "summary": "web校验action权限",
+                "description": "权限：需要Token",
+                "operationId": "checkWebUserModuleActionUsingGET",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": " * 客户端对需要加密的串str使用URLSAFE_BASE64(RSA(str))协议编码 * 其中RSA算法为：RSA/ECB/PKCS1Padding\n * 测试公钥为：MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCajLOdwFMIBQ8k3W48/e4bIj2EFc3O/T54oiLOk+KQgAknvmUHJp/1arN8g9tjAaBKPSbznTe4ZYX3VXI7VTRF7Dhi1+vCkas1OwWkdwzZWg3LOqfUORF3tFmvNOiLLzJQ6H5oLsNNZjMOr2QZrm4srzc1aX3O0BRwQhPkP/XhYwIDAQAB * 测试私钥为：MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJqMs53AUwgFDyTdbjz97hsiPYQVzc79PniiIs6T4pCACSe+ZQcmn/Vqs3yD22MBoEo9JvOdN7hlhfdVcjtVNEXsOGLX68KRqzU7BaR3DNlaDcs6p9Q5EXe0Wa806IsvMlDofmguw01mMw6vZBmubiyvNzVpfc7QFHBCE+Q/9eFjAgMBAAECgYBu5tBtPvlWI+s+FPdqJP2b0vI5uju5cNhHUHGRs2U9M+Nd9a4hd4IJZcvuaeAgJ6aSH1e4MPUvCQsc9N/H29hpxD+7wWVwnTpIIVy4rgSzkDheGZodQjqtoJTQXzqewEhb+drqtCvJTVEr28k/2q8gMXkNk9Rctlwf/D2NjE5qoQJBAOVQPNtJT0fY1fROsVURFmcM/77viz8LiN7+wl3yvFXwXt92DqSAAk034KH0pai7KGVM+Fgqvt2TjUrzUotNur8CQQCsiRT5mfgeXckOundPM3kmt6R5kCO4EbxBfqE3qki5pW4+0jGyukgbxs5vvXjr/Ut8wEji5CQpJv1aj9kBm3ZdAkBSE2sEzfN7csf5nqToHqqXDdcH3zNGyHkf361v9O6mD9fVQasyA8NPIh3bufYFM5/cyjTlUb9pDWP4HKlBxPt/AkBiuASSVDCNX2f8z2AYpwD40DaBf6GQXkVyy/t+mCYIYslTlHzvIHrFudjAQo7/p+wbMwIBIDw4d6CawpeNvd/ZAkEA29WTAl94zp0X3U6JWyqtn8Ci9jibhhbB0/vpA5igKK1zXg6ir7vk6Tp/hsi48tgYrFd6rciWt4jwpeFv7HDhTA== * URLSAFE_BASE64算法在RFC4648中有定义\n * 最终串会使用RSA公钥进行加密，之后使用RFC4648算法编码放入请求体或表单项中。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "actionCode",
+                        "in": "query",
+                        "description": "行动code",
+                        "required": true,
+                        "type": "string",
+                        "x-example": "1"
+                    },
+                    {
+                        "name": "moduleCode",
+                        "in": "query",
+                        "description": "模块code",
+                        "required": true,
+                        "type": "string",
+                        "x-example": "101"
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«object»"
+                        }
+                    },
+                    "300101": {
+                        "description": "非法TOKEN"
+                    },
+                    "300104": {
+                        "description": "非法ACTION"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/check-web-trade-password-token/v1": {
+            "get": {
+                "tags": [
+                    "client安全验证相关接口"
+                ],
+                "summary": "校验用户交易密码认证token",
+                "description": "权限：需要Token",
+                "operationId": "black_48",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "String",
+                        "name": "token",
+                        "description": "token",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "in": "Long",
+                        "name": "uuid",
+                        "description": "uuid",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity"
+                        }
+                    },
+                    "300100": {
+                        "description": "非法请求"
+                    },
+                    "300101": {
+                        "description": "非法TOKEN"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/decrypt-trade-password/v1": {
+            "post": {
+                "tags": [
+                    "client用户接口"
+                ],
+                "summary": "解密密文",
+                "operationId": "decryptTradePasswordUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "params",
+                        "description": "params",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/TradePasswordCheckParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«string»"
+                        }
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/delete-user-role-relation/v1/{userId}/{roleId}": {
+            "delete": {
+                "tags": [
+                    "client安全验证相关接口"
+                ],
+                "summary": "删除用户角色关系",
+                "description": "权限：不需要Token",
+                "operationId": "deleteUserRoleRelationUsingDELETE",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "roleId",
+                        "in": "path",
+                        "description": "roleId",
+                        "required": true,
+                        "type": "string",
+                        "x-example": "1"
+                    },
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": "userId",
+                        "required": true,
+                        "type": "string",
+                        "x-example": "1"
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«Void»"
+                        }
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/delete-user-roles-relation/v1": {
+            "delete": {
+                "tags": [
+                    "client安全验证相关接口"
+                ],
+                "summary": "删除用户角色集合关系",
+                "description": "权限：不需要Token",
+                "operationId": "deleteUserRolesRelationUsingDELETE",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "userRoleRelationParams",
+                        "description": "userRoleRelationParams",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UserRoleRelationParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«Void»"
+                        }
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/get-applet_open_id/v1": {
+            "get": {
+                "tags": [
+                    "client用户接口"
+                ],
+                "summary": "通过UUID和appletType获取openId",
+                "operationId": "getAppletOpenIdUsingGET",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "appletType",
+                        "in": "query",
+                        "description": "appletType",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "uuid",
+                        "in": "query",
+                        "description": "uuid",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«WeChatAppletVO»"
+                        }
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/get-assess-result/v1": {
+            "get": {
+                "tags": [
+                    "client用户接口"
+                ],
+                "summary": "根据uuid查询用户风险测评结果",
+                "operationId": "getAssessResultUsingGET",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "query",
+                        "description": "uuid",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«UserRiskAssessVO»"
+                        }
+                    },
+                    "301600": {
+                        "description": "用户不存在"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/get-avatar-and-nickname/v1": {
+            "get": {
+                "tags": [
+                    "client用户接口"
+                ],
+                "summary": "用户获取用户头像和昵称",
+                "operationId": "getUserAvatarAndNickNameUsingGET",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "query",
+                        "description": "uuid",
+                        "required": true,
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "collectionFormat": "multi"
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«List«UserAvatarAndNickNameVO»»"
+                        }
+                    },
+                    "301600": {
+                        "description": "用户不存在"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/get-master-trader-info/v1": {
+            "get": {
+                "tags": [
+                    "client用户接口"
+                ],
+                "summary": "根据机构交易员的uuid获取对应主交易员的uuid",
+                "operationId": "getMasterTraderInfoUsingGET",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "query",
+                        "description": "uuid",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«OrgTraderInfoVO»"
+                        }
+                    },
+                    "300105": {
+                        "description": "系统异常，请稍后重试"
+                    },
+                    "301101": {
+                        "description": "用户不存在。"
+                    },
+                    "304015": {
+                        "description": "该用户不是机构交易员"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/get-module-actions/v1": {
+            "get": {
+                "tags": [
+                    "client安全验证相关接口"
+                ],
+                "summary": "通过token获取权限集合",
+                "description": "权限：需要Token",
+                "operationId": "getUserModuleActionCodesUsingGET",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": " * 客户端对需要加密的串str使用URLSAFE_BASE64(RSA(str))协议编码 * 其中RSA算法为：RSA/ECB/PKCS1Padding\n * 测试公钥为：MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCajLOdwFMIBQ8k3W48/e4bIj2EFc3O/T54oiLOk+KQgAknvmUHJp/1arN8g9tjAaBKPSbznTe4ZYX3VXI7VTRF7Dhi1+vCkas1OwWkdwzZWg3LOqfUORF3tFmvNOiLLzJQ6H5oLsNNZjMOr2QZrm4srzc1aX3O0BRwQhPkP/XhYwIDAQAB * 测试私钥为：MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJqMs53AUwgFDyTdbjz97hsiPYQVzc79PniiIs6T4pCACSe+ZQcmn/Vqs3yD22MBoEo9JvOdN7hlhfdVcjtVNEXsOGLX68KRqzU7BaR3DNlaDcs6p9Q5EXe0Wa806IsvMlDofmguw01mMw6vZBmubiyvNzVpfc7QFHBCE+Q/9eFjAgMBAAECgYBu5tBtPvlWI+s+FPdqJP2b0vI5uju5cNhHUHGRs2U9M+Nd9a4hd4IJZcvuaeAgJ6aSH1e4MPUvCQsc9N/H29hpxD+7wWVwnTpIIVy4rgSzkDheGZodQjqtoJTQXzqewEhb+drqtCvJTVEr28k/2q8gMXkNk9Rctlwf/D2NjE5qoQJBAOVQPNtJT0fY1fROsVURFmcM/77viz8LiN7+wl3yvFXwXt92DqSAAk034KH0pai7KGVM+Fgqvt2TjUrzUotNur8CQQCsiRT5mfgeXckOundPM3kmt6R5kCO4EbxBfqE3qki5pW4+0jGyukgbxs5vvXjr/Ut8wEji5CQpJv1aj9kBm3ZdAkBSE2sEzfN7csf5nqToHqqXDdcH3zNGyHkf361v9O6mD9fVQasyA8NPIh3bufYFM5/cyjTlUb9pDWP4HKlBxPt/AkBiuASSVDCNX2f8z2AYpwD40DaBf6GQXkVyy/t+mCYIYslTlHzvIHrFudjAQo7/p+wbMwIBIDw4d6CawpeNvd/ZAkEA29WTAl94zp0X3U6JWyqtn8Ci9jibhhbB0/vpA5igKK1zXg6ir7vk6Tp/hsi48tgYrFd6rciWt4jwpeFv7HDhTA== * URLSAFE_BASE64算法在RFC4648中有定义\n * 最终串会使用RSA公钥进行加密，之后使用RFC4648算法编码放入请求体或表单项中。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "moduleCode",
+                        "in": "query",
+                        "description": "模块code",
+                        "required": true,
+                        "type": "string",
+                        "x-example": "101"
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«object»"
+                        }
+                    },
+                    "300101": {
+                        "description": "非法TOKEN"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/get-module-uuid-actions/v1": {
+            "get": {
+                "tags": [
+                    "client安全验证相关接口"
+                ],
+                "summary": "通过UUID获取权限集合",
+                "description": "权限：不需要Token",
+                "operationId": "getUserModuleActionCodesUsingGET_1",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "moduleCode",
+                        "in": "query",
+                        "description": "模块code",
+                        "required": true,
+                        "type": "string",
+                        "x-example": "101"
+                    },
+                    {
+                        "name": "uuid",
+                        "in": "query",
+                        "description": "用户UUID",
+                        "required": true,
+                        "type": "string",
+                        "x-example": "327215706447978496"
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«object»"
+                        }
+                    },
+                    "301600": {
+                        "description": "用户不存在"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/get-similar-cust-info-by-uuid/v1": {
+            "get": {
+                "tags": [
+                    "client用户接口"
+                ],
+                "summary": "获取疑似客户信息的uuid的列表",
+                "operationId": "getSimilarCustInfoByUuidUsingGET",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "query",
+                        "description": "uuid",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«Set«long»»"
+                        }
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/get-tencent-info-by-union-id/v1": {
+            "get": {
+                "tags": [
+                    "client用户接口"
+                ],
+                "summary": "通过unionId用户获取腾讯三方信息",
+                "operationId": "getTencentInfoByUnionIdUsingGET",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "unionId",
+                        "in": "query",
+                        "description": "unionId",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«UserThirdPartyWeChatVO»"
+                        }
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/get-tencent-info-by-uuid/v1": {
+            "get": {
+                "tags": [
+                    "client用户接口"
+                ],
+                "summary": "通过uuid获取腾讯三方信息",
+                "operationId": "getTencentInfoByUUidUsingGET",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "query",
+                        "description": "uuid",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«UserThirdPartyWeChatVO»"
+                        }
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/get-trade-password/v1/{uuid}": {
+            "get": {
+                "tags": [
+                    "client安全验证相关接口"
+                ],
+                "summary": "获取用户交易密码",
+                "description": "权限：不需要Token",
+                "operationId": "getTradePasswordUsingGET",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "description": "uuid",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«string»"
+                        }
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/get-trade-status/v1/{uuid}": {
+            "get": {
+                "tags": [
+                    "client安全验证相关接口"
+                ],
+                "summary": "获取用户交易密码",
+                "description": "权限：不需要Token",
+                "operationId": "getTradeStatusUsingGET",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "description": "uuid",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«boolean»"
+                        }
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/get-user-bond-info/v1": {
+            "get": {
+                "tags": [
+                    "client用户接口"
+                ],
+                "summary": "根据uuid查询用户信息及债券、基金、暗盘相关信息",
+                "operationId": "getUserBondInfoUsingGET",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "query",
+                        "description": "uuid",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«ClientUserBondInfoVO»"
+                        }
+                    },
+                    "301600": {
+                        "description": "用户不存在"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/get-user-extend-status/v1": {
+            "get": {
+                "tags": [
+                    "client用户接口"
+                ],
+                "summary": "获取当前用户扩展状态",
+                "operationId": "getUserExtendStatusUsingGET",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«int»"
+                        }
+                    },
+                    "301600": {
+                        "description": "用户不存在"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/get-user-info-and-account-with-market/v1": {
+            "get": {
+                "tags": [
+                    "client用户接口"
+                ],
+                "summary": "根据用户uuid和市场获取基本信息和账户信息",
+                "operationId": "getClientUserInfoAndAccountVOUsingGET",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "marketType",
+                        "in": "query",
+                        "description": "marketType",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "uuid",
+                        "in": "query",
+                        "description": "uuid",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«获取用户基本信息和账户信息»"
+                        }
+                    },
+                    "301600": {
+                        "description": "用户不存在"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/get-user-info-and-account/v1": {
+            "get": {
+                "tags": [
+                    "client用户接口"
+                ],
+                "summary": "获取用户基本信息和账户信息",
+                "operationId": "getClientUserInfoAndAccountVOUsingGET_1",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "query",
+                        "description": "uuid",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«获取用户基本信息和账户信息»"
+                        }
+                    },
+                    "301600": {
+                        "description": "用户不存在"
+                    }
+                },
+                "deprecated": true,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/get-user-info-and-china-account/v1": {
+            "get": {
+                "tags": [
+                    "client用户接口"
+                ],
+                "summary": "用户根据uuid和市场获取用户信息和A股通信息；marketType字段见枚举 EnumCustomerFundAccountMarket ",
+                "operationId": "getUserInfoAndChinaAccountUsingGET",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "marketType",
+                        "in": "query",
+                        "description": "marketType",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "uuid",
+                        "in": "query",
+                        "description": "uuid",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«用户信息接口VO--交易组用»"
+                        }
+                    },
+                    "301600": {
+                        "description": "用户不存在"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/get-user-info-for-stock/v1": {
+            "get": {
+                "tags": [
+                    "client用户接口"
+                ],
+                "summary": "用户获取用户信息（交易组用）",
+                "operationId": "getUserInfoForStockUsingGET",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "query",
+                        "description": "uuid",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«用户信息接口VO--交易组用»"
+                        }
+                    },
+                    "301600": {
+                        "description": "用户不存在"
+                    }
+                },
+                "deprecated": true,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/get-user-info-with-market-for-stock/v1": {
+            "get": {
+                "tags": [
+                    "client用户接口"
+                ],
+                "summary": "用户根据uuid和市场获取用户信息（交易组用）；marketType字段见枚举 EnumCustomerFundAccountMarket ",
+                "operationId": "getUserInfoWithMarketForStockUsingGET",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "marketType",
+                        "in": "query",
+                        "description": "marketType",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "uuid",
+                        "in": "query",
+                        "description": "uuid",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«用户信息接口VO--交易组用»"
+                        }
+                    },
+                    "301600": {
+                        "description": "用户不存在"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/get-user-info-with-market/v1": {
+            "get": {
+                "tags": [
+                    "client用户接口"
+                ],
+                "summary": "用户获取用户信息（指定市场）",
+                "operationId": "getUserInfoWithMarketUsingGET",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "marketType",
+                        "in": "query",
+                        "description": "marketType",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "uuid",
+                        "in": "query",
+                        "description": "uuid",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«ClientUserInfoVO»"
+                        }
+                    },
+                    "301600": {
+                        "description": "用户不存在"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/get-user-info-with-userid/v1": {
+            "get": {
+                "tags": [
+                    "client用户接口"
+                ],
+                "summary": "用户获取用户信息",
+                "operationId": "getUserInfoWithUserIdUsingGET",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "query",
+                        "description": "userId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«ClientUserInfoVO»"
+                        }
+                    },
+                    "301600": {
+                        "description": "用户不存在"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/get-user-info/v1": {
+            "get": {
+                "tags": [
+                    "client用户接口"
+                ],
+                "summary": "用户获取用户信息",
+                "operationId": "getUserInfoUsingGET",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "query",
+                        "description": "uuid",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«ClientUserInfoVO»"
+                        }
+                    },
+                    "301600": {
+                        "description": "用户不存在"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/get-user-invitation-code-by-uuid/v1": {
+            "get": {
+                "tags": [
+                    "client用户接口"
+                ],
+                "summary": "根据UUID获取用户邀请码（行情资讯用）",
+                "operationId": "getUserInvitationCodeByUuidUsingGET_1",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "query",
+                        "description": "uuid",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«ClientUserInfoVO»"
+                        }
+                    },
+                    "301600": {
+                        "description": "用户不存在"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/get-user-roles-info/v1": {
+            "get": {
+                "tags": [
+                    "client安全验证相关接口"
+                ],
+                "summary": "获取用户角色集合关系",
+                "description": "权限：不需要Token",
+                "operationId": "getUserRolesInfoUsingGET",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "query",
+                        "description": "userId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«UserRoleInfoVO»"
+                        }
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/get-uuid-by-area-code-and-phone-number/v1": {
+            "get": {
+                "tags": [
+                    "client用户接口"
+                ],
+                "summary": "拼团根据用户手机号查询用户uuid",
+                "operationId": "getUuidByAreaCodeAndPhoneNumberUsingGET",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "areaCode",
+                        "in": "query",
+                        "description": "areaCode",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "phoneNumber",
+                        "in": "query",
+                        "description": "phoneNumber",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«string»"
+                        }
+                    },
+                    "301600": {
+                        "description": "用户不存在"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/get-wx-access-token/v1": {
+            "get": {
+                "tags": [
+                    "client用户接口"
+                ],
+                "summary": "获取微信accessToken",
+                "operationId": "getWxAccessTokenUsingGET",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "appletType",
+                        "in": "query",
+                        "description": "appletType",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«WeChatAccessTokenVO»"
+                        }
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/get_weChat_official_access_token/v1": {
+            "get": {
+                "tags": [
+                    "client用户接口"
+                ],
+                "summary": "提供公众号的access_token",
+                "operationId": "getWeChatOfficialAccessTokenUsingGET",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "appId",
+                        "in": "query",
+                        "description": "appId",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "appSecret",
+                        "in": "query",
+                        "description": "appSecret",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«string»"
+                        }
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/page-user-by-market-type/v1": {
+            "post": {
+                "tags": [
+                    "client用户接口"
+                ],
+                "summary": "根据市场类型获取用户信息(分页获取)",
+                "operationId": "pageUserByMarketTypeUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "userInfoPageParams",
+                        "description": "userInfoPageParams",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UserInfoPageParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«PageInfoVO«UserInfoFullVO»»"
+                        }
+                    },
+                    "301601": {
+                        "description": "最大获取1000条"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/page-user-simple-info/v1": {
+            "post": {
+                "tags": [
+                    "client用户接口"
+                ],
+                "summary": "分页获取用户简单信息",
+                "operationId": "pageUserSimpleInfoUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "basePageParams",
+                        "description": "basePageParams",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/BasePageParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«PageInfoVO«ClientUserSimpleInfoVO»»"
+                        }
+                    },
+                    "301601": {
+                        "description": "最大获取1000条"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/page-user-simple-info/v2": {
+            "post": {
+                "tags": [
+                    "client用户接口"
+                ],
+                "summary": "分页获取用户简单信息（in查询）",
+                "operationId": "pageUserSimpleInfo2UsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "basePageParams",
+                        "description": "basePageParams",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/BasePageParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«PageInfoVO«ClientUserSimpleInfoVO»»"
+                        }
+                    },
+                    "301601": {
+                        "description": "最大获取1000条"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/page-user-simple-info/v3": {
+            "post": {
+                "tags": [
+                    "client用户接口"
+                ],
+                "summary": "分页获取用户简单信息（in查询）",
+                "operationId": "pageUserSimpleInfo3UsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "userId",
+                        "description": "userId",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "integer",
+                                "format": "int64"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«List«ClientUserSimpleInfoVO»»"
+                        }
+                    },
+                    "301601": {
+                        "description": "最大获取1000条"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/phone/and/captcha/register/v1": {
+            "post": {
+                "tags": [
+                    "client用户接口"
+                ],
+                "summary": "手机号码+验证码注册",
+                "operationId": "phoneAndCaptchaRegisterUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "signInParams",
+                        "description": "signInParams",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/用户注册信息"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity"
+                        }
+                    },
+                    "301601": {
+                        "description": "最大获取1000条"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/product-get-gender-info/v1": {
+            "post": {
+                "tags": [
+                    "client用户接口"
+                ],
+                "summary": "营销展业宝查询用户性别信息",
+                "operationId": "getGenderInfoUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "params",
+                        "description": "params",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UserGenderInfoParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«List«UserGenderInfoVO»»"
+                        }
+                    },
+                    "301601": {
+                        "description": "最大获取1000条"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/select-trade-status/v1": {
+            "get": {
+                "tags": [
+                    "client安全验证相关接口"
+                ],
+                "summary": "获取交易登录状态",
+                "description": "status=0未登录status=1已登录",
+                "operationId": "black_49",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "query",
+                        "description": "用户uuid",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity"
+                        }
+                    },
+                    "300100": {
+                        "description": "非法请求"
+                    },
+                    "300101": {
+                        "description": "非法TOKEN"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/send-phone-captcha-udesk/v1": {
+            "post": {
+                "tags": [
+                    "client验证码相关接口"
+                ],
+                "summary": "udesk拨号发送用户短信码",
+                "description": "手机号",
+                "operationId": "white_45",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "phoneCaptchaParams",
+                        "description": "phoneCaptchaParams",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/PhoneCaptchaParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity"
+                        }
+                    },
+                    "300100": {
+                        "description": "非法请求"
+                    },
+                    "300101": {
+                        "description": "非法TOKEN"
+                    },
+                    "300302": {
+                        "description": "验证码刚刚已发送，请稍等1分钟重新获取"
+                    },
+                    "300303": {
+                        "description": "抱歉，验证码发送失败，请稍后重试"
+                    },
+                    "300309": {
+                        "description": "请输入正确的手机号码"
+                    },
+                    "301009": {
+                        "description": "用户未注册，请先使用手机号码注册"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/tokens/v1": {
+            "get": {
+                "tags": [
+                    "client安全验证相关接口"
+                ],
+                "summary": "检查Token是否有效",
+                "description": "权限：需要Token",
+                "operationId": "checkAppTokenUsingGET",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": " * 客户端对需要加密的串str使用URLSAFE_BASE64(RSA(str))协议编码 * 其中RSA算法为：RSA/ECB/PKCS1Padding\n * 测试公钥为：MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCajLOdwFMIBQ8k3W48/e4bIj2EFc3O/T54oiLOk+KQgAknvmUHJp/1arN8g9tjAaBKPSbznTe4ZYX3VXI7VTRF7Dhi1+vCkas1OwWkdwzZWg3LOqfUORF3tFmvNOiLLzJQ6H5oLsNNZjMOr2QZrm4srzc1aX3O0BRwQhPkP/XhYwIDAQAB * 测试私钥为：MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJqMs53AUwgFDyTdbjz97hsiPYQVzc79PniiIs6T4pCACSe+ZQcmn/Vqs3yD22MBoEo9JvOdN7hlhfdVcjtVNEXsOGLX68KRqzU7BaR3DNlaDcs6p9Q5EXe0Wa806IsvMlDofmguw01mMw6vZBmubiyvNzVpfc7QFHBCE+Q/9eFjAgMBAAECgYBu5tBtPvlWI+s+FPdqJP2b0vI5uju5cNhHUHGRs2U9M+Nd9a4hd4IJZcvuaeAgJ6aSH1e4MPUvCQsc9N/H29hpxD+7wWVwnTpIIVy4rgSzkDheGZodQjqtoJTQXzqewEhb+drqtCvJTVEr28k/2q8gMXkNk9Rctlwf/D2NjE5qoQJBAOVQPNtJT0fY1fROsVURFmcM/77viz8LiN7+wl3yvFXwXt92DqSAAk034KH0pai7KGVM+Fgqvt2TjUrzUotNur8CQQCsiRT5mfgeXckOundPM3kmt6R5kCO4EbxBfqE3qki5pW4+0jGyukgbxs5vvXjr/Ut8wEji5CQpJv1aj9kBm3ZdAkBSE2sEzfN7csf5nqToHqqXDdcH3zNGyHkf361v9O6mD9fVQasyA8NPIh3bufYFM5/cyjTlUb9pDWP4HKlBxPt/AkBiuASSVDCNX2f8z2AYpwD40DaBf6GQXkVyy/t+mCYIYslTlHzvIHrFudjAQo7/p+wbMwIBIDw4d6CawpeNvd/ZAkEA29WTAl94zp0X3U6JWyqtn8Ci9jibhhbB0/vpA5igKK1zXg6ir7vk6Tp/hsi48tgYrFd6rciWt4jwpeFv7HDhTA== * URLSAFE_BASE64算法在RFC4648中有定义\n * 最终串会使用RSA公钥进行加密，之后使用RFC4648算法编码放入请求体或表单项中。",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«Void»"
+                        }
+                    },
+                    "300101": {
+                        "description": "非法TOKEN"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/web-email-captcha-register/v1": {
+            "post": {
+                "tags": [
+                    "client用户接口"
+                ],
+                "summary": "WEB电子邮箱+验证码注册",
+                "operationId": "webEmailCaptchaRegisterUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "signInParams",
+                        "description": "signInParams",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/邮箱用户注册信息"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«UserEmailInfoVO»"
+                        }
+                    },
+                    "301601": {
+                        "description": "最大获取1000条"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/web-email-captcha-register/v2": {
+            "post": {
+                "tags": [
+                    "client用户接口"
+                ],
+                "summary": "WEB电子邮箱注册 不需要验证码(中台机构开户使用)",
+                "operationId": "webEmailCaptchaRegisterV2UsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "signInParams",
+                        "description": "signInParams",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/邮箱用户注册信息"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«UserEmailInfoVO»"
+                        }
+                    },
+                    "301601": {
+                        "description": "最大获取1000条"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/web-send-email-captcha/v1": {
+            "post": {
+                "tags": [
+                    "client用户接口"
+                ],
+                "summary": "获取邮箱验证码(用户输入邮箱)",
+                "description": "邮箱",
+                "operationId": "white_46",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "emailCaptchaParams",
+                        "description": "emailCaptchaParams",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/EmailCaptchaParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity"
+                        }
+                    },
+                    "301601": {
+                        "description": "最大获取1000条"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/client-api/web-tokens/v1": {
+            "get": {
+                "tags": [
+                    "client安全验证相关接口"
+                ],
+                "summary": "检查webToken是否有效",
+                "description": "权限：需要Token",
+                "operationId": "checkWebTokenUsingGET",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": " * 客户端对需要加密的串str使用URLSAFE_BASE64(RSA(str))协议编码 * 其中RSA算法为：RSA/ECB/PKCS1Padding\n * 测试公钥为：MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCajLOdwFMIBQ8k3W48/e4bIj2EFc3O/T54oiLOk+KQgAknvmUHJp/1arN8g9tjAaBKPSbznTe4ZYX3VXI7VTRF7Dhi1+vCkas1OwWkdwzZWg3LOqfUORF3tFmvNOiLLzJQ6H5oLsNNZjMOr2QZrm4srzc1aX3O0BRwQhPkP/XhYwIDAQAB * 测试私钥为：MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJqMs53AUwgFDyTdbjz97hsiPYQVzc79PniiIs6T4pCACSe+ZQcmn/Vqs3yD22MBoEo9JvOdN7hlhfdVcjtVNEXsOGLX68KRqzU7BaR3DNlaDcs6p9Q5EXe0Wa806IsvMlDofmguw01mMw6vZBmubiyvNzVpfc7QFHBCE+Q/9eFjAgMBAAECgYBu5tBtPvlWI+s+FPdqJP2b0vI5uju5cNhHUHGRs2U9M+Nd9a4hd4IJZcvuaeAgJ6aSH1e4MPUvCQsc9N/H29hpxD+7wWVwnTpIIVy4rgSzkDheGZodQjqtoJTQXzqewEhb+drqtCvJTVEr28k/2q8gMXkNk9Rctlwf/D2NjE5qoQJBAOVQPNtJT0fY1fROsVURFmcM/77viz8LiN7+wl3yvFXwXt92DqSAAk034KH0pai7KGVM+Fgqvt2TjUrzUotNur8CQQCsiRT5mfgeXckOundPM3kmt6R5kCO4EbxBfqE3qki5pW4+0jGyukgbxs5vvXjr/Ut8wEji5CQpJv1aj9kBm3ZdAkBSE2sEzfN7csf5nqToHqqXDdcH3zNGyHkf361v9O6mD9fVQasyA8NPIh3bufYFM5/cyjTlUb9pDWP4HKlBxPt/AkBiuASSVDCNX2f8z2AYpwD40DaBf6GQXkVyy/t+mCYIYslTlHzvIHrFudjAQo7/p+wbMwIBIDw4d6CawpeNvd/ZAkEA29WTAl94zp0X3U6JWyqtn8Ci9jibhhbB0/vpA5igKK1zXg6ir7vk6Tp/hsi48tgYrFd6rciWt4jwpeFv7HDhTA== * URLSAFE_BASE64算法在RFC4648中有定义\n * 最终串会使用RSA公钥进行加密，之后使用RFC4648算法编码放入请求体或表单项中。",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«Void»"
+                        }
+                    },
+                    "300101": {
+                        "description": "非法TOKEN"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        }
+    },
+    "definitions": {
+        "AccountFundAccountAndTradePwdParams": {
+            "type": "object",
+            "required": [
+                "fundAccount",
+                "tradePassword"
+            ],
+            "properties": {
+                "fundAccount": {
+                    "type": "string",
+                    "example": 430626,
+                    "description": "资金账号"
+                },
+                "tradePassword": {
+                    "type": "string",
+                    "example": 123456,
+                    "description": "交易密码"
+                }
+            },
+            "title": "AccountFundAccountAndTradePwdParams",
+            "description": "用户资金号以及交易密码参数"
+        },
+        "BasePageParams": {
+            "type": "object",
+            "required": [
+                "pageNum",
+                "pageSize"
+            ],
+            "properties": {
+                "messageUserIdList": {
+                    "type": "array",
+                    "description": "ID集合",
+                    "items": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                },
+                "orderBy": {
+                    "type": "string",
+                    "description": "排序"
+                },
+                "pageNum": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "当前页 1开始"
+                },
+                "pageSize": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 20,
+                    "description": "每页结果数"
+                }
+            },
+            "title": "BasePageParams",
+            "description": "分页参数"
+        },
+        "ClientUserBondInfoVO": {
+            "type": "object",
+            "properties": {
+                "accountStatus": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "交易账号状态 0正常1冻结"
+                },
+                "activityAppType": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "1大陆2港版"
+                },
+                "areaCode": {
+                    "type": "string",
+                    "description": "区号"
+                },
+                "assessResult": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "风险测评结果（1-保守型 2-稳健型）"
+                },
+                "assetProp": {
+                    "type": "string",
+                    "description": "资产属性(账号类型): 枚举类EnumAssetProp"
+                },
+                "chinaAccountOpenType": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "A股通开户状态 字典EnumChinaInfoType"
+                },
+                "chineseName": {
+                    "type": "string",
+                    "description": "中文名"
+                },
+                "clientAccount": {
+                    "type": "string",
+                    "description": "恒生客户号"
+                },
+                "contactAddress": {
+                    "type": "string",
+                    "example": "xxxxx",
+                    "description": "联系地址"
+                },
+                "damagedStatus": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 0,
+                    "description": "是否容易受损客户 0-否 1-是"
+                },
+                "defineName": {
+                    "type": "string",
+                    "description": "默认姓名 大陆身份证：中文名 其他证件：英文名"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "邮箱"
+                },
+                "englishName": {
+                    "type": "string",
+                    "description": "英文名"
+                },
+                "extendStatusBit": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": "1<<0 登录密码 1<<1 行情权限 1<<2 衍生品 1<<3 债券风险许可 1<<4 基金风险许可 1<<5 暗盘风险许可",
+                    "description": "用戶扩展状态"
+                },
+                "firstName": {
+                    "type": "string",
+                    "description": "名拼音"
+                },
+                "fundAccount": {
+                    "type": "string",
+                    "description": "资金账户"
+                },
+                "gender": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "性别0男1女2其他"
+                },
+                "grayStatusBit": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": "1<<0 基金 1<<1 暗盘",
+                    "description": "用户灰度状态"
+                },
+                "idNumber": {
+                    "type": "string",
+                    "description": "证件号"
+                },
+                "identifyCountryCode": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 86,
+                    "description": "国家/地区编码 字典：EnumCountry"
+                },
+                "identifyType": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "开户证件类型 字典：EnumIdentifyType"
+                },
+                "invitationCode": {
+                    "type": "string",
+                    "example": 1234,
+                    "description": "邀请码"
+                },
+                "language": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "1简体2繁体3英文"
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "姓"
+                },
+                "majorStatus": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "专业投资者认证状态: 0-未申请 1-待初审 2-待终审 3-审核未通过 4-审核通过"
+                },
+                "openAccountStatus": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "客户开户申请状态: 0<=资料未提交 >0 资料已提交"
+                },
+                "openAccountTime": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "开户时间"
+                },
+                "openAuthType": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "开户认证方式"
+                },
+                "openedAccount": {
+                    "type": "boolean",
+                    "description": "用户是否开户"
+                },
+                "phoneNumber": {
+                    "type": "string",
+                    "description": "手机号"
+                },
+                "tradeTime": {
+                    "type": "string",
+                    "format": "date-time",
+                    "example": "2020-01-20 00:00:00",
+                    "description": "A股通可开始交易日期"
+                },
+                "userId": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "客户短id"
+                },
+                "userIdentifyNumVOList": {
+                    "type": "array",
+                    "description": "上手交易识别码",
+                    "items": {
+                        "$ref": "#/definitions/UserIdentifyNumVO"
+                    }
+                },
+                "userRoleType": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "客户账户等级: 枚举【EnumRoleType】"
+                },
+                "userStatus": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "用户账号状态  0正常1冻结"
+                },
+                "userUuid": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "客户长id"
+                },
+                "validTime": {
+                    "type": "string",
+                    "format": "date-time",
+                    "example": "2020-01-24 10:00:00",
+                    "description": "风险测评有效时间至"
+                }
+            },
+            "title": "ClientUserBondInfoVO"
+        },
+        "ClientUserInfoVO": {
+            "type": "object",
+            "properties": {
+                "accountStatus": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "交易账号状态 0正常1冻结"
+                },
+                "activityAppType": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "1大陆2港版"
+                },
+                "areaCode": {
+                    "type": "string",
+                    "description": "区号"
+                },
+                "assetProp": {
+                    "type": "string",
+                    "description": "资产属性(账号类型): 枚举类EnumAssetProp"
+                },
+                "chinaAccountOpenType": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "A股通开户状态 字典EnumChinaInfoType"
+                },
+                "chineseName": {
+                    "type": "string",
+                    "description": "中文名"
+                },
+                "clientAccount": {
+                    "type": "string",
+                    "description": "恒生客户号"
+                },
+                "defineName": {
+                    "type": "string",
+                    "description": "默认姓名 大陆身份证：中文名 其他证件：英文名"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "邮箱"
+                },
+                "englishName": {
+                    "type": "string",
+                    "description": "英文名"
+                },
+                "extendStatusBit": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": "1<<0 登录密码 1<<1 行情权限 1<<2 衍生品 1<<3 债券风险许可 1<<4 基金风险许可 1<<5 暗盘风险许可",
+                    "description": "用戶扩展状态"
+                },
+                "firstName": {
+                    "type": "string",
+                    "description": "名拼音"
+                },
+                "fundAccount": {
+                    "type": "string",
+                    "description": "资金账户"
+                },
+                "gender": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "性别0男1女2其他"
+                },
+                "idNumber": {
+                    "type": "string",
+                    "description": "证件号"
+                },
+                "identifyCountryCode": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 86,
+                    "description": "国家/地区编码 字典：EnumCountry"
+                },
+                "identifyType": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "开户证件类型 字典：EnumIdentifyType"
+                },
+                "invitationCode": {
+                    "type": "string",
+                    "example": 1234,
+                    "description": "邀请码"
+                },
+                "language": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "1简体2繁体3英文"
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "姓"
+                },
+                "majorStatus": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "专业投资者认证状态: 0-未申请 1-待初审 2-待终审 3-审核未通过 4-审核通过"
+                },
+                "openAccountStatus": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "客户开户申请状态: 0<=资料未提交 >0 资料已提交"
+                },
+                "openAccountTime": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "开户时间"
+                },
+                "openAuthType": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "开户认证方式"
+                },
+                "openedAccount": {
+                    "type": "boolean",
+                    "description": "用户是否开户"
+                },
+                "phoneNumber": {
+                    "type": "string",
+                    "description": "手机号"
+                },
+                "tradeTime": {
+                    "type": "string",
+                    "format": "date-time",
+                    "example": "2020-01-20 00:00:00",
+                    "description": "A股通可开始交易日期"
+                },
+                "userId": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "客户短id"
+                },
+                "userRoleType": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "客户账户等级: 枚举【EnumRoleType】"
+                },
+                "userStatus": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "用户账号状态  0正常1冻结"
+                },
+                "userUuid": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "客户长id"
+                }
+            },
+            "title": "ClientUserInfoVO"
+        },
+        "ClientUserSimpleInfoVO": {
+            "type": "object",
+            "properties": {
+                "activityAppType": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "活跃APP版本1大陆2港版"
+                },
+                "activityLanguage": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "areaCode": {
+                    "type": "string",
+                    "description": "区号"
+                },
+                "email": {
+                    "type": "string",
+                    "example": "admin@youxin.com",
+                    "description": "邮箱"
+                },
+                "gender": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "性别0男1女2其他"
+                },
+                "languageCn": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "大陆版1简体2繁体3英文"
+                },
+                "languageHk": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "港版1简体2繁体3英文"
+                },
+                "phoneNumber": {
+                    "type": "string",
+                    "example": 13888888888,
+                    "description": "手机号"
+                },
+                "realName": {
+                    "type": "string",
+                    "example": 1,
+                    "description": "姓名"
+                },
+                "registerChannel": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "注册渠道"
+                },
+                "registerTime": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "注册时间"
+                },
+                "userId": {
+                    "type": "integer",
+                    "format": "int64",
+                    "example": 1,
+                    "description": "uuid"
+                },
+                "uuid": {
+                    "type": "integer",
+                    "format": "int64",
+                    "example": 1,
+                    "description": "uuid"
+                }
+            },
+            "title": "ClientUserSimpleInfoVO"
+        },
+        "EmailCaptchaParams": {
+            "type": "object",
+            "required": [
+                "email",
+                "type"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "description": "邮箱地址 "
+                },
+                "type": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "EnumEmailCaptchaType枚:10001-注册 1-重置交易密码 2-重置登陆密码"
+                }
+            },
+            "title": "EmailCaptchaParams",
+            "description": "获取验证码入参"
+        },
+        "ModifyUserConfigParam": {
+            "type": "object",
+            "properties": {
+                "emailSet": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "用户电邮设定 0-不允许 1-允许"
+                },
+                "languageCn": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "内地版语言设置: 1简体2繁体3英文"
+                },
+                "languageHk": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "港版语言设置: 1简体2繁体3英文"
+                },
+                "lineColorHk": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "股票颜色设置: 1红涨绿跌2绿涨红跌"
+                },
+                "mailSet": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "用户邮寄设定 0-不允许 1-允许"
+                },
+                "phoneSet": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "用户号码设定 0-不允许 1-允许"
+                },
+                "quoteChartHk": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "港版报价图表 1-简约折线 2-简约K线 3-高级折现 4-高级K线"
+                },
+                "smsSet": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "用户短信设定 0-不允许 1-允许"
+                },
+                "sortHk": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "港版智能排序 0-关 1-开"
+                }
+            },
+            "title": "ModifyUserConfigParam",
+            "description": "用户配置修改实体类"
+        },
+        "OrgTraderInfoVO": {
+            "type": "object",
+            "properties": {
+                "masterTraderUuid": {
+                    "type": "integer",
+                    "format": "int64",
+                    "example": "1L",
+                    "description": "主交易员uuid"
+                }
+            },
+            "title": "OrgTraderInfoVO",
+            "description": "交易员信息VO"
+        },
+        "PageInfoVO«ClientUserSimpleInfoVO»": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "description": "结果集合",
+                    "items": {
+                        "$ref": "#/definitions/ClientUserSimpleInfoVO"
+                    }
+                },
+                "pageNum": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "当前页"
+                },
+                "pageSize": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "每页条数"
+                },
+                "total": {
+                    "type": "integer",
+                    "format": "int64",
+                    "example": 1,
+                    "description": "总数"
+                }
+            },
+            "title": "PageInfoVO«ClientUserSimpleInfoVO»",
+            "description": "分页信息"
+        },
+        "PageInfoVO«UserInfoFullVO»": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "description": "结果集合",
+                    "items": {
+                        "$ref": "#/definitions/UserInfoFullVO"
+                    }
+                },
+                "pageNum": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "当前页"
+                },
+                "pageSize": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "每页条数"
+                },
+                "total": {
+                    "type": "integer",
+                    "format": "int64",
+                    "example": 1,
+                    "description": "总数"
+                }
+            },
+            "title": "PageInfoVO«UserInfoFullVO»",
+            "description": "分页信息"
+        },
+        "PhoneCaptchaParams": {
+            "type": "object",
+            "required": [
+                "areaCode",
+                "phoneNumber",
+                "type"
+            ],
+            "properties": {
+                "areaCode": {
+                    "type": "string",
+                    "description": "区号"
+                },
+                "phoneNumber": {
+                    "type": "string",
+                    "description": "手机号 RSA加密(Web 不需要加密)"
+                },
+                "type": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 101,
+                    "description": "验证码类型 101注册 102重置密码 103更换手机号 104绑定手机号 105新设备登录校验 106短信登录"
+                }
+            },
+            "title": "PhoneCaptchaParams",
+            "description": "获取验证码入参"
+        },
+        "TradePasswordCheckParams": {
+            "type": "object",
+            "required": [
+                "password"
+            ],
+            "properties": {
+                "password": {
+                    "type": "string",
+                    "description": "交易密码 设置、修改、重置交易密码必填，交易密码必须是6位纯数字 RSA加密"
+                }
+            },
+            "title": "TradePasswordCheckParams",
+            "description": "交易密码入参"
+        },
+        "TradingChannelAndSeatsNoRelationVO": {
+            "type": "object",
+            "properties": {
+                "channelCode": {
+                    "type": "string",
+                    "description": "渠道Code"
+                },
+                "channelName": {
+                    "type": "string",
+                    "description": "渠道名称"
+                },
+                "fundAccount": {
+                    "type": "string",
+                    "description": "资金账号"
+                },
+                "marketType": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "市场类型"
+                },
+                "seatsNo": {
+                    "type": "string",
+                    "description": "席位号"
+                }
+            },
+            "title": "TradingChannelAndSeatsNoRelationVO",
+            "description": "交易渠道和席位号关系VO"
+        },
+        "UserAvatarAndNickNameVO": {
+            "type": "object",
+            "properties": {
+                "avatar": {
+                    "type": "string",
+                    "example": 1,
+                    "description": "头像地址"
+                },
+                "nickname": {
+                    "type": "string",
+                    "example": 1,
+                    "description": "昵称"
+                },
+                "uuid": {
+                    "type": "string",
+                    "example": 1,
+                    "description": "uuid"
+                }
+            },
+            "title": "UserAvatarAndNickNameVO"
+        },
+        "UserEmailInfoVO": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "example": "test@youxin.com",
+                    "description": "电子邮箱"
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "example": 1,
+                    "description": "用户id"
+                },
+                "thirdBindBit": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 256,
+                    "description": "已绑定的扩展位"
+                },
+                "uuid": {
+                    "type": "integer",
+                    "format": "int64",
+                    "example": 259761232364445700,
+                    "description": "用户uuid"
+                }
+            },
+            "title": "UserEmailInfoVO",
+            "description": "机构用户信息"
+        },
+        "UserGenderInfoParams": {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "description": "用户信息列表",
+                    "items": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "title": "UserGenderInfoParams"
+        },
+        "UserGenderInfoVO": {
+            "type": "object",
+            "properties": {
+                "gender": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "性别 0女 1男 2未知"
+                },
+                "userId": {
+                    "type": "integer",
+                    "format": "int64",
+                    "example": 1,
+                    "description": "用户id"
+                }
+            },
+            "title": "UserGenderInfoVO",
+            "description": "用户性别信息"
+        },
+        "UserIdentifyNumVO": {
+            "type": "object",
+            "properties": {
+                "identifyNum": {
+                    "type": "string",
+                    "example": 123456,
+                    "description": "上手交易识别码"
+                },
+                "identifyNumType": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "上手交易识别码类型（1-IB）"
+                }
+            },
+            "title": "UserIdentifyNumVO"
+        },
+        "UserInfoFullVO": {
+            "type": "object",
+            "properties": {
+                "areaCode": {
+                    "type": "string",
+                    "description": "区号，不存+号"
+                },
+                "fundAccount": {
+                    "type": "string",
+                    "description": "资金账户。在恒生柜台开通的资金账户"
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "用户ID"
+                },
+                "marketBit": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "交易市场(bitmap):1<<0 港股 1<<1 美股 1<<2 A股通"
+                },
+                "moneyBit": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "币种(bitmap):1<<0 港币 1<<1 美元 1<<2 人民币"
+                },
+                "phoneNumber": {
+                    "type": "string",
+                    "description": "手机号，估计目前最长手机号11位"
+                },
+                "uuid": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "用户uuid"
+                }
+            },
+            "title": "UserInfoFullVO"
+        },
+        "UserInfoPageParams": {
+            "type": "object",
+            "required": [
+                "pageNum",
+                "pageSize"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "description": "邮箱"
+                },
+                "marketType": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "市场类型 1-港股 2-美股 4-A股"
+                },
+                "messageUserIdList": {
+                    "type": "array",
+                    "description": "ID集合",
+                    "items": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                },
+                "mobile": {
+                    "type": "string",
+                    "description": "手机号"
+                },
+                "orderBy": {
+                    "type": "string",
+                    "description": "排序"
+                },
+                "pageNum": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "当前页 1开始"
+                },
+                "pageSize": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 20,
+                    "description": "每页结果数"
+                },
+                "phoneNumber": {
+                    "type": "string",
+                    "description": "手机号"
+                }
+            },
+            "title": "UserInfoPageParams",
+            "description": "用户基本信息分页查询参数"
+        },
+        "UserResponseEntity": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "响应码"
+                },
+                "data": {
+                    "type": "object",
+                    "description": "响应体"
+                },
+                "msg": {
+                    "type": "string",
+                    "description": "响应内容"
+                }
+            },
+            "title": "UserResponseEntity",
+            "description": "接口统一出参"
+        },
+        "UserResponseEntity«ClientUserBondInfoVO»": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "响应码"
+                },
+                "data": {
+                    "description": "响应体",
+                    "$ref": "#/definitions/ClientUserBondInfoVO"
+                },
+                "msg": {
+                    "type": "string",
+                    "description": "响应内容"
+                }
+            },
+            "title": "UserResponseEntity«ClientUserBondInfoVO»",
+            "description": "接口统一出参"
+        },
+        "UserResponseEntity«ClientUserInfoVO»": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "响应码"
+                },
+                "data": {
+                    "description": "响应体",
+                    "$ref": "#/definitions/ClientUserInfoVO"
+                },
+                "msg": {
+                    "type": "string",
+                    "description": "响应内容"
+                }
+            },
+            "title": "UserResponseEntity«ClientUserInfoVO»",
+            "description": "接口统一出参"
+        },
+        "UserResponseEntity«List«ClientUserSimpleInfoVO»»": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "响应码"
+                },
+                "data": {
+                    "type": "array",
+                    "description": "响应体",
+                    "items": {
+                        "$ref": "#/definitions/ClientUserSimpleInfoVO"
+                    }
+                },
+                "msg": {
+                    "type": "string",
+                    "description": "响应内容"
+                }
+            },
+            "title": "UserResponseEntity«List«ClientUserSimpleInfoVO»»",
+            "description": "接口统一出参"
+        },
+        "UserResponseEntity«List«UserAvatarAndNickNameVO»»": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "响应码"
+                },
+                "data": {
+                    "type": "array",
+                    "description": "响应体",
+                    "items": {
+                        "$ref": "#/definitions/UserAvatarAndNickNameVO"
+                    }
+                },
+                "msg": {
+                    "type": "string",
+                    "description": "响应内容"
+                }
+            },
+            "title": "UserResponseEntity«List«UserAvatarAndNickNameVO»»",
+            "description": "接口统一出参"
+        },
+        "UserResponseEntity«List«UserGenderInfoVO»»": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "响应码"
+                },
+                "data": {
+                    "type": "array",
+                    "description": "响应体",
+                    "items": {
+                        "$ref": "#/definitions/UserGenderInfoVO"
+                    }
+                },
+                "msg": {
+                    "type": "string",
+                    "description": "响应内容"
+                }
+            },
+            "title": "UserResponseEntity«List«UserGenderInfoVO»»",
+            "description": "接口统一出参"
+        },
+        "UserResponseEntity«OrgTraderInfoVO»": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "响应码"
+                },
+                "data": {
+                    "description": "响应体",
+                    "$ref": "#/definitions/OrgTraderInfoVO"
+                },
+                "msg": {
+                    "type": "string",
+                    "description": "响应内容"
+                }
+            },
+            "title": "UserResponseEntity«OrgTraderInfoVO»",
+            "description": "接口统一出参"
+        },
+        "UserResponseEntity«PageInfoVO«ClientUserSimpleInfoVO»»": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "响应码"
+                },
+                "data": {
+                    "description": "响应体",
+                    "$ref": "#/definitions/PageInfoVO«ClientUserSimpleInfoVO»"
+                },
+                "msg": {
+                    "type": "string",
+                    "description": "响应内容"
+                }
+            },
+            "title": "UserResponseEntity«PageInfoVO«ClientUserSimpleInfoVO»»",
+            "description": "接口统一出参"
+        },
+        "UserResponseEntity«PageInfoVO«UserInfoFullVO»»": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "响应码"
+                },
+                "data": {
+                    "description": "响应体",
+                    "$ref": "#/definitions/PageInfoVO«UserInfoFullVO»"
+                },
+                "msg": {
+                    "type": "string",
+                    "description": "响应内容"
+                }
+            },
+            "title": "UserResponseEntity«PageInfoVO«UserInfoFullVO»»",
+            "description": "接口统一出参"
+        },
+        "UserResponseEntity«Set«long»»": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "响应码"
+                },
+                "data": {
+                    "type": "array",
+                    "description": "响应体",
+                    "items": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                },
+                "msg": {
+                    "type": "string",
+                    "description": "响应内容"
+                }
+            },
+            "title": "UserResponseEntity«Set«long»»",
+            "description": "接口统一出参"
+        },
+        "UserResponseEntity«UserEmailInfoVO»": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "响应码"
+                },
+                "data": {
+                    "description": "响应体",
+                    "$ref": "#/definitions/UserEmailInfoVO"
+                },
+                "msg": {
+                    "type": "string",
+                    "description": "响应内容"
+                }
+            },
+            "title": "UserResponseEntity«UserEmailInfoVO»",
+            "description": "接口统一出参"
+        },
+        "UserResponseEntity«UserRiskAssessVO»": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "响应码"
+                },
+                "data": {
+                    "description": "响应体",
+                    "$ref": "#/definitions/UserRiskAssessVO"
+                },
+                "msg": {
+                    "type": "string",
+                    "description": "响应内容"
+                }
+            },
+            "title": "UserResponseEntity«UserRiskAssessVO»",
+            "description": "接口统一出参"
+        },
+        "UserResponseEntity«UserRoleInfoVO»": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "响应码"
+                },
+                "data": {
+                    "description": "响应体",
+                    "$ref": "#/definitions/UserRoleInfoVO"
+                },
+                "msg": {
+                    "type": "string",
+                    "description": "响应内容"
+                }
+            },
+            "title": "UserResponseEntity«UserRoleInfoVO»",
+            "description": "接口统一出参"
+        },
+        "UserResponseEntity«UserThirdPartyWeChatVO»": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "响应码"
+                },
+                "data": {
+                    "description": "响应体",
+                    "$ref": "#/definitions/UserThirdPartyWeChatVO"
+                },
+                "msg": {
+                    "type": "string",
+                    "description": "响应内容"
+                }
+            },
+            "title": "UserResponseEntity«UserThirdPartyWeChatVO»",
+            "description": "接口统一出参"
+        },
+        "UserResponseEntity«Void»": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "响应码"
+                },
+                "msg": {
+                    "type": "string",
+                    "description": "响应内容"
+                }
+            },
+            "title": "UserResponseEntity«Void»",
+            "description": "接口统一出参"
+        },
+        "UserResponseEntity«WeChatAccessTokenVO»": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "响应码"
+                },
+                "data": {
+                    "description": "响应体",
+                    "$ref": "#/definitions/WeChatAccessTokenVO"
+                },
+                "msg": {
+                    "type": "string",
+                    "description": "响应内容"
+                }
+            },
+            "title": "UserResponseEntity«WeChatAccessTokenVO»",
+            "description": "接口统一出参"
+        },
+        "UserResponseEntity«WeChatAppletVO»": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "响应码"
+                },
+                "data": {
+                    "description": "响应体",
+                    "$ref": "#/definitions/WeChatAppletVO"
+                },
+                "msg": {
+                    "type": "string",
+                    "description": "响应内容"
+                }
+            },
+            "title": "UserResponseEntity«WeChatAppletVO»",
+            "description": "接口统一出参"
+        },
+        "UserResponseEntity«boolean»": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "响应码"
+                },
+                "data": {
+                    "type": "boolean",
+                    "description": "响应体"
+                },
+                "msg": {
+                    "type": "string",
+                    "description": "响应内容"
+                }
+            },
+            "title": "UserResponseEntity«boolean»",
+            "description": "接口统一出参"
+        },
+        "UserResponseEntity«int»": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "响应码"
+                },
+                "data": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "响应体"
+                },
+                "msg": {
+                    "type": "string",
+                    "description": "响应内容"
+                }
+            },
+            "title": "UserResponseEntity«int»",
+            "description": "接口统一出参"
+        },
+        "UserResponseEntity«object»": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "响应码"
+                },
+                "data": {
+                    "type": "object",
+                    "description": "响应体"
+                },
+                "msg": {
+                    "type": "string",
+                    "description": "响应内容"
+                }
+            },
+            "title": "UserResponseEntity«object»",
+            "description": "接口统一出参"
+        },
+        "UserResponseEntity«string»": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "响应码"
+                },
+                "data": {
+                    "type": "string",
+                    "description": "响应体"
+                },
+                "msg": {
+                    "type": "string",
+                    "description": "响应内容"
+                }
+            },
+            "title": "UserResponseEntity«string»",
+            "description": "接口统一出参"
+        },
+        "UserResponseEntity«用户信息接口VO--交易组用»": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "响应码"
+                },
+                "data": {
+                    "description": "响应体",
+                    "$ref": "#/definitions/用户信息接口VO--交易组用"
+                },
+                "msg": {
+                    "type": "string",
+                    "description": "响应内容"
+                }
+            },
+            "title": "UserResponseEntity«用户信息接口VO--交易组用»",
+            "description": "接口统一出参"
+        },
+        "UserResponseEntity«获取用户基本信息和账户信息»": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "响应码"
+                },
+                "data": {
+                    "description": "响应体",
+                    "$ref": "#/definitions/获取用户基本信息和账户信息"
+                },
+                "msg": {
+                    "type": "string",
+                    "description": "响应内容"
+                }
+            },
+            "title": "UserResponseEntity«获取用户基本信息和账户信息»",
+            "description": "接口统一出参"
+        },
+        "UserRiskAssessVO": {
+            "type": "object",
+            "properties": {
+                "assessResult": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "风险测评结果（1-保守型 2-稳健型 3-均衡型 4-增长型 5-进取型）"
+                },
+                "validTime": {
+                    "type": "string",
+                    "format": "date-time",
+                    "example": "2020-01-24 10:00:00",
+                    "description": "风险测评有效时间至"
+                }
+            },
+            "title": "UserRiskAssessVO"
+        },
+        "UserRoleInfoVO": {
+            "type": "object",
+            "properties": {
+                "userRoleName": {
+                    "type": "array",
+                    "example": 1,
+                    "description": "用户角色类型名集合",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "userRoleType": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "用户角色类型"
+                }
+            },
+            "title": "UserRoleInfoVO",
+            "description": "获取用户角色信息VO"
+        },
+        "UserRoleRelationParams": {
+            "type": "object",
+            "properties": {
+                "roleIds": {
+                    "type": "array",
+                    "example": "1,2",
+                    "description": "角色ID集合",
+                    "items": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                },
+                "userId": {
+                    "type": "integer",
+                    "format": "int64",
+                    "example": 1,
+                    "description": "用户ID"
+                }
+            },
+            "title": "UserRoleRelationParams",
+            "description": "用户角色对应参数"
+        },
+        "UserThirdPartyWeChatVO": {
+            "type": "object",
+            "properties": {
+                "appletOpenId": {
+                    "type": "string",
+                    "description": "微信开发id"
+                },
+                "avatar": {
+                    "type": "string",
+                    "description": "头像"
+                },
+                "city": {
+                    "type": "string",
+                    "description": "市"
+                },
+                "country": {
+                    "type": "string",
+                    "description": "国家"
+                },
+                "createTime": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "创建时间"
+                },
+                "gender": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "性别 0女 1男 2未知"
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "数据库id"
+                },
+                "isDelete": {
+                    "type": "boolean",
+                    "description": "是否删除 0否1是"
+                },
+                "nickname": {
+                    "type": "string",
+                    "description": "昵称"
+                },
+                "officialOpenId": {
+                    "type": "string",
+                    "description": "公众号openid"
+                },
+                "openId": {
+                    "type": "string",
+                    "description": "开放平台openid"
+                },
+                "phoneNumber": {
+                    "type": "string",
+                    "description": "手机号码,如果有的话，就返回"
+                },
+                "province": {
+                    "type": "string",
+                    "description": "省"
+                },
+                "unionId": {
+                    "type": "string",
+                    "description": "同一个微信号唯一id"
+                },
+                "updateTime": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "更新时间"
+                },
+                "userId": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "用户ID,如果有在用户中心注册，则有值。否则为null"
+                }
+            },
+            "title": "UserThirdPartyWeChatVO"
+        },
+        "WeChatAccessTokenVO": {
+            "type": "object",
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                }
+            },
+            "title": "WeChatAccessTokenVO"
+        },
+        "WeChatAppletVO": {
+            "type": "object",
+            "properties": {
+                "appletOpenId": {
+                    "type": "string"
+                }
+            },
+            "title": "WeChatAppletVO"
+        },
+        "用户信息接口VO--交易组用": {
+            "type": "object",
+            "properties": {
+                "accountStatus": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "交易账号状态 0正常1冻结"
+                },
+                "assetProp": {
+                    "type": "string",
+                    "description": "资产属性(账号类型): 枚举类EnumAssetProp"
+                },
+                "chinaAccountOpenType": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "A股通状态"
+                },
+                "chineseName": {
+                    "type": "string",
+                    "description": "中文名"
+                },
+                "clientAccount": {
+                    "type": "string",
+                    "description": "恒生客户号"
+                },
+                "defineName": {
+                    "type": "string",
+                    "description": "默认姓名 大陆身份证：中文名 其他证件：英文名"
+                },
+                "englishName": {
+                    "type": "string",
+                    "description": "英文名"
+                },
+                "firstName": {
+                    "type": "string",
+                    "description": "名拼音"
+                },
+                "fundAccount": {
+                    "type": "string",
+                    "description": "资金账户"
+                },
+                "identifyType": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "开户证件类型 字典：EnumIdentifyType"
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "姓"
+                },
+                "tradeTime": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "交易时间"
+                },
+                "tradingChannel": {
+                    "type": "array",
+                    "description": "客户交易通道信息",
+                    "items": {
+                        "$ref": "#/definitions/TradingChannelAndSeatsNoRelationVO"
+                    }
+                },
+                "userId": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "客户短id"
+                },
+                "userRoleType": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "客户账户等级: 枚举【EnumRoleType】"
+                },
+                "userStatus": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "用户账号状态  0正常1冻结"
+                },
+                "userUuid": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "客户长id"
+                }
+            },
+            "title": "用户信息接口VO--交易组用"
+        },
+        "用户注册信息": {
+            "type": "object",
+            "properties": {
+                "areaCode": {
+                    "type": "string",
+                    "example": 86,
+                    "description": "区域号"
+                },
+                "captcha": {
+                    "type": "string",
+                    "example": 123456,
+                    "description": "手机验证码"
+                },
+                "invitationCode": {
+                    "type": "string",
+                    "example": 1234,
+                    "description": "邀請碼"
+                },
+                "modifyUserConfigParam": {
+                    "description": "配置初始化",
+                    "$ref": "#/definitions/ModifyUserConfigParam"
+                },
+                "openedAccount": {
+                    "type": "boolean",
+                    "description": "是否开户 0-否 1-是"
+                },
+                "password": {
+                    "type": "string",
+                    "example": "rsa",
+                    "description": "密码(单独加密)"
+                },
+                "phoneNumber": {
+                    "type": "string",
+                    "example": "rsa",
+                    "description": "手机号(单独加密)"
+                },
+                "recommendCode": {
+                    "type": "string",
+                    "example": "abcd",
+                    "description": "推荐码"
+                },
+                "source": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "来源(1.android 2.ios)"
+                },
+                "userType": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "用户类型，枚举 EnumUserType"
+                },
+                "uuid": {
+                    "type": "integer",
+                    "format": "int64",
+                    "example": 1,
+                    "description": "用户UUID，如果需要自定义UUID则传入该值"
+                }
+            },
+            "title": "用户注册信息"
+        },
+        "获取用户基本信息和账户信息": {
+            "type": "object",
+            "properties": {
+                "accountStatus": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "交易账号状态 0正常1冻结"
+                },
+                "assetProp": {
+                    "type": "string",
+                    "description": "资产属性(账号类型): 枚举类EnumAssetProp"
+                },
+                "clientAccount": {
+                    "type": "string",
+                    "description": "恒生客户号"
+                },
+                "fundAccount": {
+                    "type": "string",
+                    "description": "资金账户"
+                },
+                "userId": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "客户短id"
+                },
+                "userStatus": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "用户账号状态  0正常1冻结"
+                },
+                "userUuid": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "客户长id"
+                }
+            },
+            "title": "获取用户基本信息和账户信息"
+        },
+        "邮箱用户注册信息": {
+            "type": "object",
+            "required": [
+                "email"
+            ],
+            "properties": {
+                "areaCode": {
+                    "type": "string",
+                    "example": 86,
+                    "description": "区域号"
+                },
+                "captcha": {
+                    "type": "string",
+                    "example": 123456,
+                    "description": "邮箱验证码"
+                },
+                "email": {
+                    "type": "string",
+                    "example": "test@youxin.com",
+                    "description": "邮箱"
+                },
+                "invitationCode": {
+                    "type": "string",
+                    "example": 1234,
+                    "description": "邀請碼"
+                },
+                "modifyUserConfigParam": {
+                    "description": "配置初始化",
+                    "$ref": "#/definitions/ModifyUserConfigParam"
+                },
+                "openedAccount": {
+                    "type": "boolean",
+                    "description": "是否开户 0-否 1-是"
+                },
+                "password": {
+                    "type": "string",
+                    "example": "rsa",
+                    "description": "密码(单独加密)"
+                },
+                "phoneNumber": {
+                    "type": "string",
+                    "example": "rsa",
+                    "description": "手机号(单独加密)"
+                },
+                "recommendCode": {
+                    "type": "string",
+                    "example": "abcd",
+                    "description": "推荐码"
+                },
+                "source": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "来源(1.android 2.ios)"
+                },
+                "userType": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "用户类型，枚举 EnumUserType"
+                },
+                "uuid": {
+                    "type": "integer",
+                    "format": "int64",
+                    "example": 1,
+                    "description": "用户UUID，如果需要自定义UUID则传入该值"
+                }
+            },
+            "title": "邮箱用户注册信息"
+        }
+    }
+}

@@ -1,0 +1,3353 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "友信证券用户中心CLIENT-API"
+    },
+    "host": "admin-dev.yxzq.com",
+    "basePath": "/user-server/doc",
+    "tags": [
+        {
+            "name": "APP端，第三方应用(网页)接口",
+            "description": "Third Party Web Controller"
+        },
+        {
+            "name": "web用户信息接口",
+            "description": "Web User Controller"
+        },
+        {
+            "name": "友智独角售web信息接口",
+            "description": "YZ Unicorn Web Controller"
+        },
+        {
+            "name": "手机验证码",
+            "description": "Web Phone Controller"
+        },
+        {
+            "name": "登陆接口",
+            "description": "Web Login Controller"
+        }
+    ],
+    "paths": {
+        "/user-server/web/alipay-applet-login-by-phone/v1": {
+            "post": {
+                "tags": [
+                    "APP端，第三方应用(网页)接口"
+                ],
+                "summary": "支付宝小程序(根据传入的密文解密手机号)",
+                "operationId": "aliPayAppletLoginByPhoneUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "alipayAppletSignParam",
+                        "description": "alipayAppletSignParam",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AlipayAppletSignParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity"
+                        }
+                    },
+                    "300100": {
+                        "description": "非法请求"
+                    },
+                    "300102": {
+                        "description": "账户被冻结，无法完成操作，如非本人操作，请联系客服"
+                    },
+                    "300103": {
+                        "description": "用户被删除"
+                    },
+                    "301422": {
+                        "description": "获取支付宝小程序授权信息失败"
+                    },
+                    "301423": {
+                        "description": "支付宝小程序解密手机号失败"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/web/alipay-applet/v1": {
+            "post": {
+                "tags": [
+                    "APP端，第三方应用(网页)接口"
+                ],
+                "summary": "支付宝小程序(存储基本信息)",
+                "operationId": "aliPayAppletSignInUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "alipayAppletAuthParam",
+                        "description": "alipayAppletAuthParam",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AlipayAppletAuthParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity"
+                        }
+                    },
+                    "300100": {
+                        "description": "非法请求"
+                    },
+                    "300102": {
+                        "description": "账户被冻结，无法完成操作，如非本人操作，请联系客服"
+                    },
+                    "300103": {
+                        "description": "用户被删除"
+                    },
+                    "301422": {
+                        "description": "获取支付宝小程序授权信息失败"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/web/alipay-login-by-auth-code/v1": {
+            "get": {
+                "tags": [
+                    "APP端，第三方应用(网页)接口"
+                ],
+                "summary": "支付宝登录，根据授权code来登录系统",
+                "description": "提供给H5页面使用，页面传入授权code。如果用户已经注册，则自动登录。如果用户没用手机号码注册，则提示",
+                "operationId": "alipayLoginByAuthCodeUsingGET",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "authCode",
+                        "in": "query",
+                        "description": "authCode",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«WebLoginInfoVO»"
+                        }
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/web/check-organ-email-activate-timeout/v1": {
+            "post": {
+                "tags": [
+                    "web用户信息接口"
+                ],
+                "summary": "校验机构邮件激活链接是否超时",
+                "operationId": "black_53",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "params",
+                        "description": "params",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/OrganEmailActivateParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«OrganEmailActivateVO»"
+                        }
+                    },
+                    "300100": {
+                        "description": "非法请求"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/web/check-phone/v2": {
+            "get": {
+                "tags": [
+                    "web用户信息接口"
+                ],
+                "summary": "验证手机号是否注册(WEB)",
+                "description": "权限：不需要Token",
+                "operationId": "white_61",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "areaCode",
+                        "in": "query",
+                        "description": "areaCode",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "phoneNumber",
+                        "in": "query",
+                        "description": "phoneNumber",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserRegisterStatusVO"
+                        }
+                    },
+                    "300100": {
+                        "description": "非法请求"
+                    },
+                    "300309": {
+                        "description": "请输入正确的手机号码"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/web/check-trade-password-exist/v1": {
+            "get": {
+                "tags": [
+                    "登陆接口"
+                ],
+                "summary": "校验是否设置了交易密码",
+                "description": "权限：需要Token",
+                "operationId": "black_51",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": " * 客户端对需要加密的串str使用URLSAFE_BASE64(RSA(str))协议编码 * 其中RSA算法为：RSA/ECB/PKCS1Padding\n * 测试公钥为：MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCajLOdwFMIBQ8k3W48/e4bIj2EFc3O/T54oiLOk+KQgAknvmUHJp/1arN8g9tjAaBKPSbznTe4ZYX3VXI7VTRF7Dhi1+vCkas1OwWkdwzZWg3LOqfUORF3tFmvNOiLLzJQ6H5oLsNNZjMOr2QZrm4srzc1aX3O0BRwQhPkP/XhYwIDAQAB * 测试私钥为：MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJqMs53AUwgFDyTdbjz97hsiPYQVzc79PniiIs6T4pCACSe+ZQcmn/Vqs3yD22MBoEo9JvOdN7hlhfdVcjtVNEXsOGLX68KRqzU7BaR3DNlaDcs6p9Q5EXe0Wa806IsvMlDofmguw01mMw6vZBmubiyvNzVpfc7QFHBCE+Q/9eFjAgMBAAECgYBu5tBtPvlWI+s+FPdqJP2b0vI5uju5cNhHUHGRs2U9M+Nd9a4hd4IJZcvuaeAgJ6aSH1e4MPUvCQsc9N/H29hpxD+7wWVwnTpIIVy4rgSzkDheGZodQjqtoJTQXzqewEhb+drqtCvJTVEr28k/2q8gMXkNk9Rctlwf/D2NjE5qoQJBAOVQPNtJT0fY1fROsVURFmcM/77viz8LiN7+wl3yvFXwXt92DqSAAk034KH0pai7KGVM+Fgqvt2TjUrzUotNur8CQQCsiRT5mfgeXckOundPM3kmt6R5kCO4EbxBfqE3qki5pW4+0jGyukgbxs5vvXjr/Ut8wEji5CQpJv1aj9kBm3ZdAkBSE2sEzfN7csf5nqToHqqXDdcH3zNGyHkf361v9O6mD9fVQasyA8NPIh3bufYFM5/cyjTlUb9pDWP4HKlBxPt/AkBiuASSVDCNX2f8z2AYpwD40DaBf6GQXkVyy/t+mCYIYslTlHzvIHrFudjAQo7/p+wbMwIBIDw4d6CawpeNvd/ZAkEA29WTAl94zp0X3U6JWyqtn8Ci9jibhhbB0/vpA5igKK1zXg6ir7vk6Tp/hsi48tgYrFd6rciWt4jwpeFv7HDhTA== * URLSAFE_BASE64算法在RFC4648中有定义\n * 最终串会使用RSA公钥进行加密，之后使用RFC4648算法编码放入请求体或表单项中。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "String",
+                        "name": "password",
+                        "description": "RSA加密",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity"
+                        }
+                    },
+                    "300100": {
+                        "description": "非法请求"
+                    },
+                    "300101": {
+                        "description": "非法TOKEN"
+                    },
+                    "301001": {
+                        "description": "交易密码需为6位纯数字，请重新输入"
+                    },
+                    "301002": {
+                        "description": "错误次数过多交易密码已锁定，请%s小时后重新尝试或找回密码"
+                    },
+                    "301004": {
+                        "description": "交易服務異常"
+                    },
+                    "310104": {
+                        "description": "交易密码错误"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/web/check-trade-password/v1": {
+            "get": {
+                "tags": [
+                    "登陆接口"
+                ],
+                "summary": "校验交易密码",
+                "description": "权限：需要Token",
+                "operationId": "black_50",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": " * 客户端对需要加密的串str使用URLSAFE_BASE64(RSA(str))协议编码 * 其中RSA算法为：RSA/ECB/PKCS1Padding\n * 测试公钥为：MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCajLOdwFMIBQ8k3W48/e4bIj2EFc3O/T54oiLOk+KQgAknvmUHJp/1arN8g9tjAaBKPSbznTe4ZYX3VXI7VTRF7Dhi1+vCkas1OwWkdwzZWg3LOqfUORF3tFmvNOiLLzJQ6H5oLsNNZjMOr2QZrm4srzc1aX3O0BRwQhPkP/XhYwIDAQAB * 测试私钥为：MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJqMs53AUwgFDyTdbjz97hsiPYQVzc79PniiIs6T4pCACSe+ZQcmn/Vqs3yD22MBoEo9JvOdN7hlhfdVcjtVNEXsOGLX68KRqzU7BaR3DNlaDcs6p9Q5EXe0Wa806IsvMlDofmguw01mMw6vZBmubiyvNzVpfc7QFHBCE+Q/9eFjAgMBAAECgYBu5tBtPvlWI+s+FPdqJP2b0vI5uju5cNhHUHGRs2U9M+Nd9a4hd4IJZcvuaeAgJ6aSH1e4MPUvCQsc9N/H29hpxD+7wWVwnTpIIVy4rgSzkDheGZodQjqtoJTQXzqewEhb+drqtCvJTVEr28k/2q8gMXkNk9Rctlwf/D2NjE5qoQJBAOVQPNtJT0fY1fROsVURFmcM/77viz8LiN7+wl3yvFXwXt92DqSAAk034KH0pai7KGVM+Fgqvt2TjUrzUotNur8CQQCsiRT5mfgeXckOundPM3kmt6R5kCO4EbxBfqE3qki5pW4+0jGyukgbxs5vvXjr/Ut8wEji5CQpJv1aj9kBm3ZdAkBSE2sEzfN7csf5nqToHqqXDdcH3zNGyHkf361v9O6mD9fVQasyA8NPIh3bufYFM5/cyjTlUb9pDWP4HKlBxPt/AkBiuASSVDCNX2f8z2AYpwD40DaBf6GQXkVyy/t+mCYIYslTlHzvIHrFudjAQo7/p+wbMwIBIDw4d6CawpeNvd/ZAkEA29WTAl94zp0X3U6JWyqtn8Ci9jibhhbB0/vpA5igKK1zXg6ir7vk6Tp/hsi48tgYrFd6rciWt4jwpeFv7HDhTA== * URLSAFE_BASE64算法在RFC4648中有定义\n * 最终串会使用RSA公钥进行加密，之后使用RFC4648算法编码放入请求体或表单项中。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "String",
+                        "name": "password",
+                        "description": "RSA加密",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity"
+                        }
+                    },
+                    "300100": {
+                        "description": "非法请求"
+                    },
+                    "300101": {
+                        "description": "非法TOKEN"
+                    },
+                    "301001": {
+                        "description": "交易密码需为6位纯数字，请重新输入"
+                    },
+                    "301002": {
+                        "description": "错误次数过多交易密码已锁定，请%s小时后重新尝试或找回密码"
+                    },
+                    "301004": {
+                        "description": "交易服務異常"
+                    },
+                    "310104": {
+                        "description": "交易密码错误"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/web/check-wechat-bind/v1": {
+            "get": {
+                "tags": [
+                    "APP端，第三方应用(网页)接口"
+                ],
+                "summary": "检查当前用户是否绑定微信和关注公众号",
+                "operationId": "checkWechatBindUsingGET",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity"
+                        }
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/web/get-current-user/v1": {
+            "get": {
+                "tags": [
+                    "web用户信息接口"
+                ],
+                "summary": "获取当前用户信息",
+                "description": "权限：需要Token",
+                "operationId": "black_54",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": " * 客户端对需要加密的串str使用URLSAFE_BASE64(RSA(str))协议编码 * 其中RSA算法为：RSA/ECB/PKCS1Padding\n * 测试公钥为：MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCajLOdwFMIBQ8k3W48/e4bIj2EFc3O/T54oiLOk+KQgAknvmUHJp/1arN8g9tjAaBKPSbznTe4ZYX3VXI7VTRF7Dhi1+vCkas1OwWkdwzZWg3LOqfUORF3tFmvNOiLLzJQ6H5oLsNNZjMOr2QZrm4srzc1aX3O0BRwQhPkP/XhYwIDAQAB * 测试私钥为：MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJqMs53AUwgFDyTdbjz97hsiPYQVzc79PniiIs6T4pCACSe+ZQcmn/Vqs3yD22MBoEo9JvOdN7hlhfdVcjtVNEXsOGLX68KRqzU7BaR3DNlaDcs6p9Q5EXe0Wa806IsvMlDofmguw01mMw6vZBmubiyvNzVpfc7QFHBCE+Q/9eFjAgMBAAECgYBu5tBtPvlWI+s+FPdqJP2b0vI5uju5cNhHUHGRs2U9M+Nd9a4hd4IJZcvuaeAgJ6aSH1e4MPUvCQsc9N/H29hpxD+7wWVwnTpIIVy4rgSzkDheGZodQjqtoJTQXzqewEhb+drqtCvJTVEr28k/2q8gMXkNk9Rctlwf/D2NjE5qoQJBAOVQPNtJT0fY1fROsVURFmcM/77viz8LiN7+wl3yvFXwXt92DqSAAk034KH0pai7KGVM+Fgqvt2TjUrzUotNur8CQQCsiRT5mfgeXckOundPM3kmt6R5kCO4EbxBfqE3qki5pW4+0jGyukgbxs5vvXjr/Ut8wEji5CQpJv1aj9kBm3ZdAkBSE2sEzfN7csf5nqToHqqXDdcH3zNGyHkf361v9O6mD9fVQasyA8NPIh3bufYFM5/cyjTlUb9pDWP4HKlBxPt/AkBiuASSVDCNX2f8z2AYpwD40DaBf6GQXkVyy/t+mCYIYslTlHzvIHrFudjAQo7/p+wbMwIBIDw4d6CawpeNvd/ZAkEA29WTAl94zp0X3U6JWyqtn8Ci9jibhhbB0/vpA5igKK1zXg6ir7vk6Tp/hsi48tgYrFd6rciWt4jwpeFv7HDhTA== * URLSAFE_BASE64算法在RFC4648中有定义\n * 最终串会使用RSA公钥进行加密，之后使用RFC4648算法编码放入请求体或表单项中。",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/WebUserInfoVO"
+                        }
+                    },
+                    "300100": {
+                        "description": "非法请求"
+                    },
+                    "300101": {
+                        "description": "非法TOKEN"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/web/get-trade-password-token/v1": {
+            "get": {
+                "tags": [
+                    "登陆接口"
+                ],
+                "summary": "获取用户交易密码临时认证token",
+                "description": "权限：需要Token",
+                "operationId": "black_52",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": " * 客户端对需要加密的串str使用URLSAFE_BASE64(RSA(str))协议编码 * 其中RSA算法为：RSA/ECB/PKCS1Padding\n * 测试公钥为：MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCajLOdwFMIBQ8k3W48/e4bIj2EFc3O/T54oiLOk+KQgAknvmUHJp/1arN8g9tjAaBKPSbznTe4ZYX3VXI7VTRF7Dhi1+vCkas1OwWkdwzZWg3LOqfUORF3tFmvNOiLLzJQ6H5oLsNNZjMOr2QZrm4srzc1aX3O0BRwQhPkP/XhYwIDAQAB * 测试私钥为：MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJqMs53AUwgFDyTdbjz97hsiPYQVzc79PniiIs6T4pCACSe+ZQcmn/Vqs3yD22MBoEo9JvOdN7hlhfdVcjtVNEXsOGLX68KRqzU7BaR3DNlaDcs6p9Q5EXe0Wa806IsvMlDofmguw01mMw6vZBmubiyvNzVpfc7QFHBCE+Q/9eFjAgMBAAECgYBu5tBtPvlWI+s+FPdqJP2b0vI5uju5cNhHUHGRs2U9M+Nd9a4hd4IJZcvuaeAgJ6aSH1e4MPUvCQsc9N/H29hpxD+7wWVwnTpIIVy4rgSzkDheGZodQjqtoJTQXzqewEhb+drqtCvJTVEr28k/2q8gMXkNk9Rctlwf/D2NjE5qoQJBAOVQPNtJT0fY1fROsVURFmcM/77viz8LiN7+wl3yvFXwXt92DqSAAk034KH0pai7KGVM+Fgqvt2TjUrzUotNur8CQQCsiRT5mfgeXckOundPM3kmt6R5kCO4EbxBfqE3qki5pW4+0jGyukgbxs5vvXjr/Ut8wEji5CQpJv1aj9kBm3ZdAkBSE2sEzfN7csf5nqToHqqXDdcH3zNGyHkf361v9O6mD9fVQasyA8NPIh3bufYFM5/cyjTlUb9pDWP4HKlBxPt/AkBiuASSVDCNX2f8z2AYpwD40DaBf6GQXkVyy/t+mCYIYslTlHzvIHrFudjAQo7/p+wbMwIBIDw4d6CawpeNvd/ZAkEA29WTAl94zp0X3U6JWyqtn8Ci9jibhhbB0/vpA5igKK1zXg6ir7vk6Tp/hsi48tgYrFd6rciWt4jwpeFv7HDhTA== * URLSAFE_BASE64算法在RFC4648中有定义\n * 最终串会使用RSA公钥进行加密，之后使用RFC4648算法编码放入请求体或表单项中。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "String",
+                        "name": "password",
+                        "description": "RSA加密",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity"
+                        }
+                    },
+                    "300100": {
+                        "description": "非法请求"
+                    },
+                    "300101": {
+                        "description": "非法TOKEN"
+                    },
+                    "301001": {
+                        "description": "交易密码需为6位纯数字，请重新输入"
+                    },
+                    "301002": {
+                        "description": "错误次数过多交易密码已锁定，请%s小时后重新尝试或找回密码"
+                    },
+                    "301004": {
+                        "description": "交易服務異常"
+                    },
+                    "310104": {
+                        "description": "交易密码错误"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/web/ipad-captcha-register-login/v1": {
+            "post": {
+                "tags": [
+                    "登陆接口"
+                ],
+                "summary": "ipad短信验证码注册",
+                "description": "权限：不需要Token",
+                "operationId": "white_50",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "X-Re",
+                        "in": "header",
+                        "description": "注册营销信息",
+                        "required": false,
+                        "type": "string",
+                        "x-example": "{\"key\":\"value\"}"
+                    },
+                    {
+                        "name": "X-Uid",
+                        "in": "header",
+                        "description": "注册UUID",
+                        "required": true,
+                        "type": "string",
+                        "x-example": "123456"
+                    },
+                    {
+                        "in": "body",
+                        "name": "ipadCaptchaLoginParams",
+                        "description": "ipadCaptchaLoginParams",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/IpadCaptchaLoginParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/WebLoginInfoVO"
+                        }
+                    },
+                    "300100": {
+                        "description": "非法请求"
+                    },
+                    "300304": {
+                        "description": "验证次数过多，请稍后重试"
+                    },
+                    "300305": {
+                        "description": "抱歉，验证码已过期，请重新获取"
+                    },
+                    "300309": {
+                        "description": "请输入正确的手机号码"
+                    },
+                    "300701": {
+                        "description": "该手机号没有注册"
+                    },
+                    "300800": {
+                        "description": "短信验证码不正确，请重新输入"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/web/js-auth/v1": {
+            "get": {
+                "tags": [
+                    "APP端，第三方应用(网页)接口"
+                ],
+                "summary": "H5微信分享获取授权",
+                "operationId": "weChatJsAuthUsingGET",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Referer",
+                        "in": "header",
+                        "description": "Referer",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "realUrl",
+                        "in": "query",
+                        "description": "realUrl",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«JsTicketVO»"
+                        }
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/web/login/v1": {
+            "post": {
+                "tags": [
+                    "登陆接口"
+                ],
+                "summary": "H5登陆",
+                "description": "权限：不需要Token",
+                "operationId": "white_51",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "webLoginParams",
+                        "description": "webLoginParams",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/WebLoginParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/WebLoginInfoVO"
+                        }
+                    },
+                    "300100": {
+                        "description": "非法请求"
+                    },
+                    "300102": {
+                        "description": "账户被冻结，无法完成操作，如非本人操作，请联系客服"
+                    },
+                    "300103": {
+                        "description": "用户被删除"
+                    },
+                    "300309": {
+                        "description": "请输入正确的手机号码"
+                    },
+                    "300701": {
+                        "description": "该手机号没有注册"
+                    },
+                    "300702": {
+                        "description": "密码错误次数过多帐号已锁定，请%s分钟后重新登录或找回密码"
+                    },
+                    "300703": {
+                        "description": "密码错误，请重新输入，您还可以尝试%s次"
+                    },
+                    "300809": {
+                        "description": "需要校验手机短信验证码"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/web/logout/v1": {
+            "get": {
+                "tags": [
+                    "登陆接口"
+                ],
+                "summary": "官网用户登出",
+                "description": "权限：需要Token",
+                "operationId": "white_52",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": " * 客户端对需要加密的串str使用URLSAFE_BASE64(RSA(str))协议编码 * 其中RSA算法为：RSA/ECB/PKCS1Padding\n * 测试公钥为：MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCajLOdwFMIBQ8k3W48/e4bIj2EFc3O/T54oiLOk+KQgAknvmUHJp/1arN8g9tjAaBKPSbznTe4ZYX3VXI7VTRF7Dhi1+vCkas1OwWkdwzZWg3LOqfUORF3tFmvNOiLLzJQ6H5oLsNNZjMOr2QZrm4srzc1aX3O0BRwQhPkP/XhYwIDAQAB * 测试私钥为：MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJqMs53AUwgFDyTdbjz97hsiPYQVzc79PniiIs6T4pCACSe+ZQcmn/Vqs3yD22MBoEo9JvOdN7hlhfdVcjtVNEXsOGLX68KRqzU7BaR3DNlaDcs6p9Q5EXe0Wa806IsvMlDofmguw01mMw6vZBmubiyvNzVpfc7QFHBCE+Q/9eFjAgMBAAECgYBu5tBtPvlWI+s+FPdqJP2b0vI5uju5cNhHUHGRs2U9M+Nd9a4hd4IJZcvuaeAgJ6aSH1e4MPUvCQsc9N/H29hpxD+7wWVwnTpIIVy4rgSzkDheGZodQjqtoJTQXzqewEhb+drqtCvJTVEr28k/2q8gMXkNk9Rctlwf/D2NjE5qoQJBAOVQPNtJT0fY1fROsVURFmcM/77viz8LiN7+wl3yvFXwXt92DqSAAk034KH0pai7KGVM+Fgqvt2TjUrzUotNur8CQQCsiRT5mfgeXckOundPM3kmt6R5kCO4EbxBfqE3qki5pW4+0jGyukgbxs5vvXjr/Ut8wEji5CQpJv1aj9kBm3ZdAkBSE2sEzfN7csf5nqToHqqXDdcH3zNGyHkf361v9O6mD9fVQasyA8NPIh3bufYFM5/cyjTlUb9pDWP4HKlBxPt/AkBiuASSVDCNX2f8z2AYpwD40DaBf6GQXkVyy/t+mCYIYslTlHzvIHrFudjAQo7/p+wbMwIBIDw4d6CawpeNvd/ZAkEA29WTAl94zp0X3U6JWyqtn8Ci9jibhhbB0/vpA5igKK1zXg6ir7vk6Tp/hsi48tgYrFd6rciWt4jwpeFv7HDhTA== * URLSAFE_BASE64算法在RFC4648中有定义\n * 最终串会使用RSA公钥进行加密，之后使用RFC4648算法编码放入请求体或表单项中。",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity"
+                        }
+                    },
+                    "300100": {
+                        "description": "非法请求"
+                    },
+                    "300101": {
+                        "description": "非法TOKEN"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/web/org-email-captcha-login/v1": {
+            "post": {
+                "tags": [
+                    "登陆接口"
+                ],
+                "summary": "机构用户新设备邮箱验证码登录",
+                "description": "权限：不需要Token",
+                "operationId": "white_53",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "emailCaptchaLoginParams",
+                        "description": "emailCaptchaLoginParams",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/EmailCaptchaLoginParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/LoginInfoVO"
+                        }
+                    },
+                    "300100": {
+                        "description": "非法请求"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/web/org-email-verify-login/v1": {
+            "post": {
+                "tags": [
+                    "登陆接口"
+                ],
+                "summary": "机构用户邮箱校验",
+                "description": "权限：不需要Token",
+                "operationId": "white_54",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "orgEmailLoginParams",
+                        "description": "orgEmailLoginParams",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/OrgEmailLoginParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/LoginInfoVO"
+                        }
+                    },
+                    "300100": {
+                        "description": "非法请求"
+                    },
+                    "304001": {
+                        "description": "您尚未注册机构客户,请联系客服完成注册"
+                    },
+                    "304002": {
+                        "description": "贵公司资料尚未审核成功，审核通过后可通过APP登陆"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/web/phone-captcha-activate-login/v1": {
+            "post": {
+                "tags": [
+                    "登陆接口"
+                ],
+                "summary": "短信验证码+证件号激活登陆",
+                "description": "权限：不需要Token",
+                "operationId": "white_55",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "X-Re",
+                        "in": "header",
+                        "description": "注册营销信息",
+                        "required": false,
+                        "type": "string",
+                        "x-example": "{\"key\":\"value\"}"
+                    },
+                    {
+                        "name": "X-Uid",
+                        "in": "header",
+                        "description": "注册UUID",
+                        "required": true,
+                        "type": "string",
+                        "x-example": "123456"
+                    },
+                    {
+                        "in": "body",
+                        "name": "phoneCaptchaActivateParams",
+                        "description": "phoneCaptchaActivateParams",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/PhoneCaptchaActivateParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/WebLoginInfoVO"
+                        }
+                    },
+                    "300100": {
+                        "description": "非法请求"
+                    },
+                    "300304": {
+                        "description": "验证次数过多，请稍后重试"
+                    },
+                    "300305": {
+                        "description": "抱歉，验证码已过期，请重新获取"
+                    },
+                    "300309": {
+                        "description": "请输入正确的手机号码"
+                    },
+                    "300701": {
+                        "description": "该手机号没有注册"
+                    },
+                    "300800": {
+                        "description": "短信验证码不正确，请重新输入"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/web/send-email-captcha/v1": {
+            "post": {
+                "tags": [
+                    "登陆接口"
+                ],
+                "summary": "获取邮箱验证码(用户输入邮箱)",
+                "description": "邮箱",
+                "operationId": "white_57",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "emailCaptchaParams",
+                        "description": "emailCaptchaParams",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/EmailCaptchaParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity"
+                        }
+                    },
+                    "300100": {
+                        "description": "非法请求"
+                    },
+                    "300101": {
+                        "description": "非法TOKEN"
+                    },
+                    "300302": {
+                        "description": "验证码刚刚已发送，请稍等1分钟重新获取"
+                    },
+                    "300303": {
+                        "description": "抱歉，验证码发送失败，请稍后重试"
+                    },
+                    "300309": {
+                        "description": "请输入正确的手机号码"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/web/send-phone-captcha/v1": {
+            "post": {
+                "tags": [
+                    "手机验证码"
+                ],
+                "summary": "获取手机验证码(用户输入手机号)",
+                "operationId": "white_59",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "phoneCaptchaParams",
+                        "description": "phoneCaptchaParams",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/PhoneCaptchaParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity"
+                        }
+                    },
+                    "300100": {
+                        "description": "非法请求"
+                    },
+                    "300101": {
+                        "description": "非法TOKEN"
+                    },
+                    "300302": {
+                        "description": "验证码刚刚已发送，请稍等1分钟重新获取"
+                    },
+                    "300303": {
+                        "description": "抱歉，验证码发送失败，请稍后重试"
+                    },
+                    "300309": {
+                        "description": "请输入正确的手机号码"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/web/send-phone-captcha/v2": {
+            "post": {
+                "tags": [
+                    "手机验证码"
+                ],
+                "summary": "获取手机验证码(用户输入手机号)---带图形验证码判断",
+                "description": "手机号(WEB不加密)",
+                "operationId": "white_60",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "phoneGraphCaptchaParams",
+                        "description": "phoneGraphCaptchaParams",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/PhoneGraphCaptchaParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity"
+                        }
+                    },
+                    "300100": {
+                        "description": "非法请求"
+                    },
+                    "300101": {
+                        "description": "非法TOKEN"
+                    },
+                    "300302": {
+                        "description": "验证码刚刚已发送，请稍等1分钟重新获取"
+                    },
+                    "300303": {
+                        "description": "抱歉，验证码发送失败，请稍后重试"
+                    },
+                    "300309": {
+                        "description": "请输入正确的手机号码"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/web/set-organ-email-login-password/v1": {
+            "post": {
+                "tags": [
+                    "web用户信息接口"
+                ],
+                "summary": "设置机构用户邮箱登陆密码",
+                "operationId": "black_57",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "emailLoginPasswordParams",
+                        "description": "emailLoginPasswordParams",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/OrganEmailLoginPasswordParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity"
+                        }
+                    },
+                    "300100": {
+                        "description": "非法请求"
+                    },
+                    "300801": {
+                        "description": "密码长度不能小于8位"
+                    },
+                    "300802": {
+                        "description": "密码长度不能大于24位"
+                    },
+                    "300803": {
+                        "description": "密码不能为纯数字/字母/符号"
+                    },
+                    "300804": {
+                        "description": "请设置正确密码，8~24位数字/字母/符号组合"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/web/third-party-web-sign-in/v1": {
+            "post": {
+                "tags": [
+                    "登陆接口"
+                ],
+                "summary": "H5 注册（手机号+第三方ID）",
+                "description": "权限：不需要Token",
+                "operationId": "white_58",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "X-Re",
+                        "in": "header",
+                        "description": "注册营销信息",
+                        "required": false,
+                        "type": "string",
+                        "x-example": "{\"key\":\"value\"}"
+                    },
+                    {
+                        "name": "X-Uid",
+                        "in": "header",
+                        "description": "注册UUID",
+                        "required": true,
+                        "type": "string",
+                        "x-example": "123456"
+                    },
+                    {
+                        "in": "body",
+                        "name": "webThirdPartySignInParams",
+                        "description": "webThirdPartySignInParams",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/WebThirdPartySignInParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/WebLoginInfoVO"
+                        }
+                    },
+                    "300100": {
+                        "description": "非法请求"
+                    },
+                    "300304": {
+                        "description": "验证次数过多，请稍后重试"
+                    },
+                    "300305": {
+                        "description": "抱歉，验证码已过期，请重新获取"
+                    },
+                    "300309": {
+                        "description": "请输入正确的手机号码"
+                    },
+                    "300800": {
+                        "description": "短信验证码不正确，请重新输入"
+                    },
+                    "300801": {
+                        "description": "密码长度不能小于8位"
+                    },
+                    "300802": {
+                        "description": "密码长度不能大于24位"
+                    },
+                    "300803": {
+                        "description": "密码不能为纯数字/字母/符号"
+                    },
+                    "300804": {
+                        "description": "请设置正确密码，8~24位数字/字母/符号组合"
+                    },
+                    "300810": {
+                        "description": "手机号已注册请登录"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/web/user-info-and-name-get/v1": {
+            "get": {
+                "tags": [
+                    "web用户信息接口"
+                ],
+                "summary": "获取用户基本信息和姓名信息",
+                "description": "权限：需要Token",
+                "operationId": "black_55",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": " * 客户端对需要加密的串str使用URLSAFE_BASE64(RSA(str))协议编码 * 其中RSA算法为：RSA/ECB/PKCS1Padding\n * 测试公钥为：MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCajLOdwFMIBQ8k3W48/e4bIj2EFc3O/T54oiLOk+KQgAknvmUHJp/1arN8g9tjAaBKPSbznTe4ZYX3VXI7VTRF7Dhi1+vCkas1OwWkdwzZWg3LOqfUORF3tFmvNOiLLzJQ6H5oLsNNZjMOr2QZrm4srzc1aX3O0BRwQhPkP/XhYwIDAQAB * 测试私钥为：MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJqMs53AUwgFDyTdbjz97hsiPYQVzc79PniiIs6T4pCACSe+ZQcmn/Vqs3yD22MBoEo9JvOdN7hlhfdVcjtVNEXsOGLX68KRqzU7BaR3DNlaDcs6p9Q5EXe0Wa806IsvMlDofmguw01mMw6vZBmubiyvNzVpfc7QFHBCE+Q/9eFjAgMBAAECgYBu5tBtPvlWI+s+FPdqJP2b0vI5uju5cNhHUHGRs2U9M+Nd9a4hd4IJZcvuaeAgJ6aSH1e4MPUvCQsc9N/H29hpxD+7wWVwnTpIIVy4rgSzkDheGZodQjqtoJTQXzqewEhb+drqtCvJTVEr28k/2q8gMXkNk9Rctlwf/D2NjE5qoQJBAOVQPNtJT0fY1fROsVURFmcM/77viz8LiN7+wl3yvFXwXt92DqSAAk034KH0pai7KGVM+Fgqvt2TjUrzUotNur8CQQCsiRT5mfgeXckOundPM3kmt6R5kCO4EbxBfqE3qki5pW4+0jGyukgbxs5vvXjr/Ut8wEji5CQpJv1aj9kBm3ZdAkBSE2sEzfN7csf5nqToHqqXDdcH3zNGyHkf361v9O6mD9fVQasyA8NPIh3bufYFM5/cyjTlUb9pDWP4HKlBxPt/AkBiuASSVDCNX2f8z2AYpwD40DaBf6GQXkVyy/t+mCYIYslTlHzvIHrFudjAQo7/p+wbMwIBIDw4d6CawpeNvd/ZAkEA29WTAl94zp0X3U6JWyqtn8Ci9jibhhbB0/vpA5igKK1zXg6ir7vk6Tp/hsi48tgYrFd6rciWt4jwpeFv7HDhTA== * URLSAFE_BASE64算法在RFC4648中有定义\n * 最终串会使用RSA公钥进行加密，之后使用RFC4648算法编码放入请求体或表单项中。",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserInfoAndNameVO"
+                        }
+                    },
+                    "300100": {
+                        "description": "非法请求"
+                    },
+                    "300101": {
+                        "description": "非法TOKEN"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/web/user-info-for-open-api-apply/v1": {
+            "get": {
+                "tags": [
+                    "web用户信息接口"
+                ],
+                "summary": "获取用户基本信息，用于官网申请openApi",
+                "description": "权限：需要Token",
+                "operationId": "black_56",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": " * 客户端对需要加密的串str使用URLSAFE_BASE64(RSA(str))协议编码 * 其中RSA算法为：RSA/ECB/PKCS1Padding\n * 测试公钥为：MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCajLOdwFMIBQ8k3W48/e4bIj2EFc3O/T54oiLOk+KQgAknvmUHJp/1arN8g9tjAaBKPSbznTe4ZYX3VXI7VTRF7Dhi1+vCkas1OwWkdwzZWg3LOqfUORF3tFmvNOiLLzJQ6H5oLsNNZjMOr2QZrm4srzc1aX3O0BRwQhPkP/XhYwIDAQAB * 测试私钥为：MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJqMs53AUwgFDyTdbjz97hsiPYQVzc79PniiIs6T4pCACSe+ZQcmn/Vqs3yD22MBoEo9JvOdN7hlhfdVcjtVNEXsOGLX68KRqzU7BaR3DNlaDcs6p9Q5EXe0Wa806IsvMlDofmguw01mMw6vZBmubiyvNzVpfc7QFHBCE+Q/9eFjAgMBAAECgYBu5tBtPvlWI+s+FPdqJP2b0vI5uju5cNhHUHGRs2U9M+Nd9a4hd4IJZcvuaeAgJ6aSH1e4MPUvCQsc9N/H29hpxD+7wWVwnTpIIVy4rgSzkDheGZodQjqtoJTQXzqewEhb+drqtCvJTVEr28k/2q8gMXkNk9Rctlwf/D2NjE5qoQJBAOVQPNtJT0fY1fROsVURFmcM/77viz8LiN7+wl3yvFXwXt92DqSAAk034KH0pai7KGVM+Fgqvt2TjUrzUotNur8CQQCsiRT5mfgeXckOundPM3kmt6R5kCO4EbxBfqE3qki5pW4+0jGyukgbxs5vvXjr/Ut8wEji5CQpJv1aj9kBm3ZdAkBSE2sEzfN7csf5nqToHqqXDdcH3zNGyHkf361v9O6mD9fVQasyA8NPIh3bufYFM5/cyjTlUb9pDWP4HKlBxPt/AkBiuASSVDCNX2f8z2AYpwD40DaBf6GQXkVyy/t+mCYIYslTlHzvIHrFudjAQo7/p+wbMwIBIDw4d6CawpeNvd/ZAkEA29WTAl94zp0X3U6JWyqtn8Ci9jibhhbB0/vpA5igKK1zXg6ir7vk6Tp/hsi48tgYrFd6rciWt4jwpeFv7HDhTA== * URLSAFE_BASE64算法在RFC4648中有定义\n * 最终串会使用RSA公钥进行加密，之后使用RFC4648算法编码放入请求体或表单项中。",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserInfoForOpenApiApplyVO"
+                        }
+                    },
+                    "300100": {
+                        "description": "非法请求"
+                    },
+                    "300101": {
+                        "description": "非法TOKEN"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/web/web-register-login/v1": {
+            "post": {
+                "tags": [
+                    "登陆接口"
+                ],
+                "summary": "H5 短信验证码注册登陆",
+                "description": "权限：不需要Token",
+                "operationId": "white_56",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "X-Re",
+                        "in": "header",
+                        "description": "注册营销信息",
+                        "required": false,
+                        "type": "string",
+                        "x-example": "{\"key\":\"value\"}"
+                    },
+                    {
+                        "name": "X-Uid",
+                        "in": "header",
+                        "description": "注册UUID",
+                        "required": true,
+                        "type": "string",
+                        "x-example": "123456"
+                    },
+                    {
+                        "in": "body",
+                        "name": "webPhoneCaptchaLoginParams",
+                        "description": "webPhoneCaptchaLoginParams",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/WebPhoneCaptchaLoginParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/WebLoginInfoVO"
+                        }
+                    },
+                    "300100": {
+                        "description": "非法请求"
+                    },
+                    "300304": {
+                        "description": "验证次数过多，请稍后重试"
+                    },
+                    "300305": {
+                        "description": "抱歉，验证码已过期，请重新获取"
+                    },
+                    "300309": {
+                        "description": "请输入正确的手机号码"
+                    },
+                    "300408": {
+                        "description": "邮箱格式不正确"
+                    },
+                    "300701": {
+                        "description": "该手机号没有注册"
+                    },
+                    "300800": {
+                        "description": "短信验证码不正确，请重新输入"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/web/wechat-applet-get-openid/v1": {
+            "post": {
+                "tags": [
+                    "APP端，第三方应用(网页)接口"
+                ],
+                "summary": "微信小程序(根据code获取openId)",
+                "description": "用户授权后调用",
+                "operationId": "white_48",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "X-Uid",
+                        "in": "header",
+                        "description": "注册UUID",
+                        "required": true,
+                        "type": "string",
+                        "x-example": "123456"
+                    },
+                    {
+                        "in": "body",
+                        "name": "weChatAppletSignInParams",
+                        "description": "weChatAppletSignInParams",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/WeChatAppletSignInParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/LoginInfoVO"
+                        }
+                    },
+                    "300100": {
+                        "description": "非法请求"
+                    },
+                    "300805": {
+                        "description": "获取微信小程序授权信息失败"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/web/wechat-applet-login-by-phone-captcha/v1": {
+            "post": {
+                "tags": [
+                    "APP端，第三方应用(网页)接口"
+                ],
+                "summary": "港版股神擂台小程序-通过验证码注册",
+                "operationId": "weChatAppletLoginByPhoneCaptchaUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "appletPhoneCaptchaLoginParams",
+                        "description": "appletPhoneCaptchaLoginParams",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AppletPhoneCaptchaLoginParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity"
+                        }
+                    },
+                    "300100": {
+                        "description": "非法请求"
+                    },
+                    "300805": {
+                        "description": "获取微信小程序授权信息失败"
+                    },
+                    "300811": {
+                        "description": "未获取到用户的SessionKey"
+                    },
+                    "300812": {
+                        "description": "手机号解密失败"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/web/wechat-applet-login-by-phone-for-stock-market/v1": {
+            "post": {
+                "tags": [
+                    "APP端，第三方应用(网页)接口"
+                ],
+                "summary": "微信小程序（根据传入的手机号解密并注册登录）-- 股神擂台专用",
+                "operationId": "weChatAppletLoginByPhoneForStockMarketUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "weChatAppletSignInParams",
+                        "description": "weChatAppletSignInParams",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/WeChatAppletSignInParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity"
+                        }
+                    },
+                    "300100": {
+                        "description": "非法请求"
+                    },
+                    "300805": {
+                        "description": "获取微信小程序授权信息失败"
+                    },
+                    "300811": {
+                        "description": "未获取到用户的SessionKey"
+                    },
+                    "300812": {
+                        "description": "手机号解密失败"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/web/wechat-applet-login-by-phone/v1": {
+            "post": {
+                "tags": [
+                    "APP端，第三方应用(网页)接口"
+                ],
+                "summary": "微信小程序（根据传入的手机号解密并注册登录）",
+                "operationId": "weChatAppletLoginByPhoneUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "weChatAppletSignInParams",
+                        "description": "weChatAppletSignInParams",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/WeChatAppletSignInParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity"
+                        }
+                    },
+                    "300100": {
+                        "description": "非法请求"
+                    },
+                    "300805": {
+                        "description": "获取微信小程序授权信息失败"
+                    },
+                    "300811": {
+                        "description": "未获取到用户的SessionKey"
+                    },
+                    "300812": {
+                        "description": "手机号解密失败"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/web/wechat-applet/v1/": {
+            "post": {
+                "tags": [
+                    "APP端，第三方应用(网页)接口"
+                ],
+                "summary": "微信小程序(根据code获取用户基本信息)",
+                "description": "用户授权后调用",
+                "operationId": "white_47",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "X-Uid",
+                        "in": "header",
+                        "description": "注册UUID",
+                        "required": true,
+                        "type": "string",
+                        "x-example": "123456"
+                    },
+                    {
+                        "in": "body",
+                        "name": "weChatAppletSignInParams",
+                        "description": "weChatAppletSignInParams",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/WeChatAppletSignInParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/LoginInfoVO"
+                        }
+                    },
+                    "300100": {
+                        "description": "非法请求"
+                    },
+                    "300102": {
+                        "description": "账户被冻结，无法完成操作，如非本人操作，请联系客服"
+                    },
+                    "300103": {
+                        "description": "用户被删除"
+                    },
+                    "300805": {
+                        "description": "获取微信小程序授权信息失败"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/web/wechat-bind-phone-number/v1": {
+            "post": {
+                "tags": [
+                    "登陆接口"
+                ],
+                "summary": "微信用户从公众号绑定手机号码",
+                "description": "权限：不需要Token",
+                "operationId": "white_49",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "params",
+                        "description": "params",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/WechatBindPhoneNumberParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity"
+                        }
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/web/wechat-login-by-auth-code/v1": {
+            "get": {
+                "tags": [
+                    "APP端，第三方应用(网页)接口"
+                ],
+                "summary": "微信登录，根据授权code来登录系统",
+                "description": "提供给H5页面使用，页面传入授权code。如果用户已经注册，则自动登录。如果用户没用手机号码注册，则提示",
+                "operationId": "wechatLoginByAuthCodeUsingGET",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "query",
+                        "description": "code",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«WeChatUserInfoVO»"
+                        }
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/web/weibo-login/v1": {
+            "get": {
+                "tags": [
+                    "APP端，第三方应用(网页)接口"
+                ],
+                "summary": "微博登录，根据授权code来登录系统 ",
+                "operationId": "weiboLoginByAuthCodeUsingGET",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Referer",
+                        "in": "header",
+                        "description": "Referer",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "code",
+                        "in": "query",
+                        "description": "code",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "realUrl",
+                        "in": "query",
+                        "description": "realUrl",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity«WeiboUserInfoAuthVO»"
+                        }
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/web/yz-unicorn-check-token-is-effective/v1": {
+            "post": {
+                "tags": [
+                    "友智独角售web信息接口"
+                ],
+                "summary": "检测token是否有效，从请求头中获取",
+                "description": "权限：需要Token",
+                "operationId": "white_62",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": " * 客户端对需要加密的串str使用URLSAFE_BASE64(RSA(str))协议编码 * 其中RSA算法为：RSA/ECB/PKCS1Padding\n * 测试公钥为：MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCajLOdwFMIBQ8k3W48/e4bIj2EFc3O/T54oiLOk+KQgAknvmUHJp/1arN8g9tjAaBKPSbznTe4ZYX3VXI7VTRF7Dhi1+vCkas1OwWkdwzZWg3LOqfUORF3tFmvNOiLLzJQ6H5oLsNNZjMOr2QZrm4srzc1aX3O0BRwQhPkP/XhYwIDAQAB * 测试私钥为：MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJqMs53AUwgFDyTdbjz97hsiPYQVzc79PniiIs6T4pCACSe+ZQcmn/Vqs3yD22MBoEo9JvOdN7hlhfdVcjtVNEXsOGLX68KRqzU7BaR3DNlaDcs6p9Q5EXe0Wa806IsvMlDofmguw01mMw6vZBmubiyvNzVpfc7QFHBCE+Q/9eFjAgMBAAECgYBu5tBtPvlWI+s+FPdqJP2b0vI5uju5cNhHUHGRs2U9M+Nd9a4hd4IJZcvuaeAgJ6aSH1e4MPUvCQsc9N/H29hpxD+7wWVwnTpIIVy4rgSzkDheGZodQjqtoJTQXzqewEhb+drqtCvJTVEr28k/2q8gMXkNk9Rctlwf/D2NjE5qoQJBAOVQPNtJT0fY1fROsVURFmcM/77viz8LiN7+wl3yvFXwXt92DqSAAk034KH0pai7KGVM+Fgqvt2TjUrzUotNur8CQQCsiRT5mfgeXckOundPM3kmt6R5kCO4EbxBfqE3qki5pW4+0jGyukgbxs5vvXjr/Ut8wEji5CQpJv1aj9kBm3ZdAkBSE2sEzfN7csf5nqToHqqXDdcH3zNGyHkf361v9O6mD9fVQasyA8NPIh3bufYFM5/cyjTlUb9pDWP4HKlBxPt/AkBiuASSVDCNX2f8z2AYpwD40DaBf6GQXkVyy/t+mCYIYslTlHzvIHrFudjAQo7/p+wbMwIBIDw4d6CawpeNvd/ZAkEA29WTAl94zp0X3U6JWyqtn8Ci9jibhhbB0/vpA5igKK1zXg6ir7vk6Tp/hsi48tgYrFd6rciWt4jwpeFv7HDhTA== * URLSAFE_BASE64算法在RFC4648中有定义\n * 最终串会使用RSA公钥进行加密，之后使用RFC4648算法编码放入请求体或表单项中。",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity"
+                        }
+                    },
+                    "300100": {
+                        "description": "非法请求"
+                    },
+                    "300101": {
+                        "description": "非法TOKEN"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        },
+        "/user-server/web/yz-unicorn-login-with-captcha/v1": {
+            "post": {
+                "tags": [
+                    "友智独角售web信息接口"
+                ],
+                "summary": "验证码登录接口",
+                "description": "权限：不需要Token",
+                "operationId": "white_63",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "params",
+                        "description": "params",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/WebPhoneCaptchaLoginParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "成功"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/UserResponseEntity"
+                        }
+                    },
+                    "300100": {
+                        "description": "非法请求"
+                    },
+                    "300101": {
+                        "description": "非法TOKEN"
+                    }
+                },
+                "deprecated": false,
+                "x-order": "2147483647"
+            }
+        }
+    },
+    "definitions": {
+        "AlipayAppletAuthParam": {
+            "type": "object",
+            "required": [
+                "appletType",
+                "authCode",
+                "silentLogin"
+            ],
+            "properties": {
+                "appletType": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "小程序类型 101-股票红包"
+                },
+                "authCode": {
+                    "type": "string",
+                    "example": 11,
+                    "description": "支付宝code"
+                },
+                "avatar": {
+                    "type": "string",
+                    "description": "用户头像"
+                },
+                "nickName": {
+                    "type": "string",
+                    "description": "用户昵称"
+                },
+                "silentLogin": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": " 1 - 静默授权 2-手动授权"
+                }
+            },
+            "title": "AlipayAppletAuthParam"
+        },
+        "AlipayAppletSignParam": {
+            "type": "object",
+            "required": [
+                "alipayUserId",
+                "appletType",
+                "encryptedData"
+            ],
+            "properties": {
+                "alipayUserId": {
+                    "type": "string",
+                    "description": "alipayUserId"
+                },
+                "appletType": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "小程序类型 101-股票红包"
+                },
+                "encryptedData": {
+                    "type": "string",
+                    "description": "密文"
+                },
+                "inviteCode": {
+                    "type": "string",
+                    "example": 8623,
+                    "description": "邀请码"
+                },
+                "registerCid": {
+                    "type": "string",
+                    "description": "渠道ID"
+                },
+                "registerCt": {
+                    "type": "string",
+                    "description": "渠道类型"
+                }
+            },
+            "title": "AlipayAppletSignParam"
+        },
+        "AppletPhoneCaptchaLoginParams": {
+            "type": "object",
+            "required": [
+                "areaCode",
+                "captcha",
+                "phoneNumber",
+                "source"
+            ],
+            "properties": {
+                "appletType": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "小程序类型 (null:原股票红包 1-股票闯关 2-内地注册小程序 3-选股PK小程序 4-港股股票擂台)"
+                },
+                "areaCode": {
+                    "type": "string",
+                    "example": 86,
+                    "description": "区域号"
+                },
+                "captcha": {
+                    "type": "string",
+                    "example": 123456,
+                    "description": "验证码"
+                },
+                "code": {
+                    "type": "string",
+                    "example": "code",
+                    "description": "微信code"
+                },
+                "email": {
+                    "type": "string",
+                    "example": "123@qq.com",
+                    "description": "email"
+                },
+                "inviteCode": {
+                    "type": "string",
+                    "example": 8623,
+                    "description": "邀请码 非必填"
+                },
+                "phoneNumber": {
+                    "type": "string",
+                    "example": "rsa",
+                    "description": "手机号"
+                },
+                "registerCid": {
+                    "type": "string",
+                    "description": "渠道ID"
+                },
+                "registerCt": {
+                    "type": "string",
+                    "description": "渠道类型"
+                },
+                "source": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "数据来源 字典：EnumRegisterChannel"
+                },
+                "unionId": {
+                    "type": "string",
+                    "example": 123,
+                    "description": "unionId"
+                }
+            },
+            "title": "AppletPhoneCaptchaLoginParams"
+        },
+        "EmailCaptchaLoginParams": {
+            "type": "object",
+            "required": [
+                "captcha",
+                "captchaType",
+                "email",
+                "registNumber",
+                "source"
+            ],
+            "properties": {
+                "captcha": {
+                    "type": "string",
+                    "example": 123456,
+                    "description": "验证码"
+                },
+                "captchaType": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "验证码类型"
+                },
+                "email": {
+                    "type": "string",
+                    "example": "test@youxin.com",
+                    "description": "邮箱(单独加密)"
+                },
+                "modifyUserConfigParam": {
+                    "description": "配置初始化",
+                    "$ref": "#/definitions/ModifyUserConfigParam"
+                },
+                "openedAccount": {
+                    "type": "boolean",
+                    "description": "是否开户 0-否 1-是"
+                },
+                "password": {
+                    "type": "string",
+                    "example": "rsa",
+                    "description": "密码(单独加密)"
+                },
+                "registNumber": {
+                    "type": "string",
+                    "description": "商业登记号码或者注册登记号码(机构用户激活时使用)"
+                },
+                "source": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "来源(1.android 2.ios)"
+                }
+            },
+            "title": "EmailCaptchaLoginParams",
+            "description": "邮箱验证码登录信息"
+        },
+        "EmailCaptchaParams": {
+            "type": "object",
+            "required": [
+                "email",
+                "type"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "description": "邮箱地址 "
+                },
+                "type": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "EnumEmailCaptchaType枚:10001-注册 1-重置交易密码 2-重置登陆密码"
+                }
+            },
+            "title": "EmailCaptchaParams",
+            "description": "获取验证码入参"
+        },
+        "IpadCaptchaLoginParams": {
+            "type": "object",
+            "required": [
+                "applyType",
+                "areaCode",
+                "companyCode",
+                "giftCode",
+                "managerId",
+                "managerName",
+                "managerRealName",
+                "managerType",
+                "marketingCompany",
+                "phoneNumber",
+                "promoterCode",
+                "promoterName"
+            ],
+            "properties": {
+                "applyType": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "申请类型 1-签名开户申请 2-纸质开户申请"
+                },
+                "areaCode": {
+                    "type": "string",
+                    "example": 86,
+                    "description": "区域号"
+                },
+                "captcha": {
+                    "type": "string",
+                    "example": 123456,
+                    "description": "验证码"
+                },
+                "companyCode": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 123456,
+                    "description": "地推/营销公司编码"
+                },
+                "giftCode": {
+                    "type": "string",
+                    "example": 1,
+                    "description": "礼品包代码"
+                },
+                "guestId": {
+                    "type": "integer",
+                    "format": "int64",
+                    "example": 123456,
+                    "description": "临时客户Id"
+                },
+                "managerId": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 123456,
+                    "description": "客户经理"
+                },
+                "managerName": {
+                    "type": "string",
+                    "example": 123456,
+                    "description": "客户经理账号"
+                },
+                "managerRealName": {
+                    "type": "string",
+                    "example": 123456,
+                    "description": "客户经理姓名"
+                },
+                "managerType": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 123456,
+                    "description": "客户经理类型 1-内部员工 2-外部员工"
+                },
+                "marketingCompany": {
+                    "type": "string",
+                    "example": 123456,
+                    "description": "地推/营销公司"
+                },
+                "phoneNumber": {
+                    "type": "string",
+                    "example": "rsa",
+                    "description": "手机号（web不加密）"
+                },
+                "promoterCode": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 123456,
+                    "description": "地推/营销人员编码"
+                },
+                "promoterName": {
+                    "type": "string",
+                    "example": 123456,
+                    "description": "地推/营销人员"
+                }
+            },
+            "title": "IpadCaptchaLoginParams",
+            "description": "ipad手机验证码注册信息"
+        },
+        "JsTicketVO": {
+            "type": "object",
+            "properties": {
+                "currentUrl": {
+                    "type": "string",
+                    "description": "当前页面"
+                },
+                "randomStr": {
+                    "type": "string",
+                    "description": "随机字符串"
+                },
+                "signature": {
+                    "type": "string",
+                    "description": "生成好的签名"
+                },
+                "timestamp": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "时间戳"
+                }
+            },
+            "title": "JsTicketVO",
+            "description": "微信页面JS-SDK授权信息"
+        },
+        "LoginInfoVO": {
+            "type": "object",
+            "properties": {
+                "areaCode": {
+                    "type": "string",
+                    "example": 86,
+                    "description": "区号"
+                },
+                "avatar": {
+                    "type": "string",
+                    "description": "头像地址"
+                },
+                "expiration": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "expiration"
+                },
+                "extendStatusBit": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": "1<<0 登录密码 1<<1 行情权限 1<<2 衍生品",
+                    "description": "用戶扩展状态"
+                },
+                "firstLogin": {
+                    "type": "boolean",
+                    "example": true,
+                    "description": "是否为第一次登陆"
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "id"
+                },
+                "invitationCode": {
+                    "type": "string",
+                    "example": 1234,
+                    "description": "邀请码"
+                },
+                "languageCn": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "1简体2繁体"
+                },
+                "languageHk": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "1简体2繁体"
+                },
+                "lineColorHk": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "1红涨绿跌2绿涨红跌"
+                },
+                "nickname": {
+                    "type": "string",
+                    "example": "xxx",
+                    "description": "昵称"
+                },
+                "openedAccount": {
+                    "type": "boolean",
+                    "description": "是否开户"
+                },
+                "orgEmailLoginFlag": {
+                    "type": "boolean",
+                    "example": true,
+                    "description": "是否机构用户登录,默认为false"
+                },
+                "orgUserStatus": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "机构用户状态: 1-未提交资料  2-审核中 3-驳回待处理 4完成"
+                },
+                "phoneNumber": {
+                    "type": "string",
+                    "example": "188xxxx9188",
+                    "description": "手机号"
+                },
+                "thirdBindBit": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "绑定位 手机1<<0 微信 1<<1 微博1<<2"
+                },
+                "token": {
+                    "type": "string",
+                    "description": "token"
+                },
+                "tradePassword": {
+                    "type": "boolean",
+                    "description": "是否设置过交易密码"
+                },
+                "unionId": {
+                    "type": "string",
+                    "description": "unionId"
+                },
+                "uuid": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "uuid"
+                }
+            },
+            "title": "LoginInfoVO"
+        },
+        "ModifyUserConfigParam": {
+            "type": "object",
+            "properties": {
+                "emailSet": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "用户电邮设定 0-不允许 1-允许"
+                },
+                "languageCn": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "内地版语言设置: 1简体2繁体3英文"
+                },
+                "languageHk": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "港版语言设置: 1简体2繁体3英文"
+                },
+                "lineColorHk": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "股票颜色设置: 1红涨绿跌2绿涨红跌"
+                },
+                "mailSet": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "用户邮寄设定 0-不允许 1-允许"
+                },
+                "phoneSet": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "用户号码设定 0-不允许 1-允许"
+                },
+                "quoteChartHk": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "港版报价图表 1-简约折线 2-简约K线 3-高级折现 4-高级K线"
+                },
+                "smsSet": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "用户短信设定 0-不允许 1-允许"
+                },
+                "sortHk": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "港版智能排序 0-关 1-开"
+                }
+            },
+            "title": "ModifyUserConfigParam",
+            "description": "用户配置修改实体类"
+        },
+        "OrgEmailLoginParams": {
+            "type": "object",
+            "required": [
+                "loginEmail"
+            ],
+            "properties": {
+                "loginEmail": {
+                    "type": "string",
+                    "example": "rsa",
+                    "description": "登陆邮箱(单独加密)"
+                }
+            },
+            "title": "OrgEmailLoginParams",
+            "description": "机构用户邮箱校验登录"
+        },
+        "OrganEmailActivateParams": {
+            "type": "object",
+            "required": [
+                "activateUrl",
+                "email",
+                "userId",
+                "uuid"
+            ],
+            "properties": {
+                "activateUrl": {
+                    "type": "string",
+                    "example": "http://激活链接",
+                    "description": "激活链接"
+                },
+                "email": {
+                    "type": "string",
+                    "example": "test@youxin.com",
+                    "description": "邮箱"
+                },
+                "userId": {
+                    "type": "integer",
+                    "format": "int64",
+                    "example": 123,
+                    "description": "机构用户ID"
+                },
+                "uuid": {
+                    "type": "integer",
+                    "format": "int64",
+                    "example": 123,
+                    "description": "机构用户UUID"
+                }
+            },
+            "title": "OrganEmailActivateParams",
+            "description": "发送邮箱激活链接入参"
+        },
+        "OrganEmailActivateVO": {
+            "type": "object",
+            "properties": {
+                "activateStatus": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "邮箱激活状态：1.未激活，2.已激活"
+                }
+            },
+            "title": "OrganEmailActivateVO",
+            "description": "机构邮箱激活实体类"
+        },
+        "OrganEmailLoginPasswordParams": {
+            "type": "object",
+            "required": [
+                "password",
+                "registNumber",
+                "uuid"
+            ],
+            "properties": {
+                "password": {
+                    "type": "string",
+                    "description": "用户登录密码 RSA加密"
+                },
+                "registNumber": {
+                    "type": "string",
+                    "description": "商业登记号码或者注册登记号码"
+                },
+                "uuid": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "机构客户的UUID"
+                }
+            },
+            "title": "OrganEmailLoginPasswordParams",
+            "description": "机构客户邮箱登陆密码入参"
+        },
+        "PhoneCaptchaActivateParams": {
+            "type": "object",
+            "required": [
+                "areaCode",
+                "captcha",
+                "identifyCode",
+                "phoneNumber",
+                "source"
+            ],
+            "properties": {
+                "areaCode": {
+                    "type": "string",
+                    "example": 86,
+                    "description": "区域号"
+                },
+                "captcha": {
+                    "type": "string",
+                    "example": 123456,
+                    "description": "验证码"
+                },
+                "identifyCode": {
+                    "type": "string",
+                    "example": 123,
+                    "description": "证件号码"
+                },
+                "modifyUserConfigParam": {
+                    "description": "配置初始化",
+                    "$ref": "#/definitions/ModifyUserConfigParam"
+                },
+                "openedAccount": {
+                    "type": "boolean",
+                    "description": "是否开户 0-否 1-是"
+                },
+                "phoneNumber": {
+                    "type": "string",
+                    "example": "rsa",
+                    "description": "手机号"
+                },
+                "source": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "来源 字典：EnumRegisterChannel"
+                }
+            },
+            "title": "PhoneCaptchaActivateParams",
+            "description": "手机+验证码+证件号激活"
+        },
+        "PhoneCaptchaParams": {
+            "type": "object",
+            "required": [
+                "areaCode",
+                "phoneNumber",
+                "type"
+            ],
+            "properties": {
+                "areaCode": {
+                    "type": "string",
+                    "description": "区号"
+                },
+                "phoneNumber": {
+                    "type": "string",
+                    "description": "手机号 RSA加密(Web 不需要加密)"
+                },
+                "type": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 101,
+                    "description": "验证码类型 101注册 102重置密码 103更换手机号 104绑定手机号 105新设备登录校验 106短信登录"
+                }
+            },
+            "title": "PhoneCaptchaParams",
+            "description": "获取验证码入参"
+        },
+        "PhoneGraphCaptchaParams": {
+            "type": "object",
+            "required": [
+                "areaCode",
+                "graphCaptcha",
+                "key",
+                "phoneNumber",
+                "type"
+            ],
+            "properties": {
+                "areaCode": {
+                    "type": "string",
+                    "description": "区号"
+                },
+                "graphCaptcha": {
+                    "type": "string",
+                    "description": "图形验证码"
+                },
+                "key": {
+                    "type": "string",
+                    "description": "图形验证码key"
+                },
+                "phoneNumber": {
+                    "type": "string",
+                    "description": "手机号 RSA加密(Web 不需要加密)"
+                },
+                "type": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 101,
+                    "description": "验证码类型 101注册 102重置密码 103更换手机号 104绑定手机号 105新设备登录校验 106短信登录"
+                }
+            },
+            "title": "PhoneGraphCaptchaParams",
+            "description": "获取验证码入参(带图形验证码校验)"
+        },
+        "UserInfoAndNameVO": {
+            "type": "object",
+            "properties": {
+                "customerName": {
+                    "type": "string",
+                    "example": "张三",
+                    "description": "用户姓名"
+                },
+                "email": {
+                    "type": "string",
+                    "example": "728237@qq.com",
+                    "description": "用户邮箱号码"
+                },
+                "phoneNumber": {
+                    "type": "string",
+                    "example": 13422122212,
+                    "description": "用户手机号码"
+                },
+                "userId": {
+                    "type": "integer",
+                    "format": "int64",
+                    "example": 1,
+                    "description": "用户userId"
+                },
+                "uuid": {
+                    "type": "string",
+                    "example": 12313132,
+                    "description": "用户uuid"
+                }
+            },
+            "title": "UserInfoAndNameVO"
+        },
+        "UserInfoForOpenApiApplyVO": {
+            "type": "object",
+            "properties": {
+                "hadOpenAccount": {
+                    "type": "boolean",
+                    "example": true,
+                    "description": "用户是否已开户；"
+                },
+                "openAccountType": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "用户开户类型；1:内地版开户、2:港版开户、3:机构开户、4:其他开户"
+                },
+                "userId": {
+                    "type": "integer",
+                    "format": "int64",
+                    "example": 1,
+                    "description": "用户userId"
+                },
+                "uuid": {
+                    "type": "string",
+                    "example": 12313132,
+                    "description": "用户uuid"
+                }
+            },
+            "title": "UserInfoForOpenApiApplyVO"
+        },
+        "UserRegisterStatusVO": {
+            "type": "object",
+            "properties": {
+                "registered": {
+                    "type": "boolean",
+                    "description": "是否预注册或正式注册"
+                }
+            },
+            "title": "UserRegisterStatusVO"
+        },
+        "UserResponseEntity": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "响应码"
+                },
+                "data": {
+                    "type": "object",
+                    "description": "响应体"
+                },
+                "msg": {
+                    "type": "string",
+                    "description": "响应内容"
+                }
+            },
+            "title": "UserResponseEntity",
+            "description": "接口统一出参"
+        },
+        "UserResponseEntity«JsTicketVO»": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "响应码"
+                },
+                "data": {
+                    "description": "响应体",
+                    "$ref": "#/definitions/JsTicketVO"
+                },
+                "msg": {
+                    "type": "string",
+                    "description": "响应内容"
+                }
+            },
+            "title": "UserResponseEntity«JsTicketVO»",
+            "description": "接口统一出参"
+        },
+        "UserResponseEntity«OrganEmailActivateVO»": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "响应码"
+                },
+                "data": {
+                    "description": "响应体",
+                    "$ref": "#/definitions/OrganEmailActivateVO"
+                },
+                "msg": {
+                    "type": "string",
+                    "description": "响应内容"
+                }
+            },
+            "title": "UserResponseEntity«OrganEmailActivateVO»",
+            "description": "接口统一出参"
+        },
+        "UserResponseEntity«UserInfoAndNameVO»": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "响应码"
+                },
+                "data": {
+                    "description": "响应体",
+                    "$ref": "#/definitions/UserInfoAndNameVO"
+                },
+                "msg": {
+                    "type": "string",
+                    "description": "响应内容"
+                }
+            },
+            "title": "UserResponseEntity«UserInfoAndNameVO»",
+            "description": "接口统一出参"
+        },
+        "UserResponseEntity«UserInfoForOpenApiApplyVO»": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "响应码"
+                },
+                "data": {
+                    "description": "响应体",
+                    "$ref": "#/definitions/UserInfoForOpenApiApplyVO"
+                },
+                "msg": {
+                    "type": "string",
+                    "description": "响应内容"
+                }
+            },
+            "title": "UserResponseEntity«UserInfoForOpenApiApplyVO»",
+            "description": "接口统一出参"
+        },
+        "UserResponseEntity«WeChatUserInfoVO»": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "响应码"
+                },
+                "data": {
+                    "description": "响应体",
+                    "$ref": "#/definitions/WeChatUserInfoVO"
+                },
+                "msg": {
+                    "type": "string",
+                    "description": "响应内容"
+                }
+            },
+            "title": "UserResponseEntity«WeChatUserInfoVO»",
+            "description": "接口统一出参"
+        },
+        "UserResponseEntity«WebLoginInfoVO»": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "响应码"
+                },
+                "data": {
+                    "description": "响应体",
+                    "$ref": "#/definitions/WebLoginInfoVO"
+                },
+                "msg": {
+                    "type": "string",
+                    "description": "响应内容"
+                }
+            },
+            "title": "UserResponseEntity«WebLoginInfoVO»",
+            "description": "接口统一出参"
+        },
+        "UserResponseEntity«WeiboUserInfoAuthVO»": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "响应码"
+                },
+                "data": {
+                    "description": "响应体",
+                    "$ref": "#/definitions/WeiboUserInfoAuthVO"
+                },
+                "msg": {
+                    "type": "string",
+                    "description": "响应内容"
+                }
+            },
+            "title": "UserResponseEntity«WeiboUserInfoAuthVO»",
+            "description": "接口统一出参"
+        },
+        "UserResponseEntity«YZWebLoginInfoVO»": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "响应码"
+                },
+                "data": {
+                    "description": "响应体",
+                    "$ref": "#/definitions/YZWebLoginInfoVO"
+                },
+                "msg": {
+                    "type": "string",
+                    "description": "响应内容"
+                }
+            },
+            "title": "UserResponseEntity«YZWebLoginInfoVO»",
+            "description": "接口统一出参"
+        },
+        "WeChatAppletSignInParams": {
+            "type": "object",
+            "required": [
+                "code",
+                "encryptedData",
+                "iv",
+                "rawData",
+                "signature",
+                "unionId"
+            ],
+            "properties": {
+                "appletType": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "小程序类型 (null:原股票红包 1-股票闯关 2-内地注册小程序 3-选股PK小程序)"
+                },
+                "code": {
+                    "type": "string",
+                    "description": "code"
+                },
+                "encryptedData": {
+                    "type": "string",
+                    "description": "encryptedData"
+                },
+                "inviteCode": {
+                    "type": "string",
+                    "example": 8623,
+                    "description": "邀请码"
+                },
+                "iv": {
+                    "type": "string",
+                    "description": "iv"
+                },
+                "modifyUserConfigParam": {
+                    "description": "配置初始化",
+                    "$ref": "#/definitions/ModifyUserConfigParam"
+                },
+                "openedAccount": {
+                    "type": "boolean",
+                    "description": "是否开户 0-否 1-是"
+                },
+                "rawData": {
+                    "type": "string",
+                    "description": "rawData"
+                },
+                "registerCid": {
+                    "type": "string",
+                    "description": "渠道ID"
+                },
+                "registerCt": {
+                    "type": "string",
+                    "description": "渠道类型"
+                },
+                "signature": {
+                    "type": "string",
+                    "description": "signature"
+                },
+                "silentLogin": {
+                    "type": "boolean",
+                    "description": "静默授权 传1走静默授权(不会更新用户昵称头像，只返回已授权用户的登录态)"
+                },
+                "unionId": {
+                    "type": "string",
+                    "description": "unionId"
+                }
+            },
+            "title": "WeChatAppletSignInParams",
+            "description": "小程序注册登录入参"
+        },
+        "WeChatUserInfoVO": {
+            "type": "object",
+            "properties": {
+                "areaCode": {
+                    "type": "string",
+                    "description": "手机区号"
+                },
+                "city": {
+                    "type": "string",
+                    "description": "腾讯用户信息：city"
+                },
+                "country": {
+                    "type": "string",
+                    "description": "腾讯用户信息：country"
+                },
+                "headimgurl": {
+                    "type": "string",
+                    "description": "腾讯用户信息：headimgurl"
+                },
+                "nickname": {
+                    "type": "string",
+                    "description": "腾讯用户信息：nickname"
+                },
+                "openid": {
+                    "type": "string",
+                    "description": "腾讯用户信息：openid"
+                },
+                "phoneNumber": {
+                    "type": "string",
+                    "description": "如果用户已有手机号码注册，则返回。没有手机号码则为null"
+                },
+                "privilege": {
+                    "type": "array",
+                    "description": "腾讯用户信息：privilege",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "province": {
+                    "type": "string",
+                    "description": "腾讯用户信息：province"
+                },
+                "sex": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "腾讯用户信息：sex"
+                },
+                "signInSource": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "注册渠道,根据登录接口不同而返回不同的值"
+                },
+                "subscribe": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "是否已关注，1-关注；0-未关注"
+                },
+                "unionid": {
+                    "type": "string",
+                    "description": "腾讯用户信息：unionid"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "已注册用户会有uuid,否则为null"
+                },
+                "webToken": {
+                    "type": "string",
+                    "description": "webToken,如果友信服务器用户中心登录成功，则有值，否则为null。"
+                }
+            },
+            "title": "WeChatUserInfoVO",
+            "description": "微信开放平台获取的用户信息"
+        },
+        "WebLoginInfoVO": {
+            "type": "object",
+            "properties": {
+                "alipayUserId": {
+                    "type": "string",
+                    "description": "支付宝位置账号"
+                },
+                "areaCode": {
+                    "type": "string",
+                    "example": 86,
+                    "description": "区号"
+                },
+                "avatar": {
+                    "type": "string",
+                    "description": "头像地址"
+                },
+                "expiration": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "expiration"
+                },
+                "firstLogin": {
+                    "type": "boolean",
+                    "example": true,
+                    "description": "是否为第一次登陆"
+                },
+                "invitationCode": {
+                    "type": "string",
+                    "example": 1234,
+                    "description": "邀请码"
+                },
+                "nickname": {
+                    "type": "string",
+                    "example": "xxx",
+                    "description": "昵称"
+                },
+                "openedAccount": {
+                    "type": "boolean",
+                    "description": "是否开户"
+                },
+                "phoneNumber": {
+                    "type": "string",
+                    "example": "188xxxx9188",
+                    "description": "手机号"
+                },
+                "thirdBindBit": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "绑定位 手机1<<0 微信 1<<1 微博1<<2"
+                },
+                "token": {
+                    "type": "string",
+                    "description": "token"
+                },
+                "tradePassword": {
+                    "type": "boolean",
+                    "description": "是否设置过交易密码"
+                },
+                "unionId": {
+                    "type": "string",
+                    "description": "unionId"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "uuid"
+                }
+            },
+            "title": "WebLoginInfoVO"
+        },
+        "WebLoginParams": {
+            "type": "object",
+            "required": [
+                "areaCode",
+                "password",
+                "phoneNumber"
+            ],
+            "properties": {
+                "areaCode": {
+                    "type": "string",
+                    "example": 86,
+                    "description": "区域号"
+                },
+                "password": {
+                    "type": "string",
+                    "example": "12345678a",
+                    "description": "密码"
+                },
+                "phoneNumber": {
+                    "type": "string",
+                    "example": 13888888888,
+                    "description": "手机号"
+                }
+            },
+            "title": "WebLoginParams"
+        },
+        "WebPhoneCaptchaLoginParams": {
+            "type": "object",
+            "required": [
+                "areaCode",
+                "captcha",
+                "inviteCode",
+                "phoneNumber",
+                "source"
+            ],
+            "properties": {
+                "areaCode": {
+                    "type": "string",
+                    "example": 86,
+                    "description": "区域号"
+                },
+                "captcha": {
+                    "type": "string",
+                    "example": 123456,
+                    "description": "验证码"
+                },
+                "email": {
+                    "type": "string",
+                    "example": "aaa@qq.com",
+                    "description": "邮箱"
+                },
+                "inviteCode": {
+                    "type": "string",
+                    "example": 8623,
+                    "description": "邀请码 非必填"
+                },
+                "phoneNumber": {
+                    "type": "string",
+                    "example": 12345678901,
+                    "description": "手机号"
+                },
+                "source": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "数据来源 字典：EnumRegisterChannel"
+                }
+            },
+            "title": "WebPhoneCaptchaLoginParams",
+            "description": "web手机验证码登录信息"
+        },
+        "WebThirdPartySignInParams": {
+            "type": "object",
+            "required": [
+                "inviteCode",
+                "source"
+            ],
+            "properties": {
+                "alipayUserId": {
+                    "type": "string",
+                    "description": "支付宝唯一ID"
+                },
+                "appletType": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "小程序类型 (null:原股票红包 1、股票闯关 2-内地注册小程序)"
+                },
+                "areaCode": {
+                    "type": "string",
+                    "example": 86,
+                    "description": "区域号"
+                },
+                "captcha": {
+                    "type": "string",
+                    "example": 123456,
+                    "description": "手机验证码"
+                },
+                "email": {
+                    "type": "string",
+                    "example": "123@qq.com",
+                    "description": "email"
+                },
+                "enumPhoneCaptchaType": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 101,
+                    "description": "验证码类型"
+                },
+                "inviteCode": {
+                    "type": "string",
+                    "example": 8623,
+                    "description": "邀请码"
+                },
+                "phoneNumber": {
+                    "type": "string",
+                    "example": "rsa",
+                    "description": "手机号"
+                },
+                "registerCid": {
+                    "type": "string",
+                    "description": "渠道ID"
+                },
+                "registerCt": {
+                    "type": "string",
+                    "description": "渠道类型"
+                },
+                "source": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "数据来源 字典：EnumRegisterChannel"
+                },
+                "thirdPartyId": {
+                    "type": "string",
+                    "example": 123456,
+                    "description": "第三方唯一ID"
+                }
+            },
+            "title": "WebThirdPartySignInParams",
+            "description": "web手机+第三方id+验证码登录信息"
+        },
+        "WebUserInfoVO": {
+            "type": "object",
+            "properties": {
+                "areaCode": {
+                    "type": "string",
+                    "example": 86,
+                    "description": "区号"
+                },
+                "avatar": {
+                    "type": "string",
+                    "example": "http://xx.com/xx.xxx",
+                    "description": "头像"
+                },
+                "invitationCode": {
+                    "type": "string",
+                    "example": 1234,
+                    "description": "邀请码"
+                },
+                "languageCn": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 2,
+                    "description": "1简体2繁体"
+                },
+                "languageHk": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "1简体2繁体"
+                },
+                "lineColorHk": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "1绿涨红跌2红涨绿跌"
+                },
+                "nickname": {
+                    "type": "string",
+                    "example": "xxx",
+                    "description": "昵称"
+                },
+                "phoneNumber": {
+                    "type": "string",
+                    "example": "188xxxx9188",
+                    "description": "手机号"
+                },
+                "thirdBindBit": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "绑定位 手机 1<<0 微信 1<<1 微博 1<<2 google 1<<3 facebook 1<<5"
+                },
+                "uuid": {
+                    "type": "string",
+                    "example": 259761232364445700,
+                    "description": "用户uuid"
+                }
+            },
+            "title": "WebUserInfoVO"
+        },
+        "WechatBindPhoneNumberParams": {
+            "type": "object",
+            "required": [
+                "areaCode",
+                "captcha",
+                "inviteCode",
+                "phoneNumber",
+                "source",
+                "unionId"
+            ],
+            "properties": {
+                "areaCode": {
+                    "type": "string",
+                    "example": 86,
+                    "description": "区域号"
+                },
+                "captcha": {
+                    "type": "string",
+                    "example": 123456,
+                    "description": "验证码"
+                },
+                "email": {
+                    "type": "string",
+                    "example": "aaa@qq.com",
+                    "description": "邮箱"
+                },
+                "forceBind": {
+                    "type": "boolean",
+                    "example": false,
+                    "description": "强制绑定微信(true是 false否)"
+                },
+                "inviteCode": {
+                    "type": "string",
+                    "example": 8623,
+                    "description": "邀请码 非必填"
+                },
+                "phoneNumber": {
+                    "type": "string",
+                    "example": 12345678901,
+                    "description": "手机号"
+                },
+                "source": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 1,
+                    "description": "数据来源 字典：EnumRegisterChannel"
+                },
+                "unionId": {
+                    "type": "string",
+                    "example": "abcdefg",
+                    "description": "unionId"
+                }
+            },
+            "title": "WechatBindPhoneNumberParams"
+        },
+        "WeiboUserInfoAuthVO": {
+            "type": "object",
+            "properties": {
+                "avatarHd": {
+                    "type": "string",
+                    "description": "'高清头像原图'"
+                },
+                "city": {
+                    "type": "string",
+                    "description": "用户所在城市ID"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "用户个人描述"
+                },
+                "location": {
+                    "type": "string",
+                    "description": "用户所在地"
+                },
+                "phoneNumber": {
+                    "type": "string",
+                    "description": "友信注册手机号码,已注册用户才有"
+                },
+                "province": {
+                    "type": "string",
+                    "description": "用户所在省级ID"
+                },
+                "screenName": {
+                    "type": "string",
+                    "description": "用户昵称"
+                },
+                "signInSource": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "注册渠道,根据登录接口不同而返回不同的值"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "友信的用户ID,已注册用户才有"
+                },
+                "webToken": {
+                    "type": "string",
+                    "description": "友信用户中心登录成功之后，返回的token"
+                },
+                "weiboUid": {
+                    "type": "string",
+                    "description": "微博注册的ID"
+                }
+            },
+            "title": "WeiboUserInfoAuthVO",
+            "description": "微信H5页面授权手获取的信息"
+        },
+        "YZWebLoginInfoVO": {
+            "type": "object",
+            "properties": {
+                "areaCode": {
+                    "type": "string",
+                    "description": "区号"
+                },
+                "phoneNum": {
+                    "type": "string",
+                    "description": "手机号码"
+                },
+                "token": {
+                    "type": "string",
+                    "description": "token信息"
+                }
+            },
+            "title": "YZWebLoginInfoVO",
+            "description": "友智独角售登录成功响应信息vo"
+        }
+    }
+}
