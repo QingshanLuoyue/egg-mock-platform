@@ -3,13 +3,13 @@ let response_formatter = async ctx => {
     if (ctx.body) {
         ctx.body = {
             code: 0,
-            message: 'success',
+            msg: ctx.body.msg,
             data: ctx.body
         }
     } else {
         ctx.body = {
             code: 404,
-            message: '没有信息'
+            msg: '没有信息'
         }
     }
 }
@@ -24,13 +24,9 @@ module.exports = pattern => {
             if (reg.test(ctx.originalUrl)) {
                 response_formatter(ctx)
             }
-        } catch (error) {
-            console.log('response_formatter:error:>>>', error)
-            ctx.status = 200
-            ctx.body = {
-                code: error.code,
-                message: error.message
-            }
+        } catch (e) {
+            console.log('response_formatter:error:>>>', e)
+            ctx.body = e
         }
     }
 }

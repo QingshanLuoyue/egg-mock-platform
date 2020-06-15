@@ -10,7 +10,7 @@ module.exports = class CreateController extends egg.Controller {
             this.ctx.body = data
         } catch (e) {
             console.log('controller:create:error>> ', e)
-            this.ctx.body = e
+            throw e
         }
     }
 }
