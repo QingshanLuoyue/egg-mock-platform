@@ -15,4 +15,6 @@ module.exports = app => {
     // mock 路由
     router.post('/create-micro-server', controller.createMicroServerApiSchema.index.create)
     router.post('/create-micro-server-mock-template', controller.createMicroServerMockTpl.index.createMockTemplate)
+    router.post('/query-micro-server-list', controller.queryMicroServerList.index.queryMicroServerList)
+    router.post('/query-micro-server-mock-api-list', controller.queryMicroServerMockApiList.index.queryApiList)
 }
