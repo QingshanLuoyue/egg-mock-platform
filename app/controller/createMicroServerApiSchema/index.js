@@ -4,8 +4,8 @@ const path = require('path')
 const fs = require('fs')
 
 // mock 目录
-const mockRootDir = path.resolve(__dirname, '../../mock')
-const apiSchemaDefineDir = path.resolve(mockRootDir, 'api-schema')
+const { apiSchemaDefineDir } = require('../../utils/common-path.js')
+
 module.exports = class CreateMicroServerApiSchemaController extends egg.Controller {
     async create(ctx) {
         console.log('createbody:>> ', ctx.request.body)
