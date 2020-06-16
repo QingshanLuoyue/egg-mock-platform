@@ -24,7 +24,6 @@ module.exports = class CreateMockTemplateController extends egg.Controller {
     getMicroServerApiSchemaAndProductMockTpl(microServerName) {
         return new Promise(async (resolve, reject) => {
             try {
-                let configData = this.service.createMicroServerMockTemplate.getMicroServerApiSchema(microServerName)
                 // 微服务对应的 mock 文件目录路径
                 let microServerMockTemplateDirUrl = path.resolve(mockTemplateDir, `${microServerName}`)
                 // 不存在，则创建目录
@@ -34,18 +33,16 @@ module.exports = class CreateMockTemplateController extends egg.Controller {
 
                 let apiSchemaData = {}
                 let apiPaths = {}
-                // 循环读取单个微服务下的 `全部` Api 信息文件，创建相应的 mock 文件
-                for (const category in configData) {
-                    console.log('category :>> ', category)
 
+                // 循环读取单个微服务下的 `全部` Api 信息文件，创建相应的 mock 文件
+                let configData = this.service.createMicroServerMockTemplate.getMicroServerApiSchema(microServerName)
+                for (const category in configData) {
                     const singleCategoryApiInfoFileUrl = configData[category]
 
                     // 根据读取路径，读取 `单个` 文件中的 api schema 信息
-                    let singleCategoryApiInfoJsonSchema = fs.readFileSync(singleCategoryApiInfoFileUrl, {
-                        encoding: 'utf8'
-                    })
-                    // 读取出来的是字符串，需要转对象处理
-                    singleCategoryApiInfoJsonSchema = JSON.parse(singleCategoryApiInfoJsonSchema)
+                    let singleCategoryApiInfoJsonSchema = this.service.createMicroServerMockTemplate.getSingleCategoryApiInfoJsonSchema(
+                        singleCategoryApiInfoFileUrl
+                    )
 
                     apiSchemaData[category] = singleCategoryApiInfoJsonSchema
                     apiPaths = {
@@ -84,7 +81,6 @@ module.exports = class CreateMockTemplateController extends egg.Controller {
             let reqMethodsDefineInfo = apiDefineInfo[reqMethods[0]]
 
             // 拿到成功的数据定义指向链接
-            // console.log('apiPath :>> ', apiPath)
             let reqSuccessSchema = reqMethodsDefineInfo.responses['200'].schema && reqMethodsDefineInfo.responses['200'].schema['$ref']
 
             let mockDataTemplate = '{}'

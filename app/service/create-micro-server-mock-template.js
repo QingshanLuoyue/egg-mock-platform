@@ -24,6 +24,16 @@ module.exports = class CreateMicroServerServiceMockTemplate extends egg.Service 
         configData = JSON.parse(configData)
         return configData
     }
+    // 根据读取路径，读取 `单个` 文件中的 api schema 信息
+    getSingleCategoryApiInfoJsonSchema(singleCategoryApiInfoFileUrl) {
+        // 根据读取路径，读取 `单个` 文件中的 api schema 信息
+        let singleCategoryApiInfoJsonSchema = fs.readFileSync(singleCategoryApiInfoFileUrl, {
+            encoding: 'utf8'
+        })
+        // 读取出来的是字符串，需要转对象处理
+        singleCategoryApiInfoJsonSchema = JSON.parse(singleCategoryApiInfoJsonSchema)
+        return singleCategoryApiInfoJsonSchema
+    }
 
     // 生成 js 的 mock 数据文件
     productJavascriptMockFile(microServerMockTemplateDirUrl, mockFileName, mockTemplateContent) {
