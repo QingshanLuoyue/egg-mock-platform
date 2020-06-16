@@ -1,40 +1,29 @@
 'usestrict'
 const egg = require('egg')
-const hostUrl = 'http://admin-dev.yxzq.com/'
-const ApiRequest = require('../../utils/http-request')
-const httpRequest = new ApiRequest(hostUrl)
-
 const path = require('path')
 const fs = require('fs')
-
-// 请求主机
 
 // mock 目录
 const mockRootDir = path.resolve(__dirname, '../../mock')
 const apiSchemaDefineDir = path.resolve(mockRootDir, 'api-schema')
-module.exports = class CreateController extends egg.Controller {
+module.exports = class CreateMicroServerApiSchemaController extends egg.Controller {
     async create(ctx) {
         console.log('createbody:>> ', ctx.request.body)
         let { microServerName } = ctx.request.body
         try {
-            // let data = await this.service.createMicroServer.init(microServerName)
-            let data = await this.init(microServerName)
+            // 遍历微服务列表，请求各自的 select 选项
+            let data = await this.requestCurrentMicroServerAllSelectOption(microServerName)
             this.ctx.body = data
         } catch (e) {
             console.log('controller:create:error>> ', e)
             throw e
         }
     }
-    // 遍历微服务列表，请求各自的 select 选项
-    init(microServerName) {
-        return this.requestCurrentMicroServerAllSelectOption(microServerName)
-    }
 
     // 请求当前微服务所有的 select option 选项
     requestCurrentMicroServerAllSelectOption(microServerName) {
         return new Promise(async (resolve, reject) => {
             try {
-                // let data = (await httpRequest.get(`${microServerName}/doc/swagger-resources`)) || []
                 let allSelectOptionData = await this.service.createMicroServer.getAllOptionData(microServerName)
                 // console.log('\nrequestCurrentMicroServerAllSelectOption :>> ', allSelectOptionData, '\n')
 
@@ -82,14 +71,10 @@ module.exports = class CreateController extends egg.Controller {
                 let name = option.name
                 let url = option.url
 
-                // let data = (await httpRequest.get(encodeURI(`${microServerName}/doc${url}`))) || []
-
-                // let optionApiSchemaData = data
                 let optionApiSchemaData = await this.service.createMicroServer.getSingleOptionApiSchemaData(option, microServerName)
                 // console.log('\nrequestOpitonApiSchema :>> ', optionApiSchemaData, '\n')
 
                 let apiSchemaJsonDBUrl = path.resolve(this.apiSchemaMicroServerDir, `${name}-api-schema.json`)
-                // data = JSON.parse(data)
                 // 写入 api 的信息
                 fs.writeFileSync(apiSchemaJsonDBUrl, JSON.stringify(optionApiSchemaData, null, 4), {
                     encoding: 'utf8'
